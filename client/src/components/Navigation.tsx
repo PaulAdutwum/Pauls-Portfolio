@@ -1,6 +1,7 @@
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Home, User, Briefcase, GraduationCap, Mail } from "lucide-react";
+import { Home, User, Briefcase, GraduationCap, Mail, FileText } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const MENU_ITEMS = [
   { icon: Home, label: "Home", href: "#hero" },
@@ -18,7 +19,7 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <span className="text-xl font-bold">Portfolio</span>
-          
+
           <div className="hidden md:flex space-x-1">
             {MENU_ITEMS.map(({ icon: Icon, label, href }) => (
               <Button
@@ -34,22 +35,36 @@ export default function Navigation() {
                 </a>
               </Button>
             ))}
+            <Button
+              variant="ghost"
+              size="sm"
+              asChild
+              className="flex items-center gap-2"
+            >
+              <a href="/resume.pdf" download>
+                <FileText className="h-4 w-4" />
+                <span>Resume</span>
+              </a>
+            </Button>
           </div>
 
-          <div className="md:hidden flex space-x-1">
-            {MENU_ITEMS.map(({ icon: Icon, label, href }) => (
-              <Button
-                key={label}
-                variant="ghost"
-                size="icon"
-                asChild
-                className="h-9 w-9"
-              >
-                <a href={href}>
-                  <Icon className="h-4 w-4" />
-                </a>
-              </Button>
-            ))}
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <div className="md:hidden flex space-x-1">
+              {MENU_ITEMS.map(({ icon: Icon, label, href }) => (
+                <Button
+                  key={label}
+                  variant="ghost"
+                  size="icon"
+                  asChild
+                  className="h-9 w-9"
+                >
+                  <a href={href}>
+                    <Icon className="h-4 w-4" />
+                  </a>
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
