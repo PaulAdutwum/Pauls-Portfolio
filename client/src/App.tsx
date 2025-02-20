@@ -6,6 +6,8 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { useTheme } from "@/hooks/use-theme";
+import { useEffect } from "react";
 
 function Router() {
   return (
@@ -17,6 +19,15 @@ function Router() {
 }
 
 function App() {
+  const { theme } = useTheme();
+
+  // Initialize theme
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+  }, [theme]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen bg-background text-foreground">
