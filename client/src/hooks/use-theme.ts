@@ -11,10 +11,12 @@ interface ThemeStore {
 export const useTheme = create<ThemeStore>()(
   persist(
     (set) => ({
-      theme: (window?.localStorage?.getItem("theme") as Theme) || "dark",
+      theme: "dark", // Set default theme to dark
       setTheme: (theme: Theme) => {
-        document.documentElement.classList.remove("light", "dark");
-        document.documentElement.classList.add(theme);
+        const root = document.documentElement;
+        console.log("Setting theme to:", theme);
+        root.classList.remove("light", "dark");
+        root.classList.add(theme);
         set({ theme });
       },
     }),
