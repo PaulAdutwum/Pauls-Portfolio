@@ -1,10 +1,7 @@
 {
   "variant": "professional",
-  "primary": {
-    "light": "hsl(210, 100%, 50%)",
-    "dark": "hsl(240 5.9% 10%)"
-  },
-  "appearance": "system",
+  "primary": "hsl(210, 100%, 50%)",
+  "appearance": "dark",
   "radius": 0.75,
   "colors": {
     "light": {
@@ -33,7 +30,7 @@
       "card-foreground": "hsl(0, 0%, 98%)",
       "popover": "hsl(240, 10%, 3.9%)",
       "popover-foreground": "hsl(0, 0%, 98%)",
-      "primary": "hsl(240, 5.9%, 10%)",
+      "primary": "hsl(210, 100%, 50%)",
       "primary-foreground": "hsl(0, 0%, 98%)",
       "secondary": "hsl(240, 3.7%, 15.9%)",
       "secondary-foreground": "hsl(0, 0%, 98%)",
