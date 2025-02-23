@@ -1,6 +1,13 @@
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Home, User, Briefcase, GraduationCap, Mail, FileText } from "lucide-react";
+import {
+  Home,
+  User,
+  Briefcase,
+  GraduationCap,
+  Mail,
+  FileText,
+} from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 const MENU_ITEMS = [
@@ -18,7 +25,7 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <span className="text-xl font-bold">Portfolio</span>
+          <span className="text-xl font-bold"> Meet Paul</span>
 
           <div className="hidden md:flex space-x-1">
             {MENU_ITEMS.map(({ icon: Icon, label, href }) => (
@@ -41,7 +48,11 @@ export default function Navigation() {
               asChild
               className="flex items-center gap-2"
             >
-              <a href="/resume.pdf" download>
+              <a
+                href="/_Paul_Adutwum_Resume.py.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FileText className="h-4 w-4" />
                 <span>Resume</span>
               </a>
