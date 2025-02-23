@@ -43,10 +43,7 @@ export default function Hero() {
           </motion.h2>
 
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Hi, I'm{" "}
-            <span className="text-primary">
-              Your Name
-            </span>
+            My name is <span className="text-primary">Paul Adutwum</span>
           </h1>
 
           <motion.p
@@ -55,7 +52,7 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
             className="text-xl md:text-2xl text-muted-foreground mb-8"
           >
-            Full Stack Developer & Data Scientist
+            Welcome to my Porfolio!
           </motion.p>
 
           <motion.div

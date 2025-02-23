@@ -5,10 +5,20 @@ import { Card, CardContent } from "@/components/ui/card";
 const SKILLS = [
   { name: "Python", level: 90 },
   { name: "JavaScript/TypeScript", level: 85 },
-  { name: "React", level: 85 },
-  { name: "Node.js", level: 80 },
-  { name: "Data Science", level: 75 },
+  { name: "Tailwind CSS & UI/UX Design", level: 85 },
+  { name: "React & Next.js", level: 80 },
+  { name: "Node.js & Express", level: 80 },
+  { name: "NestJS", level: 75 },
+  { name: "Data Science & Predictive Modeling", level: 70 },
   { name: "Machine Learning", level: 70 },
+  { name: "Scikit-learn & TensorFlow", level: 70 },
+  { name: "PostgreSQL & SQL", level: 70 },
+  { name: "Firebase & Authentication", level: 70 },
+  { name: "Google Maps API", level: 70 },
+  { name: "RESTful APIs", level: 70 },
+  { name: "Data Visualization (Matplotlib, Seaborn, Chart.js)", level: 70 }, // Used in WattsWise & Admin Dashboard
+
+  { name: "Java", level: 60 },
 ];
 
 export default function Skills() {
@@ -22,7 +32,7 @@ export default function Skills() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-bold mb-8">Skills</h2>
-          
+
           <Card>
             <CardContent className="p-6">
               <div className="grid gap-6">
