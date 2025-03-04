@@ -19,26 +19,19 @@ export default function About() {
                 <p className="text-muted-foreground">
                   I am a first-generation college student studying Computer
                   Science and Mathematics, with a minor in Physics, at Bates
-                  College. I am a highly driven person with an insatiable
-                  curiosity for problem-solving and a deep passion for
-                  understanding the world through data and computation.
+                  College. Driven by an insatiable curiosity and a love for
+                  problem-solving, I am passionate about using technology to
+                  transform raw ideas into intuitive and impactful solutions. My
+                  goal is to develop intentional applications that continuously
+                  evolve, adapt, and bring real value to people’s lives.
                   <br />
                   <br />
-                  I am particularly fascinated by the intersection of data
-                  science and full-stack development—where analytical rigor
-                  meets creative design. I enjoy exploring patterns, analyzing
-                  trends, and transforming insights into data-driven decisions
-                  and predictive models. At the same time, I leverage my
-                  full-stack development skills to build scalable, intuitive
-                  applications that make data visualization more accessible and
-                  impactful.
+                  I am always looking for ways to learn, grown and complete the
+                  next project. I enjoy contributing to open-source projects,
+                  keeping up with emerging trends in AI, Fintech and Softwae
+                  Development.
                   <br />
                   <br />
-                  Beyond academics, I am a self-motivated learner who enjoys
-                  contributing to open-source projects, engaging in discussions
-                  on emerging tech trends in AI, FinTech, and software
-                  development, and continuously expanding my knowledge through
-                  hands-on projects.
                 </p>
               </CardContent>
             </Card>
@@ -46,18 +39,20 @@ export default function About() {
             <Card>
               <CardContent className="p-6">
                 <p className="text-muted-foreground">
-                  When I’m not coding or solving problems, you can find me
-                  playing soccer, watching my favorite shows, or engaging in
-                  debates on current issues in technology and finance.
+                  When I’m not coding or solving problems, you’ll probably find
+                  me on the soccer field, playing volleyball, or even diving
+                  into a game of rugby. I also love video games, jamming on my
+                  guitar, and getting lost in good music or my favorite shows.
                   <br />
-                  <br />I am currently seeking internship opportunities that
-                  allow me to apply my skills in data science and full-stack
-                  development—whether through predictive modeling, database
-                  management, or building applications that make data more
-                  intuitive and actionable. I am excited to collaborate, learn,
-                  and contribute to meaningful projects that challenge me to
-                  grow as both a developer and a thinker. If you’re working on
-                  something exciting, let’s connect! 🚀
+                  <br />
+                  I’m currently on the lookout for internship opportunities
+                  where I can put my skills in data science and full-stack
+                  development to work—whether that’s through predictive
+                  modeling, database management, or building intuitive
+                  applications that make data more actionable. I’m always eager
+                  to learn, collaborate, and take on exciting challenges that
+                  push me to grow as both a developer and a problem solver. If
+                  you’re working on something cool, let’s connect! 🚀
                 </p>
               </CardContent>
             </Card>
