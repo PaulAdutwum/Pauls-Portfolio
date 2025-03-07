@@ -1,7 +1,4 @@
 
-![GitHub Repo Size](https://img.shields.io/github/repo-size/PaulAdutwum/NobleInsights?color=blue&logo=github&style=for-the-badge)  
-![GitHub last commit](https://img.shields.io/github/last-commit/PaulAdutwum/NobleInsights?style=for-the-badge)  
-![GitHub stars](https://img.shields.io/github/stars/PaulAdutwum/NobleInsights?style=for-the-badge)  
 
  🚀 Welcome to my Portfolio website! This portfolio is designed with smooth animations, dynamic effects, and a clean UI to provide an engaging user experience.  
 
