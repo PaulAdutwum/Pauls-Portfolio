@@ -21,4 +21,10 @@ export default defineConfig({
     outDir: "dist", 
     emptyOutDir: true,
   },
+  server: {
+    hmr: {
+      overlay: false,  
+    },
+  },
+
 });

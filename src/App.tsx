@@ -8,6 +8,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useTheme } from "@/hooks/use-theme";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 function Router() {
   return (
@@ -21,15 +22,20 @@ function Router() {
 function App() {
   const { theme } = useTheme();
 
-  // Initialize theme
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove('light', 'dark');
+    root.classList.remove("light", "dark");
     root.classList.add(theme);
   }, [theme]);
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Helmet>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <title>Paul Adutwum - Portfolio</title>
+      </Helmet>
+
       <div className="min-h-screen bg-background text-foreground">
         <Navigation />
         <main>

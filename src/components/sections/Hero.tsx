@@ -3,18 +3,40 @@ import { Button } from "@/components/ui/button";
 import { FileDown, ArrowDown, Github, Linkedin } from "lucide-react";
 import { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
+import confetti from "canvas-confetti";
 
 export default function Hero() {
   const [showCursor, setShowCursor] = useState(true);
   const [nameTyped, setNameTyped] = useState(false);
 
+  useEffect(() => {
+    confetti({
+      particleCount: 100,
+      spread: 80,
+      origin: { y: 0.6 },
+    });
+  }, []);
+
   return (
     <section
       id="hero"
-      className="min-h-[calc(100vh-4rem)] flex items-center relative"
+      className="min-h-[calc(100vh-4rem)] flex items-center relative overflow-hidden"
     >
-      {/* Social Icons Positioned at the Top Right */}
-      <div className="absolute top-6 right-6 flex gap-4">
+      {/* Background Animation */}
+      <motion.div
+        className="absolute inset-0 z-0 opacity-40"
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.05 }}
+        transition={{ duration: 10, repeat: Infinity, repeatType: "mirror" }}
+        style={{
+          backgroundImage: "url('/your-background-image.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+
+      {/* Social Icons */}
+      <div className="absolute top-6 right-6 flex gap-4 z-10">
         <a
           href="https://linkedin.com/in/yourprofile"
           target="_blank"
@@ -33,23 +55,41 @@ export default function Hero() {
         </a>
       </div>
 
-      <div className="container mx-auto px-4">
+      {/* Hero Content */}
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="max-w-3xl"
         >
-          {/* Modern Styled Welcome Text */}
+          {/* Waving Hand Animation Next to Welcome Text */}
           <motion.h2
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="text-xl md:text-2xl italic text-muted-foreground mb-4"
+            className="text-xl md:text-2xl italic text-muted-foreground mb-4 flex items-center gap-2"
           >
-            Welcome to my Porfolio!
+            Welcome to my Portfolio!
+            <motion.span
+              className="text-4xl"
+              role="img"
+              aria-label="wave"
+              animate={{
+                rotate: [0, 20, 0, -20, 0], // Wave motion
+                x: [-5, 5, -5], // Side-to-side motion
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "mirror",
+              }}
+            >
+              👋
+            </motion.span>
           </motion.h2>
 
+          {/* Typing Animation for Name */}
           <h1 className="text-4xl md:text-6xl font-bold mb-2 flex items-center">
             <Typewriter
               onInit={(typewriter) => {
@@ -57,7 +97,7 @@ export default function Hero() {
                   .typeString(
                     'My name is <span style="color: #3b82f6; font-weight: bold;">Paul Adutwum</span>'
                   )
-                  .callFunction(() => setNameTyped(true)) // This replaces onComplete
+                  .callFunction(() => setNameTyped(true))
                   .start();
               }}
               options={{
@@ -80,6 +120,7 @@ export default function Hero() {
             Developer
           </motion.p>
 
+          {/* Buttons */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -99,7 +140,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Down Arrow */}
+      {/* Scroll Down Arrow Animation */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -109,7 +150,7 @@ export default function Hero() {
           repeatType: "reverse",
           duration: 1,
         }}
-        className="absolute bottom-6 right-6 animate-bounce"
+        className="absolute bottom-6 right-6 animate-bounce z-10"
       >
         <a
           href="#about"
