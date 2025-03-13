@@ -11,6 +11,26 @@ import { Button } from "@/components/ui/button";
 
 const PROJECTS = [
   {
+    title: "AI-Powered Accessibility Extension for Chrome",
+    description:
+      "A Chrome extension that enhances web accessibility for visually impaired users by integrating AI-powered navigation, voice control, screen reading, and intelligent form assistance.",
+    tags: [
+      "JavaScript (ES6+)",
+      "HTML5",
+      "CSS3",
+      "OpenAI GPT-4 API",
+      "Web Speech API",
+      "Chrome Extensions API",
+      "MutationObserver",
+      "GitHub Actions",
+      "Chrome Web Store Deployment",
+      "Content Security Policy (CSP)",
+      "API Key Management",
+    ],
+    github: "https://github.com/PaulAdutwum/Chrome-Extension",
+    demo: "https://github.com/PaulAdutwum/Chrome-Extension",
+  },
+  {
     title:
       "Admin Dashboard App for the Bobcat Exppress Shuttle at Bates College",
     description:

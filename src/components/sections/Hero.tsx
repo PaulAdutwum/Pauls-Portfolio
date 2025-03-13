@@ -22,7 +22,6 @@ export default function Hero() {
       id="hero"
       className="min-h-[calc(100vh-4rem)] flex items-center relative overflow-hidden"
     >
-      {/* Background Animation */}
       <motion.div
         className="absolute inset-0 z-0 opacity-40"
         initial={{ scale: 1 }}
@@ -35,7 +34,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Social Icons */}
       <div className="absolute top-6 right-6 flex gap-4 z-10">
         <a
           href="https://linkedin.com/in/yourprofile"
@@ -55,7 +53,6 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* Hero Content */}
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -63,7 +60,6 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="max-w-3xl"
         >
-          {/* Waving Hand Animation Next to Welcome Text */}
           <motion.h2
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -76,8 +72,8 @@ export default function Hero() {
               role="img"
               aria-label="wave"
               animate={{
-                rotate: [0, 20, 0, -20, 0], // Wave motion
-                x: [-5, 5, -5], // Side-to-side motion
+                rotate: [0, 20, 0, -20, 0],
+                x: [-5, 5, -5],
               }}
               transition={{
                 duration: 1.5,
@@ -89,7 +85,6 @@ export default function Hero() {
             </motion.span>
           </motion.h2>
 
-          {/* Typing Animation for Name */}
           <h1 className="text-4xl md:text-6xl font-bold mb-2 flex items-center">
             <Typewriter
               onInit={(typewriter) => {
@@ -109,7 +104,6 @@ export default function Hero() {
             />
           </h1>
 
-          {/* Fullstack Developer Label */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -120,7 +114,6 @@ export default function Hero() {
             Developer
           </motion.p>
 
-          {/* Buttons */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -140,7 +133,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Down Arrow Animation */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

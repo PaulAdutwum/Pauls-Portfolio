@@ -38,7 +38,6 @@ export default function Education() {
             </CardContent>
           </Card>
 
-          {/* Relevant Coursework */}
           <Card className="shadow-lg hover:shadow-xl transition-shadow rounded-lg">
             <CardHeader className="flex flex-row items-center gap-4 ">
               <div>

@@ -41,7 +41,7 @@ export default function Contact() {
     <section id="contact" className="py-16 px-8 bg-muted/50 text-white">
       <h2 className="text-3xl font-bold text-center mb-6">Contact Me</h2>
       <p className="text-center mb-8">
-        Feel free to reach out if you have any questions!
+        Feel free to reach out if you have any questions or suggestions!
       </p>
 
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
