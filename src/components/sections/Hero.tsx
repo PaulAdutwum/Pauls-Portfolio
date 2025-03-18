@@ -77,7 +77,7 @@ export default function Hero() {
       </motion.h2>
 
       {/* 🔗 Social Links */}
-      <div className="absolute top-6 right-6 flex gap-4 z-10">
+      <div className="absolute top-12 right-10 flex gap-4 z-10">
         <motion.a
           href="https://www.linkedin.com/in/paul-adutwum-aaaabb27b/"
           target="_blank"
