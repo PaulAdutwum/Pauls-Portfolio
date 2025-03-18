@@ -58,7 +58,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className="absolute top-4 left-4 md:top-8 md:left-8 text-xl md:text-2xl italic text-muted-foreground mb-4 flex items-center gap-2 z-50"
+        className="absolute top-3 left-3 md:top-8 md:left-8 text-xl md:text-2xl italic text-muted-foreground mb-4 flex items-center gap-2 z-50"
       >
         Hello, welcome to my Portfolio!
         <motion.span
@@ -77,7 +77,7 @@ export default function Hero() {
       </motion.h2>
 
       {/* 🔗 Social Links */}
-      <div className="absolute top-12 right-10 flex gap-4 z-10">
+      <div className="absolute top-12 right-10 flex mt-6 gap-4 z-10">
         <motion.a
           href="https://www.linkedin.com/in/paul-adutwum-aaaabb27b/"
           target="_blank"
