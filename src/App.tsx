@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import { useTheme } from "@/hooks/use-theme";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { TooltipProvider } from "@radix-ui/react-tooltip";
 
 function Router() {
   return (
@@ -29,22 +30,24 @@ function App() {
   }, [theme]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Helmet>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <title>Paul Adutwum - Portfolio</title>
-      </Helmet>
+    <TooltipProvider>
+      <QueryClientProvider client={queryClient}>
+        <Helmet>
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+          <title>Paul Adutwum - Portfolio</title>
+        </Helmet>
 
-      <div className="min-h-screen bg-background text-foreground">
-        <Navigation />
-        <main>
-          <Router />
-        </main>
-        <Footer />
-      </div>
-      <Toaster />
-    </QueryClientProvider>
+        <div className="min-h-screen bg-background text-foreground">
+          <Navigation />
+          <main>
+            <Router />
+          </main>
+          <Footer />
+        </div>
+        <Toaster />
+      </QueryClientProvider>
+    </TooltipProvider>
   );
 }
 
