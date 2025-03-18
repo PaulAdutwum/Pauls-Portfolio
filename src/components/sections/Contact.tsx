@@ -38,50 +38,56 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 px-8 bg-muted/50 text-white">
-      <h2 className="text-3xl font-bold text-center mb-6">Contact Me</h2>
-      <p className="text-center mb-8">
-        Feel free to reach out if you have any questions or suggestions!
-      </p>
+    <section
+      id="contact"
+      className="py-20 bg-gray-100 dark:bg-black text-gray-900 dark:text-white transition-colors duration-300"
+    >
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-6">Contact</h2>
+        <p className="text-center mb-8">Get in touch with me.</p>
 
-      <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="w-full p-3 border border-gray-700 rounded bg-gray-800 text-white"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="w-full p-3 border border-gray-700 rounded bg-gray-800 text-white"
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          className="w-full p-3 border border-gray-700 rounded bg-gray-800 text-white"
-          rows={5}
-        ></textarea>
-
-        <button
-          type="submit"
-          className="w-full p-3 bg-blue-600 hover:bg-blue-700 rounded"
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-lg mx-auto space-y-4 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-300 dark:border-blue-500 transition-all duration-300"
         >
-          Send Message
-        </button>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full p-3 border border-gray-400 dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full p-3 border border-gray-400 dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white"
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            className="w-full p-3 border border-gray-400 dark:border-gray-700 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white"
+            rows={5}
+          ></textarea>
 
-        {status && <p className="text-center mt-4">{status}</p>}
-      </form>
+          <button
+            type="submit"
+            className="w-full p-3 bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 rounded transition-all"
+          >
+            Send Message
+          </button>
+
+          {status && <p className="text-center mt-4">{status}</p>}
+        </form>
+      </div>
     </section>
   );
 }
