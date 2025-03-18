@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-muted/50">
+    <section
+      id="about"
+      className="py-20 bg-gray-100 dark:bg-black text-gray-900 dark:text-white transition-colors duration-300"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -11,48 +14,50 @@ export default function About() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold mb-8">About Me</h2>
+          <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <Card>
+            {/* 🚀 Introduction Card */}
+            <Card className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-blue-500 shadow-lg rounded-xl transition-all duration-300">
               <CardContent className="p-6">
-                <p className="text-muted-foreground">
-                  I am a first-generation college student studying Computer
-                  Science and Mathematics, with a minor in Physics, at Bates
-                  College. Driven by an insatiable curiosity and a love for
-                  problem-solving, I am passionate about using technology to
-                  transform raw ideas into intuitive and impactful solutions. My
-                  goal is to develop intentional applications that continuously
-                  evolve, adapt, and bring real value to people’s lives.
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  I'm{" "}
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">
+                    Paul
+                  </span>
+                  , a rising junior at Bates College, studying Engineering and
+                  Mathematics. I'm also an active member of the Africana
+                  Community at Bates and serve as a Community Advisor in the
+                  Office of Residential Life & Health Education.
                   <br />
-                  <br />
-                  I am always looking for ways to learn, grown and complete the
-                  next project. I enjoy contributing to open-source projects,
-                  keeping up with emerging trends in AI, Fintech and Softwae
-                  Development.
-                  <br />
-                  <br />
+                  <br />I am interested in building tech solutions that adds
+                  value to our lives, focusing on full-stack development,
+                  web/mobile applications, and data analysis. I've participated
+                  in hackathons in both data science and web development,
+                  collaborating on impactful projects.
                 </p>
               </CardContent>
             </Card>
 
-            <Card>
+            {/* 🏆 Skills & Interests Card */}
+            <Card className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-blue-500 shadow-lg rounded-xl transition-all duration-300">
               <CardContent className="p-6">
-                <p className="text-muted-foreground">
-                  When I’m not coding or solving problems, you’ll probably find
-                  me on the soccer field, playing volleyball, or even diving
-                  into a game of rugby. I also love video games, jamming on my
-                  guitar, and getting lost in good music or my favorite shows.
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  I love learning and growing, constantly pushing myself to
+                  explore new technologies and improve my skills. I'm always
+                  excited about new opportunities and enjoy working on projects
+                  that create meaningful impact. I am currently seeking
+                  internship opportunities for the summer of 2025 and excited to
+                  contribute meaningfully to any team I join.
                   <br />
                   <br />
-                  I’m currently on the lookout for internship opportunities
-                  where I can put my skills in data science and full-stack
-                  development to work—whether that’s through predictive
-                  modeling, database management, or building intuitive
-                  applications that make data more actionable. I’m always eager
-                  to learn, collaborate, and take on exciting challenges that
-                  push me to grow as both a developer and a problem solver. If
-                  you’re working on something cool, let’s connect! 🚀
+                  Beyond coding, you'll find me on the soccer field,
+                  volunteering, diving into photography, working on fitness, or
+                  embracing diverse cultures and languages.
+                  <br />
+                  <br />
+                  If you are working on something cool, please connect with me.
+                  Let's innovate and grow together in this tech journey! 🚀
                 </p>
               </CardContent>
             </Card>
