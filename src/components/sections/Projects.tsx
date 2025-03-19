@@ -14,7 +14,7 @@ const PROJECTS = [
     title: "AI-Powered Accessibility Extension for Chrome",
     description:
       "A Chrome extension that enhances web accessibility for visually and physically impaired web users with AI-powered navigation and voice control features 👌.",
-    image: "/chrome.png", // Update with actual image path
+    image: "/chrome.png",
     tags: ["React", "Firebase", "REST APIs"],
     github: "https://github.com/PaulAdutwum/Chrome-Extension",
     demo: "https://github.com/PaulAdutwum/Chrome-Extension",
@@ -29,7 +29,7 @@ const PROJECTS = [
     demo: "https://bobcatexpress.vercel.app/dashboard/",
   },
   {
-    title: "WattsWise – Smart Energy Analytics",
+    title: "WattsWise  Smart Energy Analytics",
     description:
       "An AI-powered energy analytics platform that predicts dorm energy consumption and provides efficiency insights 📈.",
     image: "/wattwise.png",
@@ -38,7 +38,7 @@ const PROJECTS = [
     demo: "https://github.com/PaulAdutwum/Energy_Tracker_Project",
   },
   {
-    title: "Lumeo – AI-Powered Movie Discovery",
+    title: "Lumeo  AI-Powered Movie Discovery",
     description:
       "An AI-driven platform that personalizes movie recommendations based on user sentiment and mental well-being 🎬.",
     image: "/lumeo.png",
@@ -73,7 +73,6 @@ export default function Projects() {
                 viewport={{ once: true }}
               >
                 <Card className="h-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-blue-500 shadow-lg rounded-xl transition-all duration-300 overflow-hidden">
-                  {/* 📷 Project Image with Hover Effect */}
                   <a
                     href={project.demo}
                     target="_blank"
@@ -85,6 +84,7 @@ export default function Projects() {
                         alt={project.title}
                         className="w-full h-40 object-cover transition-transform duration-300 ease-in-out hover:scale-110"
                       />
+
                       {/* Overlay on Hover */}
                       <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                     </div>

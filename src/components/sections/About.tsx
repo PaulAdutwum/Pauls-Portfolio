@@ -17,7 +17,7 @@ export default function About() {
           <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* 🚀 Introduction Card */}
+            {/*  Introduction Card */}
             <Card className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-blue-500 shadow-lg rounded-xl transition-all duration-300">
               <CardContent className="p-6">
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -39,7 +39,7 @@ export default function About() {
               </CardContent>
             </Card>
 
-            {/* 🏆 Skills & Interests Card */}
+            {/*  Skills & Interests Card */}
             <Card className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-blue-500 shadow-lg rounded-xl transition-all duration-300">
               <CardContent className="p-6">
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
