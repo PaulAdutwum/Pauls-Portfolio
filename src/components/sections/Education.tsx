@@ -17,9 +17,10 @@ export default function Education() {
         >
           <h2 className="text-4xl font-bold text-center mb-10">Education</h2>
 
-          {/* 📚 Cards Grid */}
+         
           <div className="grid md:grid-cols-2 gap-8">
-            {/* 🎓 Education Info */}
+
+            {/* Education Info */}
             <Card className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-blue-500 shadow-lg rounded-xl transition-all duration-300">
               <CardHeader className="flex flex-row items-center gap-4">
                 <GraduationCap className="h-8 w-8 text-blue-500 dark:text-blue-400" />
@@ -74,7 +75,7 @@ export default function Education() {
             </Card>
           </div>
 
-          {/* 🏆 Honors & Awards - Full Width */}
+          {/*  Honors & Awards section */}
           <div className="mt-8">
             <Card className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-blue-500 shadow-lg rounded-xl transition-all duration-300">
               <CardHeader className="flex flex-row items-center gap-4">
