@@ -37,7 +37,7 @@ export default function Hero() {
       id="hero"
       className="min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-center text-center md:text-left relative overflow-hidden"
     >
-      {/* 🌌 Particle Effect Background */}
+      {/* Particle Effect Background */}
       <Particles
         init={particlesInit}
         options={{
@@ -76,7 +76,7 @@ export default function Hero() {
         </motion.span>
       </motion.h2>
 
-      {/* 🔗 Social Links */}
+      {/*  Social Links */}
       <div className="absolute top-12 right-10 flex mt-6 gap-4 z-10">
         <motion.a
           href="https://www.linkedin.com/in/paul-adutwum-aaaabb27b/"
@@ -99,7 +99,7 @@ export default function Hero() {
         </motion.a>
       </div>
 
-      {/* 👤 Headshot Image */}
+      {/* Headshot Image */}
       <motion.div className="relative flex justify-center items-center p-2 bg-black rounded-full border-2 border-blue-500 shadow-lg overflow-hidden">
         <motion.img
           src="/headshot.png"
@@ -113,7 +113,8 @@ export default function Hero() {
       </motion.div>
 
       <div className="md:ml-10 mt-6 md:mt-0 relative z-10">
-        {/* ⌨️ Typing Animation for Name */}
+
+        {/*  Typing Animation for Name */}
         <h1 className="text-4xl md:text-6xl font-bold mb-2 flex items-center">
           <Typewriter
             onInit={(typewriter) => {
@@ -128,7 +129,7 @@ export default function Hero() {
           />
         </h1>
 
-        {/* 💻 Fullstack Developer Label */}
+        {/* Fullstack Developer Label */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -159,7 +160,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ⬇️ Scroll Down Indicator */}
+      {/*  Scroll Down Indicator icon */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

@@ -25,8 +25,8 @@ export default function About() {
                   <span className="text-blue-600 dark:text-blue-400 font-bold">
                     Paul
                   </span>
-                  , a rising junior at Bates College, studying Engineering and
-                  Mathematics. I'm also an active member of the Africana
+                  , a rising junior at Bates College, studying Computer Science
+                  and Mathematics. I'm also an active member of the Africana
                   Community at Bates and serve as a Community Advisor in the
                   Office of Residential Life & Health Education.
                   <br />
