@@ -1,21 +1,42 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import {
-  FileDown,
-  ArrowDown,
-  Github,
-  Linkedin,
-  Mail,
-  Briefcase,
-} from "lucide-react";
-import { useEffect, useState } from "react";
-import Typewriter from "typewriter-effect";
+import { ArrowDown, Github, Linkedin } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useTheme } from "@/hooks/use-theme";
 import confetti from "canvas-confetti";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
+
+// Animation variants for staggered children
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 10,
+    },
+  },
+};
 
 export default function Hero() {
-  const [nameTyped, setNameTyped] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+  const [nameHovered, setNameHovered] = useState(false);
+
+  // Professional titles with consistent color scheme
+  const titles = ["Artist", "Designer", "Mathematician", "Leader", "Developer"];
 
   useEffect(() => {
     setTimeout(() => {
@@ -27,159 +48,263 @@ export default function Hero() {
     }, 1000);
   }, []);
 
-  const particlesInit = async (engine: any) => {
-    console.log("Initializing tsParticles...");
-    await loadFull(engine);
-  };
-
   return (
-    <section
+    <motion.section
       id="hero"
-      className="min-h-[calc(100vh-4rem)] flex flex-col md:flex-row items-center justify-center text-center md:text-left relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center text-center relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
     >
-      {/* Particle Effect Background */}
-      <Particles
-        init={particlesInit}
-        options={{
-          background: { color: "#000" },
-          particles: {
-            number: { value: 100 },
-            color: { value: "#3b82f6" },
-            shape: { type: "circle" },
-            opacity: { value: 0.5 },
-            size: { value: 3 },
-            move: { enable: true, speed: 2 },
-          },
-        }}
+      {/* Video Background with enhanced fade-in */}
+      <motion.div
         className="absolute inset-0 z-0"
-      />
-
-      <motion.h2
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.1 }}
-        className="absolute top-3 left-3 md:top-8 md:left-8 text-xl md:text-2xl italic text-muted-foreground mb-4 flex items-center gap-2 z-50"
+        transition={{ duration: 1.2 }}
       >
-        Hello, welcome to my Portfolio!
-        <motion.span
-          className="text-4xl"
-          role="img"
-          aria-label="wave"
-          animate={{ rotate: [0, 20, 0, -20, 0], x: [-5, 5, -5] }}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-blue-900/40 z-10"></div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute w-full h-full object-cover"
+        >
+          <source src="/mainbackgound.mp4" type="video/mp4" />
+        </video>
+      </motion.div>
+
+      {/* Decorative Elements */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        {/* Bottom Left Decorative Element */}
+        <motion.div
+          className="absolute left-6 bottom-16 md:left-12 md:bottom-24 w-32 h-32 md:w-48 md:h-48 opacity-20"
+          initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
+          animate={{ opacity: 0.15, scale: 1, rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        >
+          <div className="w-full h-full rounded-full border-2 border-white/60"></div>
+          <div className="absolute inset-4 rounded-full border-2 border-white/40"></div>
+          <div className="absolute inset-8 rounded-full border-2 border-white/20"></div>
+        </motion.div>
+
+        {/* Bottom Right Decorative Element */}
+        <motion.div
+          className="absolute right-6 bottom-24 md:right-16 md:bottom-32 w-40 h-40 md:w-56 md:h-56 opacity-20"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 0.15, scale: 1 }}
           transition={{
-            duration: 1.5,
+            duration: 4,
             repeat: Infinity,
-            repeatType: "mirror",
+            repeatType: "reverse",
+            ease: "easeInOut",
           }}
         >
-          👋
-        </motion.span>
-      </motion.h2>
+          <div className="w-full h-full rounded-full bg-gradient-to-tr from-white/5 to-white/30 blur-md"></div>
+          <motion.div
+            className="absolute inset-4 rounded-full border-2 border-white/30"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          ></motion.div>
+        </motion.div>
 
-      {/*  Social Links */}
-      <div className="absolute top-12 right-10 flex mt-6 gap-4 z-10">
+        {/* Top Right Decorative Element */}
+        <motion.div
+          className="absolute right-16 top-24 md:right-24 md:top-16 w-28 h-28 md:w-40 md:h-40 opacity-15"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 0.15, scale: 1 }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut",
+          }}
+        >
+          <div className="w-full h-full rounded-full border border-white/40"></div>
+          <div className="absolute inset-3 rounded-full border border-white/30"></div>
+          <motion.div
+            className="absolute inset-6 rounded-full border border-white/20"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+          ></motion.div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-full"></div>
+        </motion.div>
+      </div>
+
+      {/* Main Content - Staggered Animation */}
+      <motion.div
+        className="relative z-20 container mx-auto px-4 flex flex-col items-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Professional Titles with fluid animation */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-x-4 text-white mb-10"
+          variants={itemVariants}
+        >
+          {titles.map((title, index) => (
+            <motion.span
+              key={title}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index, duration: 0.4 }}
+              className="text-lg md:text-xl font-light tracking-wide text-white/80"
+            >
+              {index > 0 && <span className="text-white/30 mr-4">•</span>}
+              {title}
+            </motion.span>
+          ))}
+        </motion.div>
+
+        {/* Name with slide-in animation and hover effect */}
+        <motion.div
+          className="overflow-hidden mb-8 relative"
+          variants={itemVariants}
+        >
+          <motion.h1
+            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight"
+            onMouseEnter={() => setNameHovered(true)}
+            onMouseLeave={() => setNameHovered(false)}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+          >
+            <motion.span
+              className="block italic font-bold text-white"
+              animate={
+                nameHovered
+                  ? {
+                      textShadow: [
+                        "0px 0px 8px rgba(255,255,255,0.3)",
+                        "0px 0px 16px rgba(255,255,255,0.6)",
+                        "0px 0px 8px rgba(255,255,255,0.3)",
+                      ],
+                    }
+                  : {}
+              }
+              transition={{
+                duration: 1.5,
+                repeat: nameHovered ? Infinity : 0,
+                repeatType: "reverse",
+              }}
+            >
+              PAUL ADUTWUM
+            </motion.span>
+
+            {/* Animated underline on hover */}
+            <motion.div
+              className="h-1 bg-gradient-to-r from-blue-300/80 via-white/80 to-blue-300/80 mt-2 mx-auto"
+              initial={{ width: "0%" }}
+              animate={{ width: nameHovered ? "100%" : "60%" }}
+              transition={{ duration: 0.5 }}
+            />
+          </motion.h1>
+        </motion.div>
+
+        {/* Education */}
+        <motion.div className="text-center mb-24" variants={itemVariants}>
+          <h2 className="text-xl md:text-2xl font-light text-white/90 tracking-wider mb-1">
+            Engineering and Mathematics student
+          </h2>
+          <p className="text-lg text-white/80 font-light">Bates College</p>
+        </motion.div>
+
+        {/* Scroll Indicator with enhanced styling - positioned lower */}
+        <motion.div
+          className="absolute bottom-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 1.8,
+            duration: 0.8,
+          }}
+        >
+          <motion.a
+            href="#about"
+            className="flex flex-col items-center text-white hover:text-white transition-all duration-300 group"
+            whileHover={{ y: -5 }}
+            whileTap={{ y: 2 }}
+          >
+            <span className="text-sm font-light mb-2 opacity-80 group-hover:opacity-100">
+              Scroll Down
+            </span>
+            <div className="relative flex flex-col items-center">
+              <motion.div
+                animate={{
+                  y: [0, 8, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "easeInOut",
+                }}
+              >
+                <ArrowDown className="w-5 h-5 mb-1" />
+              </motion.div>
+              <motion.div
+                animate={{
+                  y: [0, 8, 0],
+                  opacity: [0.7, 0.9, 0.7],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "easeInOut",
+                  delay: 0.2,
+                }}
+              >
+                <ArrowDown className="w-5 h-5 opacity-70" />
+              </motion.div>
+              <motion.div
+                className="absolute inset-0 rounded-full bg-white/20 -z-10"
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileHover={{ scale: 1.5, opacity: 0.2 }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+          </motion.a>
+        </motion.div>
+      </motion.div>
+
+      {/* Social Links with enhanced styling */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1.6, duration: 0.5 }}
+        className="absolute top-8 right-8 z-30 flex gap-4"
+      >
         <motion.a
           href="https://www.linkedin.com/in/paul-adutwum-aaaabb27b/"
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ rotate: 360 }}
-          transition={{ duration: 0.5 }}
+          className="p-2 bg-white/10 backdrop-blur-md rounded-full transition-all duration-300"
+          whileHover={{
+            backgroundColor: "rgba(255, 255, 255, 0.25)",
+            boxShadow: "0 0 20px rgba(255, 255, 255, 0.3)",
+            y: -3,
+          }}
+          whileTap={{ scale: 0.95 }}
         >
-          <Linkedin className="h-7 w-7 hover:text-primary transition-all" />
+          <Linkedin className="w-5 h-5 text-white" />
         </motion.a>
-
         <motion.a
           href="https://github.com/PaulAdutwum?tab=overview&from=2025-01-01&to=2025-01-06"
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ rotate: 360 }}
-          transition={{ duration: 0.5 }}
+          className="p-2 bg-white/10 backdrop-blur-md rounded-full transition-all duration-300"
+          whileHover={{
+            backgroundColor: "rgba(255, 255, 255, 0.25)",
+            boxShadow: "0 0 20px rgba(255, 255, 255, 0.3)",
+            y: -3,
+          }}
+          whileTap={{ scale: 0.95 }}
         >
-          <Github className="h-7 w-7 hover:text-primary transition-all" />
+          <Github className="w-5 h-5 text-white" />
         </motion.a>
-      </div>
-
-      {/* Headshot Image */}
-      <motion.div className="relative flex justify-center items-center p-2 bg-black rounded-full border-2 border-blue-500 shadow-lg overflow-hidden">
-        <motion.img
-          src="/headshot.png"
-          alt="Paul Adutwum"
-          className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full object-top"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          whileHover={{ scale: 1.08 }}
-        />
       </motion.div>
-
-      <div className="md:ml-10 mt-6 md:mt-0 relative z-10">
-
-        {/*  Typing Animation for Name */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-2 flex items-center">
-          <Typewriter
-            onInit={(typewriter) => {
-              typewriter
-                .typeString(
-                  'I am <span style="color: #3b82f6; font-weight: bold;">Paul Adutwum</span>'
-                )
-                .callFunction(() => setNameTyped(true))
-                .start();
-            }}
-            options={{ autoStart: true, loop: false, delay: 100, cursor: "|" }}
-          />
-        </h1>
-
-        {/* Fullstack Developer Label */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-xl md:text-2xl text-muted-foreground mb-8 flex items-center gap-2"
-        >
-          Aspiring Software Engineer
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="flex gap-4 items-center"
-        >
-          <Button size="lg" asChild>
-            <a href="#projects">
-              <Briefcase className="mr-2 h-4 w-4" /> View Projects
-            </a>
-          </Button>
-          <Button size="lg" variant="outline" asChild>
-            <a href="#contact">
-              {" "}
-              <Mail className="mr-2 h-4 w-4" />
-              Contact Me
-            </a>
-          </Button>
-        </motion.div>
-      </div>
-
-      {/*  Scroll Down Indicator icon */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.6,
-          repeat: Infinity,
-          repeatType: "reverse",
-          duration: 1,
-        }}
-        className="absolute bottom-6 right-6 animate-bounce z-10"
-      >
-        <a
-          href="#about"
-          className="flex flex-col items-center text-muted-foreground hover:text-primary transition-all"
-        >
-          <span className="text-sm">Scroll Down</span>
-          <ArrowDown className="h-6 w-6" />
-        </a>
-      </motion.div>
-    </section>
+    </motion.section>
   );
 }
