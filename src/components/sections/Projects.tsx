@@ -1,3 +1,4 @@
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
@@ -269,11 +270,14 @@ export default function Projects() {
 
           {/* LinkedIn-style Project Timeline */}
           <div className="relative">
-            {/* Center timeline connector - continuous for all projects */}
-            <div className="absolute left-16 lg:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 dark:from-blue-500 dark:via-blue-600 dark:to-blue-700 rounded-full z-0"></div>
-
             {/* All Projects in timeline format */}
-            <div className="space-y-16">
+            <div className="space-y-32 md:space-y-40">
+              {/* Center timeline connector - visible only on desktop */}
+              <div className="absolute left-16 lg:left-1/2 top-52 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 dark:from-blue-500 dark:via-blue-600 dark:to-blue-700 rounded-full z-0 hidden md:block"></div>
+
+              {/* Mobile timeline connector */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-52 bottom-0 w-0.5 bg-gradient-to-b from-blue-400/40 via-blue-500/40 to-blue-600/40 dark:from-blue-500/40 dark:via-blue-600/40 dark:to-blue-700/40 rounded-full z-0 md:hidden"></div>
+
               {/* First featured project gets special treatment */}
               {PROJECTS.filter((p) => p.title.includes("Bobcat")).map(
                 (project, index) => (
@@ -285,10 +289,10 @@ export default function Projects() {
                     viewport={{ once: true, margin: "-50px" }}
                     className="relative"
                   >
-                    {/* Date Badge */}
-                    <div className="absolute left-16 lg:left-1/2 transform -translate-x-1/2 top-10 z-20">
-                      <div className="bg-white dark:bg-gray-900 px-4 py-2 rounded-full shadow-lg border border-blue-100 dark:border-blue-800 flex items-center gap-2">
-                        <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-1.5 rounded-full">
+                    {/* Timeline Date Badge - Now positioned above the card with better vertical spacing */}
+                    <div className="flex justify-center mb-14 relative z-20">
+                      <div className="bg-white dark:bg-gray-900 px-4 py-2 rounded-full shadow-xl border border-blue-100 dark:border-blue-800 flex items-center gap-2">
+                        <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-2 rounded-full">
                           <Calendar className="w-4 h-4" />
                         </div>
                         <div className="text-sm font-bold text-gray-800 dark:text-gray-200">
@@ -297,13 +301,28 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* Timeline Node */}
-                    <div className="absolute left-16 lg:left-1/2 transform -translate-x-1/2 top-10 z-10">
-                      <div className="h-5 w-5 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 ring-4 ring-white dark:ring-gray-900 shadow-md"></div>
+                    {/* Timeline Node for desktop - positioned within the timeline connector */}
+                    <div className="absolute left-16 lg:left-1/2 transform -translate-x-1/2 top-14 z-10 hidden md:block">
+                      <div className="h-6 w-6 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 ring-4 ring-white dark:ring-gray-900 shadow-lg flex items-center justify-center">
+                        <div className="h-2 w-2 rounded-full bg-white"></div>
+                      </div>
                     </div>
 
+                    {/* Timeline Node for mobile */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 top-14 z-10 md:hidden">
+                      <div className="h-5 w-5 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 ring-3 ring-white dark:ring-gray-900 shadow-md flex items-center justify-center">
+                        <div className="h-1.5 w-1.5 rounded-full bg-white"></div>
+                      </div>
+                    </div>
+
+                    {/* Vertical connector from node to card for mobile */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 top-[4.7rem] h-6 w-0.5 bg-blue-500/60 dark:bg-blue-400/60 md:hidden"></div>
+
+                    {/* Desktop horizontal connector lines - from timeline to card */}
+                    <div className="absolute left-[4.25rem] lg:left-1/2 top-14 h-0.5 w-24 bg-gradient-to-r from-blue-500 to-blue-500/20 dark:from-blue-400 dark:to-blue-400/20 hidden md:block"></div>
+
                     {/* Project Card */}
-                    <div className="ml-32 lg:ml-0 lg:mx-16">
+                    <div className="ml-0 md:ml-32 lg:ml-0 lg:mx-20">
                       <motion.div
                         whileHover={{
                           y: -5,
@@ -312,77 +331,118 @@ export default function Projects() {
                         transition={{ type: "spring", stiffness: 300 }}
                         className="rounded-xl overflow-hidden bg-white/90 dark:bg-gray-800/80 backdrop-blur-md shadow-xl border border-blue-100/30 dark:border-blue-800/30"
                       >
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                          <div className="p-6 flex flex-col justify-between">
+                        {/* Mobile layout (stack) for small screens, grid for larger */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-6">
+                          {/* Image for small screens only - top position */}
+                          <div className="relative h-56 lg:hidden">
+                            <video
+                              ref={(el) =>
+                                (videoRefs.current[project.title] = el)
+                              }
+                              src={project.image}
+                              className="absolute inset-0 w-full h-full object-cover"
+                              muted
+                              loop
+                              playsInline
+                            />
+                            <div
+                              className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
+                              onClick={() => openVideoModal(project.image)}
+                            >
+                              <div className="w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full shadow-lg">
+                                <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[16px] border-l-white ml-1"></div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Project details column */}
+                          <div className="p-5 lg:p-6 flex flex-col justify-between">
                             <div>
                               <div className="flex items-center gap-3 mb-4">
-                                <div className="bg-gradient-to-r from-blue-600 to-blue-500 p-2.5 rounded-lg">
-                                  <PanelsTopLeft className="w-5 h-5 text-white" />
+                                <div className="bg-gradient-to-r from-blue-600 to-blue-500 p-2 md:p-2.5 rounded-lg">
+                                  <PanelsTopLeft className="w-4 h-4 md:w-5 md:h-5 text-white" />
                                 </div>
-                                <h3 className="text-2xl font-bold">
+                                <h3 className="text-xl md:text-2xl font-bold">
                                   {project.title}
                                 </h3>
                               </div>
 
-                              <p className="text-gray-700 dark:text-gray-300 mb-5">
+                              <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-4 line-clamp-3 md:line-clamp-none">
                                 {project.description}
                               </p>
 
-                              <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-5 border border-blue-100 dark:border-blue-800/40">
-                                <h4 className="text-blue-700 dark:text-blue-300 font-medium mb-1">
+                              <div className="bg-blue-50 dark:bg-blue-900/20 p-3 md:p-4 rounded-lg mb-4 border border-blue-100 dark:border-blue-800/40">
+                                <h4 className="text-blue-700 dark:text-blue-300 font-medium text-sm md:text-base mb-1">
                                   Impact:
                                 </h4>
-                                <p className="text-blue-800 dark:text-blue-300">
+                                <p className="text-blue-800 dark:text-blue-300 text-sm">
                                   {project.impact}
                                 </p>
                               </div>
                             </div>
 
                             <div>
-                              <h4 className="text-sm font-semibold mb-2">
+                              <h4 className="text-xs md:text-sm font-semibold mb-2">
                                 Technologies:
                               </h4>
-                              <div className="flex flex-wrap gap-2 mb-5">
+                              <div className="flex flex-wrap gap-1.5 mb-4">
                                 {[
                                   ...project.stack.frontend,
                                   ...project.stack.backend,
-                                ].map((tech) => (
-                                  <Badge
-                                    key={tech}
-                                    className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                                  >
-                                    {tech}
+                                ]
+                                  .slice(0, 6)
+                                  .map((tech) => (
+                                    <Badge
+                                      key={tech}
+                                      className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-xs whitespace-nowrap"
+                                    >
+                                      {tech}
+                                    </Badge>
+                                  ))}
+                                {[
+                                  ...project.stack.frontend,
+                                  ...project.stack.backend,
+                                ].length > 6 && (
+                                  <Badge className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-xs">
+                                    +
+                                    {[
+                                      ...project.stack.frontend,
+                                      ...project.stack.backend,
+                                    ].length - 6}{" "}
+                                    more
                                   </Badge>
-                                ))}
+                                )}
                               </div>
 
                               <div className="flex gap-3">
                                 <Button
                                   variant="outline"
-                                  className="hover:bg-blue-50 dark:hover:bg-blue-900/20 border-blue-200 dark:border-blue-800"
+                                  size="sm"
+                                  className="hover:bg-blue-50 dark:hover:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-xs md:text-sm px-2 md:px-3"
                                   asChild
                                 >
                                   <a
                                     href={project.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2"
+                                    className="flex items-center gap-1.5"
                                   >
-                                    <Github className="w-4 h-4" />
+                                    <Github className="w-3.5 h-3.5" />
                                     View Code
                                   </a>
                                 </Button>
                                 <Button
-                                  className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+                                  size="sm"
+                                  className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-xs md:text-sm px-2 md:px-3"
                                   asChild
                                 >
                                   <a
                                     href={project.demo}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2"
+                                    className="flex items-center gap-1.5"
                                   >
-                                    <ExternalLink className="w-4 h-4" />
+                                    <ExternalLink className="w-3.5 h-3.5" />
                                     Live Demo
                                   </a>
                                 </Button>
@@ -390,10 +450,11 @@ export default function Projects() {
                             </div>
                           </div>
 
-                          <div className="relative h-64 lg:h-auto">
+                          {/* Image for large screens only - side position */}
+                          <div className="relative h-64 lg:h-auto hidden lg:block">
                             <video
                               ref={(el) =>
-                                (videoRefs.current[project.title] = el)
+                                (videoRefs.current[project.title + "-lg"] = el)
                               }
                               src={project.image}
                               className="absolute inset-0 w-full h-full object-cover"
@@ -412,10 +473,6 @@ export default function Projects() {
                                 Click to view demo
                               </div>
                             </div>
-
-                            {/* Decorative elements */}
-                            <div className="absolute top-6 right-6 w-12 h-12 rounded-full border-2 border-white/20"></div>
-                            <div className="absolute bottom-6 left-6 w-8 h-8 rounded-full border-2 border-white/10"></div>
                           </div>
                         </div>
                       </motion.div>
@@ -424,7 +481,7 @@ export default function Projects() {
                 )
               )}
 
-              {/* Other projects in timeline format */}
+              {/* Other projects in timeline format - similar mobile-friendly updates */}
               {PROJECTS.filter((p) => !p.title.includes("Bobcat")).map(
                 (project, index) => (
                   <motion.div
@@ -435,10 +492,10 @@ export default function Projects() {
                     viewport={{ once: true, margin: "-50px" }}
                     className="relative"
                   >
-                    {/* Date Badge */}
-                    <div className="absolute left-16 lg:left-1/2 transform -translate-x-1/2 top-10 z-20">
-                      <div className="bg-white dark:bg-gray-900 px-4 py-2 rounded-full shadow-lg border border-blue-100 dark:border-blue-800 flex items-center gap-2">
-                        <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-1.5 rounded-full">
+                    {/* Timeline Date Badge - Now positioned above the card with better vertical spacing */}
+                    <div className="flex justify-center mb-14 relative z-20">
+                      <div className="bg-white dark:bg-gray-900 px-4 py-2 rounded-full shadow-xl border border-blue-100 dark:border-blue-800 flex items-center gap-2">
+                        <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-2 rounded-full">
                           <Calendar className="w-4 h-4" />
                         </div>
                         <div className="text-sm font-bold text-gray-800 dark:text-gray-200">
@@ -447,13 +504,38 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* Timeline Node */}
-                    <div className="absolute left-16 lg:left-1/2 transform -translate-x-1/2 top-10 z-10">
-                      <div className="h-5 w-5 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 ring-4 ring-white dark:ring-gray-900 shadow-md"></div>
+                    {/* Timeline Node for desktop - positioned within the timeline connector */}
+                    <div className="absolute left-16 lg:left-1/2 transform -translate-x-1/2 top-14 z-10 hidden md:block">
+                      <div className="h-6 w-6 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 ring-4 ring-white dark:ring-gray-900 shadow-lg flex items-center justify-center">
+                        <div className="h-2 w-2 rounded-full bg-white"></div>
+                      </div>
                     </div>
 
-                    {/* Project Card - full width like Bobcat card */}
-                    <div className="ml-32 lg:ml-0 lg:mx-16">
+                    {/* Timeline Node for mobile */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 top-14 z-10 md:hidden">
+                      <div className="h-5 w-5 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 ring-3 ring-white dark:ring-gray-900 shadow-md flex items-center justify-center">
+                        <div className="h-1.5 w-1.5 rounded-full bg-white"></div>
+                      </div>
+                    </div>
+
+                    {/* Vertical connector from node to card for mobile */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 top-[4.7rem] h-6 w-0.5 bg-blue-500/60 dark:bg-blue-400/60 md:hidden"></div>
+
+                    {/* Desktop horizontal connector lines - from timeline to card */}
+                    <div
+                      className={`absolute ${
+                        index % 2 === 0
+                          ? "left-[4.25rem]"
+                          : "right-[4.25rem] lg:left-1/2"
+                      } top-14 h-0.5 w-24 ${
+                        index % 2 === 0
+                          ? "bg-gradient-to-r from-blue-500 to-blue-500/20"
+                          : "bg-gradient-to-l from-blue-500 to-blue-500/20"
+                      } dark:from-blue-400 dark:to-blue-400/20 hidden md:block`}
+                    ></div>
+
+                    {/* Project Card */}
+                    <div className="ml-0 md:ml-32 lg:ml-0 lg:mx-20">
                       <motion.div
                         whileHover={{
                           y: -5,
@@ -462,85 +544,10 @@ export default function Projects() {
                         transition={{ type: "spring", stiffness: 300 }}
                         className="rounded-xl overflow-hidden bg-white/90 dark:bg-gray-800/80 backdrop-blur-md shadow-xl border border-blue-100/30 dark:border-blue-800/30"
                       >
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                          <div className="p-6 flex flex-col justify-between">
-                            <div>
-                              <div className="flex items-center gap-3 mb-4">
-                                <div className="bg-gradient-to-r from-blue-600 to-blue-500 p-2.5 rounded-lg">
-                                  {project.icon}
-                                </div>
-                                <h3 className="text-2xl font-bold">
-                                  {project.title}
-                                </h3>
-                              </div>
-
-                              <p className="text-gray-700 dark:text-gray-300 mb-5">
-                                {project.description}
-                              </p>
-
-                              <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-5 border border-blue-100 dark:border-blue-800/40">
-                                <h4 className="text-blue-700 dark:text-blue-300 font-medium mb-1">
-                                  Impact:
-                                </h4>
-                                <p className="text-blue-800 dark:text-blue-300">
-                                  {project.impact}
-                                </p>
-                              </div>
-                            </div>
-
-                            <div>
-                              <h4 className="text-sm font-semibold mb-2">
-                                Technologies:
-                              </h4>
-                              <div className="flex flex-wrap gap-2 mb-5">
-                                {[
-                                  ...project.stack.frontend,
-                                  ...project.stack.backend,
-                                ].map((tech) => (
-                                  <Badge
-                                    key={tech}
-                                    className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                                  >
-                                    {tech}
-                                  </Badge>
-                                ))}
-                              </div>
-
-                              <div className="flex gap-3">
-                                <Button
-                                  variant="outline"
-                                  className="hover:bg-blue-50 dark:hover:bg-blue-900/20 border-blue-200 dark:border-blue-800"
-                                  asChild
-                                >
-                                  <a
-                                    href={project.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2"
-                                  >
-                                    <Github className="w-4 h-4" />
-                                    View Code
-                                  </a>
-                                </Button>
-                                <Button
-                                  className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
-                                  asChild
-                                >
-                                  <a
-                                    href={project.demo}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2"
-                                  >
-                                    <ExternalLink className="w-4 h-4" />
-                                    Live Demo
-                                  </a>
-                                </Button>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="relative h-64 lg:h-auto">
+                        {/* Mobile layout (stack) for small screens, grid for larger */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-6">
+                          {/* Image for small screens only - top position */}
+                          <div className="relative h-56 lg:hidden">
                             {project.type === "video" ? (
                               <>
                                 <video
@@ -557,11 +564,139 @@ export default function Projects() {
                                   className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
                                   onClick={() => openVideoModal(project.image)}
                                 >
+                                  <div className="w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full shadow-lg">
+                                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[16px] border-l-white ml-1"></div>
+                                  </div>
+                                </div>
+                              </>
+                            ) : (
+                              <img
+                                src={project.image}
+                                alt={project.title}
+                                className="absolute inset-0 w-full h-full object-cover"
+                              />
+                            )}
+                          </div>
+
+                          {/* Project details column */}
+                          <div className="p-5 lg:p-6 flex flex-col justify-between">
+                            <div>
+                              <div className="flex items-center gap-3 mb-4">
+                                <div className="bg-gradient-to-r from-blue-600 to-blue-500 p-2 md:p-2.5 rounded-lg">
+                                  {React.cloneElement(project.icon, {
+                                    className:
+                                      "w-4 h-4 md:w-5 md:h-5 text-white",
+                                  })}
+                                </div>
+                                <h3 className="text-xl md:text-2xl font-bold">
+                                  {project.title}
+                                </h3>
+                              </div>
+
+                              <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-4 line-clamp-3 md:line-clamp-none">
+                                {project.description}
+                              </p>
+
+                              <div className="bg-blue-50 dark:bg-blue-900/20 p-3 md:p-4 rounded-lg mb-4 border border-blue-100 dark:border-blue-800/40">
+                                <h4 className="text-blue-700 dark:text-blue-300 font-medium text-sm md:text-base mb-1">
+                                  Impact:
+                                </h4>
+                                <p className="text-blue-800 dark:text-blue-300 text-sm">
+                                  {project.impact}
+                                </p>
+                              </div>
+                            </div>
+
+                            <div>
+                              <h4 className="text-xs md:text-sm font-semibold mb-2">
+                                Technologies:
+                              </h4>
+                              <div className="flex flex-wrap gap-1.5 mb-4">
+                                {[
+                                  ...project.stack.frontend,
+                                  ...project.stack.backend,
+                                ]
+                                  .slice(0, 6)
+                                  .map((tech) => (
+                                    <Badge
+                                      key={tech}
+                                      className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-xs whitespace-nowrap"
+                                    >
+                                      {tech}
+                                    </Badge>
+                                  ))}
+                                {[
+                                  ...project.stack.frontend,
+                                  ...project.stack.backend,
+                                ].length > 6 && (
+                                  <Badge className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-xs">
+                                    +
+                                    {[
+                                      ...project.stack.frontend,
+                                      ...project.stack.backend,
+                                    ].length - 6}{" "}
+                                    more
+                                  </Badge>
+                                )}
+                              </div>
+
+                              <div className="flex gap-3">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="hover:bg-blue-50 dark:hover:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-xs md:text-sm px-2 md:px-3"
+                                  asChild
+                                >
+                                  <a
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1.5"
+                                  >
+                                    <Github className="w-3.5 h-3.5" />
+                                    View Code
+                                  </a>
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-xs md:text-sm px-2 md:px-3"
+                                  asChild
+                                >
+                                  <a
+                                    href={project.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1.5"
+                                  >
+                                    <ExternalLink className="w-3.5 h-3.5" />
+                                    Live Demo
+                                  </a>
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Image/video for large screens only - side position */}
+                          <div className="relative h-64 lg:h-auto hidden lg:block">
+                            {project.type === "video" ? (
+                              <>
+                                <video
+                                  ref={(el) =>
+                                    (videoRefs.current[project.title + "-lg"] =
+                                      el)
+                                  }
+                                  src={project.image}
+                                  className="absolute inset-0 w-full h-full object-cover"
+                                  muted
+                                  loop
+                                  playsInline
+                                />
+                                <div
+                                  className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
+                                  onClick={() => openVideoModal(project.image)}
+                                >
                                   <div className="w-16 h-16 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full shadow-lg">
                                     <div className="w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[20px] border-l-white ml-1"></div>
-                                  </div>
-                                  <div className="absolute bottom-4 right-4 bg-black/60 px-3 py-1.5 rounded text-sm text-white backdrop-blur-sm">
-                                    Click to view demo
                                   </div>
                                 </div>
                               </>
@@ -572,20 +707,8 @@ export default function Projects() {
                                   alt={project.title}
                                   className="w-full h-full object-cover"
                                 />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="w-16 h-16 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full shadow-lg">
-                                    <div className="w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[20px] border-l-white ml-1"></div>
-                                  </div>
-                                  <div className="absolute bottom-4 right-4 bg-black/60 px-3 py-1.5 rounded text-sm text-white backdrop-blur-sm">
-                                    Demo coming soon
-                                  </div>
-                                </div>
                               </div>
                             )}
-
-                            {/* Decorative elements */}
-                            <div className="absolute top-6 right-6 w-12 h-12 rounded-full border-2 border-white/20"></div>
-                            <div className="absolute bottom-6 left-6 w-8 h-8 rounded-full border-2 border-white/10"></div>
                           </div>
                         </div>
                       </motion.div>
