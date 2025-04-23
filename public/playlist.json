@@ -1,0 +1,22 @@
+{
+  "tracks": [
+    {
+      "title": "Relaxing Piano",
+      "url": "/relaxing-piano-music-293690.mp3",
+      "artist": "SoundHelix",
+      "description": "Calming piano music perfect for background ambiance"
+    },
+    {
+      "title": "Lo-Fi Beats",
+      "url": "/lofi-study-112191.mp3",
+      "artist": "SoundHelix",
+      "description": "Chill beats for studying and relaxation"
+    },
+    {
+      "title": "Ambient Mood",
+      "url": "/ambient-piano-and-strings-10711.mp3",
+      "artist": "SoundHelix",
+      "description": "Atmospheric piano and strings for a peaceful environment"
+    }
+  ]
+} 

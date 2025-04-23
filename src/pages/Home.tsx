@@ -4,16 +4,21 @@ import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 import Education from "@/components/sections/Education";
 import Contact from "@/components/sections/Contact";
-import Education1 from "@/components/Education1";
+import Experience from "@/components/sections/Experience";
+import Blog from "@/components/sections/Blog";
+import Awards from "@/components/sections/Awards";
 
 export default function Home() {
   return (
-    <div className="pt-16">
+    <div>
       <Hero />
       <About />
-      <Education />
       <Skills />
+      <Education />
+      <Experience />
       <Projects />
+      <Awards />
+      <Blog />
       <Contact />
     </div>
   );

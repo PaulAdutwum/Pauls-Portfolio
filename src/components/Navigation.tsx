@@ -1,84 +1,205 @@
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import {
-  Home,
-  User,
-  Briefcase,
-  GraduationCap,
-  Mail,
-  FileText,
-} from "lucide-react";
+import { FileText } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { useTheme } from "@/hooks/use-theme";
+import { motion } from "framer-motion";
+import MusicPlayer from "./MusicPlayer";
 
 const MENU_ITEMS = [
-  { icon: Home, label: "Home", href: "#hero" },
-  { icon: User, label: "About", href: "#about" },
-  { icon: Briefcase, label: "Projects", href: "#projects" },
-  { icon: GraduationCap, label: "Education", href: "#education" },
-  { icon: Mail, label: "Contact", href: "#contact" },
+  { label: "Home", href: "#hero" },
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
+  { label: "Blog", href: "#blog" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navigation() {
   const [location] = useLocation();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b">
+    <motion.nav
+      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-colors duration-300
+        ${
+          isDark ? "bg-black/80 border-gray-800" : "bg-white/80 border-gray-200"
+        }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <span className="text-xl font-bold"> Meet Paul</span>
+          <motion.span
+            className={`text-xl font-bold ${
+              isDark ? "text-white" : "text-gray-900"
+            }`}
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            Paul Adutwum
+          </motion.span>
 
           <div className="hidden md:flex space-x-1">
-            {MENU_ITEMS.map(({ icon: Icon, label, href }) => (
-              <Button
+            {MENU_ITEMS.map(({ label, href }, index) => (
+              <motion.div
                 key={label}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="relative"
+              >
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  asChild
+                  className={`flex items-center hover:bg-transparent ${
+                    isDark
+                      ? "text-gray-200 hover:text-white"
+                      : "text-gray-700 hover:text-blue-600"
+                  } relative group overflow-hidden`}
+                >
+                  <a href={href} className="nav-link">
+                    <span className="relative z-10">{label}</span>
+
+                    {/* Enhanced hover effect with wavy animation */}
+                    <div className="absolute inset-0 overflow-hidden">
+                      <motion.div
+                        className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500"
+                        initial={{ width: "0%" }}
+                        whileHover={{ width: "100%" }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.76, 0, 0.24, 1],
+                        }}
+                      />
+
+                      <motion.div
+                        className="absolute -bottom-1 h-8 w-full opacity-0 group-hover:opacity-10"
+                        initial={{ x: "-100%" }}
+                        whileHover={{
+                          x: "100%",
+                          transition: {
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            duration: 1.5,
+                            ease: "linear",
+                          },
+                        }}
+                      >
+                        <div className="h-full w-full bg-gradient-to-r from-transparent via-blue-400 to-transparent blur-md" />
+                      </motion.div>
+                    </div>
+                  </a>
+                </Button>
+              </motion.div>
+            ))}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: MENU_ITEMS.length * 0.1 }}
+              className="relative"
+            >
+              <Button
                 variant="ghost"
                 size="sm"
                 asChild
-                className="flex items-center gap-2"
+                className={`flex items-center hover:bg-transparent ${
+                  isDark
+                    ? "text-gray-200 hover:text-white"
+                    : "text-gray-700 hover:text-blue-600"
+                } relative group overflow-hidden`}
               >
-                <a href={href}>
-                  <Icon className="h-4 w-4" />
-                  <span>{label}</span>
+                <a
+                  href="/_Paul_Adutwum_Resume.py.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-link"
+                >
+                  <span className="relative z-10">Resume</span>
+
+                  {/* Enhanced hover effect with wavy animation */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    <motion.div
+                      className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500"
+                      initial={{ width: "0%" }}
+                      whileHover={{ width: "100%" }}
+                      transition={{
+                        duration: 0.4,
+                        ease: [0.76, 0, 0.24, 1],
+                      }}
+                    />
+
+                    <motion.div
+                      className="absolute -bottom-1 h-8 w-full opacity-0 group-hover:opacity-10"
+                      initial={{ x: "-100%" }}
+                      whileHover={{
+                        x: "100%",
+                        transition: {
+                          repeat: Infinity,
+                          repeatType: "loop",
+                          duration: 1.5,
+                          ease: "linear",
+                        },
+                      }}
+                    >
+                      <div className="h-full w-full bg-gradient-to-r from-transparent via-blue-400 to-transparent blur-md" />
+                    </motion.div>
+                  </div>
                 </a>
               </Button>
-            ))}
-            <Button
-              variant="ghost"
-              size="sm"
-              asChild
-              className="flex items-center gap-2"
-            >
-              <a
-                href="/_Paul_Adutwum_Resume.py.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FileText className="h-4 w-4" />
-                <span>Resume</span>
-              </a>
-            </Button>
+            </motion.div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <MusicPlayer />
             <ThemeToggle />
             <div className="md:hidden flex space-x-1">
-              {MENU_ITEMS.map(({ icon: Icon, label, href }) => (
+              {MENU_ITEMS.map(({ label, href }) => (
                 <Button
                   key={label}
                   variant="ghost"
-                  size="icon"
+                  size="sm"
                   asChild
-                  className="h-9 w-9"
+                  className={`${
+                    isDark
+                      ? "text-gray-200 hover:text-white hover:bg-gray-800"
+                      : ""
+                  } relative overflow-hidden group`}
                 >
-                  <a href={href}>
-                    <Icon className="h-4 w-4" />
+                  <a href={href} className="nav-link-mobile">
+                    {label}
+                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   </a>
                 </Button>
               ))}
+              <Button
+                variant="ghost"
+                size="sm"
+                asChild
+                className={`${
+                  isDark
+                    ? "text-gray-200 hover:text-white hover:bg-gray-800"
+                    : ""
+                } relative overflow-hidden group`}
+              >
+                <a
+                  href="/_Paul_Adutwum_Resume.py.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-link-mobile"
+                >
+                  Resume
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
