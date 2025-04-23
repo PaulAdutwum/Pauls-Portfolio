@@ -77,7 +77,7 @@ const BLOG_POSTS = [
       <p>
         I started my coding journey with that classic trio—<strong>HTML, CSS, and vanilla 
         JavaScript</strong>—building pages that loaded just fine but felt, well… frozen in time 🥶. 
-        I wrestled with media queries, <code>vh</code>/<code>vw</code> units, and every “100&nbsp;% height” hack 
+        I wrestled with media queries, <code>vh</code>/<code>vw</code> units, and every "100&nbsp;% height" hack 
         Stack Overflow could offer. My layouts were technically responsive, yet somehow still 
         looked like 2009 called and wanted its websites back.
       </p>
@@ -97,16 +97,16 @@ const BLOG_POSTS = [
       <h3>React to the Rescue ⚛️</h3>
       <ul>
         <li>Dove into <strong>ES6+</strong> territory—arrow functions, destructuring, ternaries (<code>condition ? magic : chaos</code>)—and immediately loved the readability boost.</li>
-        <li>Discovered <strong>React hooks</strong> (<code>useState</code>, <code>useEffect</code>, <code>useRef</code>) and felt like I’d found the cheat codes to state management.</li>
+        <li>Discovered <strong>React hooks</strong> (<code>useState</code>, <code>useEffect</code>, <code>useRef</code>) and felt like I'd found the cheat codes to state management.</li>
         <li>Appreciated how <strong>components</strong> let me think in reusable chunks instead of duplicated markup. Goodbye, copy-paste HTML; hello, DRY coding!</li>
-        <li>Tailwind’s utility classes turned my styling process from “tweak CSS, refresh, sigh” into “type class, smile” 😎🎨.</li>
+        <li>Tailwind's utility classes turned my styling process from "tweak CSS, refresh, sigh" into "type class, smile" 😎🎨.</li>
       </ul>
   
       <h3>Challenges &amp; Ah-Ha Moments 🤯</h3>
       <ul>
-        <li>🏗️ <strong>Responsive headaches</strong>: Even with media queries, flexbox and grid sometimes felt like solving a Rubik’s cube blindfolded.</li>
+        <li>🏗️ <strong>Responsive headaches</strong>: Even with media queries, flexbox and grid sometimes felt like solving a Rubik's cube blindfolded.</li>
         <li>🔄 <strong>State chaos</strong>: Accidentally triggered infinite re-renders more times than I can count (thanks again, <code>useEffect</code>).</li>
-        <li>🚧 <strong>Imposter syndrome</strong>: Reading docs and feeling like everyone else “gets it” instantly—spoiler: they don’t!</li>
+        <li>🚧 <strong>Imposter syndrome</strong>: Reading docs and feeling like everyone else "gets it" instantly—spoiler: they don't!</li>
       </ul>
   
       <p>
@@ -117,13 +117,13 @@ const BLOG_POSTS = [
       <h3>Keeping My Sanity (and Vibes) 🎧</h3>
       <p>When my brain starts buffering:</p>
       <ul>
-        <li><strong>Lo-fi beats</strong> on repeat (shout-out to the “coding/coffee” playlists ☕🎶).</li>
+        <li><strong>Lo-fi beats</strong> on repeat (shout-out to the "coding/coffee" playlists ☕🎶).</li>
         <li>Quick footy break on the <strong>soccer field</strong> to stretch the legs and reset focus.</li>
         <li>Tinkering on the <strong>piano</strong>—nothing fancy, just chords that sound good in the moment.</li>
-        <li>Occasional YouTube rabbit-holes and chats with friends who politely endure my “one last bug” rants.</li>
+        <li>Occasional YouTube rabbit-holes and chats with friends who politely endure my "one last bug" rants.</li>
       </ul>
   
-      <h3>What’s Next? 🚀</h3>
+      <h3>What's Next? 🚀</h3>
       <ol>
         <li><strong>Advanced React patterns</strong> (Context, Reducers, maybe a dab of Zustand).</li>
         <li>Building a full-stack project with a Node/Express backend—gotta feed those components real data!</li>
@@ -131,7 +131,7 @@ const BLOG_POSTS = [
       </ol>
   
       <p>
-        Thanks for following my adventure. If you’re on a similar path, drop a comment or DM—let’s 
+        Thanks for following my adventure. If you're on a similar path, drop a comment or DM—let's 
         swap tips, playlists, or even team up on an open-source issue. Happy coding! 🚢
       </p>
     `,
@@ -239,31 +239,170 @@ export default function Blog() {
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute w-[500px] h-[500px] top-[10%] right-[-100px] rounded-full bg-gradient-to-br from-blue-400/5 to-indigo-400/5 blur-3xl"></div>
-        <div className="absolute w-[600px] h-[600px] top-[40%] left-[-150px] rounded-full bg-gradient-to-tr from-purple-400/5 to-pink-400/5 blur-3xl"></div>
+        {/* Large gradient blobs */}
+        <motion.div
+          className="absolute w-[700px] h-[700px] top-[5%] right-[-100px] rounded-full bg-gradient-to-br from-blue-400/10 to-indigo-500/10 blur-3xl"
+          animate={{
+            scale: [1, 1.05, 1],
+            opacity: [0.5, 0.7, 0.5],
+            y: [0, -10, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute w-[800px] h-[800px] top-[40%] left-[-250px] rounded-full bg-gradient-to-tr from-purple-400/10 to-pink-400/10 blur-3xl"
+          animate={{
+            scale: [1, 1.03, 1],
+            opacity: [0.5, 0.6, 0.5],
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
 
-        <svg
-          className="absolute top-0 left-0 w-full h-full opacity-20 dark:opacity-10"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <pattern
-              id="grid"
-              width="8"
-              height="8"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 8 0 L 0 0 0 8"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="0.2"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
+        {/* Floating particles/lines - mimicking code snippets or digital elements */}
+        <div className="absolute inset-0">
+          {/* Horizontal animated lines - representing code or text */}
+          <motion.div
+            className="absolute top-[15%] left-[10%] h-0.5 w-20 bg-blue-400/20 dark:bg-blue-400/10 rounded-full"
+            animate={{
+              width: [80, 120, 80],
+              x: [0, 20, 0],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-[35%] right-[15%] h-0.5 w-32 bg-indigo-400/20 dark:bg-indigo-400/10 rounded-full"
+            animate={{
+              width: [120, 200, 120],
+              x: [0, -30, 0],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+          <motion.div
+            className="absolute top-[65%] left-[25%] h-0.5 w-24 bg-purple-400/20 dark:bg-purple-400/10 rounded-full"
+            animate={{
+              width: [100, 160, 100],
+              x: [0, 15, 0],
+              opacity: [0.1, 0.3, 0.1],
+            }}
+            transition={{
+              duration: 9,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 3,
+            }}
+          />
+
+          {/* Floating dots/circles */}
+          <motion.div
+            className="absolute top-[20%] right-[30%] h-2 w-2 rounded-full bg-blue-400/40 dark:bg-blue-400/20"
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.4, 0.7, 0.4],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-[50%] left-[20%] h-3 w-3 rounded-full bg-indigo-400/30 dark:bg-indigo-400/15"
+            animate={{
+              y: [0, 15, 0],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
+          <motion.div
+            className="absolute top-[75%] right-[45%] h-1.5 w-1.5 rounded-full bg-purple-400/40 dark:bg-purple-400/20"
+            animate={{
+              y: [0, -10, 0],
+              opacity: [0.4, 0.7, 0.4],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 3,
+            }}
+          />
+
+          {/* Code-like brackets and symbols */}
+          <motion.div
+            className="absolute top-[10%] left-[40%] text-blue-400/20 dark:text-blue-400/10 text-2xl font-mono"
+            animate={{
+              y: [0, -5, 0],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            {"{"}
+          </motion.div>
+          <motion.div
+            className="absolute top-[10%] left-[43%] text-blue-400/20 dark:text-blue-400/10 text-2xl font-mono"
+            animate={{
+              y: [0, -5, 0],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5,
+            }}
+          >
+            {"}"}
+          </motion.div>
+          <motion.div
+            className="absolute top-[60%] right-[20%] text-indigo-400/20 dark:text-indigo-400/10 text-2xl font-mono"
+            animate={{
+              y: [0, 5, 0],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          >
+            {"</>"}
+          </motion.div>
+        </div>
+
+        {/* Light rays effect - subtle diagonal lines */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-blue-400/[0.03] to-transparent transform rotate-12"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-indigo-400/[0.02] to-transparent transform -rotate-12"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
