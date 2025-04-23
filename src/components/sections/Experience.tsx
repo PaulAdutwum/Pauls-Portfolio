@@ -210,7 +210,7 @@ export default function Experience() {
               <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800/40 transform -translate-x-1/2 z-0"></div>
 
               {/* Grid of experiences */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-16 relative">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-24 md:gap-y-28 relative">
                 {experiences.map((exp, index) => (
                   <motion.div
                     key={exp.id}
@@ -226,12 +226,24 @@ export default function Experience() {
                     <div
                       className={`absolute ${
                         index % 2 === 0
-                          ? "right-2 md:-right-6"
-                          : "left-2 md:-left-6"
-                      } -top-8 z-20`}
+                          ? "right-2 md:-right-10 -top-8 md:-top-16"
+                          : "left-2 md:-left-10 -top-8 md:-top-4"
+                      } z-20`}
                     >
-                      <div className="bg-white dark:bg-gray-900 px-2.5 py-1.5 rounded-full shadow-md border border-gray-100 dark:border-gray-800 flex items-center gap-2">
-                        <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-1.5 rounded-full">
+                      <div
+                        className={`bg-white dark:bg-gray-900 px-3 py-2 rounded-full shadow-xl border border-gray-100 dark:border-gray-800 flex items-center gap-2 ${
+                          index % 2 === 0
+                            ? "md:border-blue-100 dark:md:border-blue-900/40"
+                            : ""
+                        }`}
+                      >
+                        <div
+                          className={`bg-gradient-to-r from-blue-600 to-blue-500 text-white p-2 rounded-full ${
+                            index % 2 === 0
+                              ? "ring-4 ring-white/20 dark:ring-blue-800/20"
+                              : ""
+                          }`}
+                        >
                           <Calendar className="w-3.5 h-3.5" />
                         </div>
                         <div>
@@ -243,24 +255,56 @@ export default function Experience() {
                           </div>
                         </div>
                       </div>
+
+                      {/* Vertical connector from date to timeline - only visible on desktop */}
+                      <div
+                        className={`absolute ${
+                          index % 2 === 0
+                            ? "left-1/2 h-12 md:h-14 top-full"
+                            : "left-1/2 h-4 top-full"
+                        } w-0.5 bg-blue-200 dark:bg-blue-800/40 transform -translate-x-1/2 hidden md:block`}
+                      ></div>
                     </div>
 
-                    {/* Timeline node */}
+                    {/* Timeline node - adjusted to match staggered date positions */}
                     <div
                       className={`absolute ${
                         index % 2 === 0
                           ? "md:right-[-5.5px]"
                           : "md:left-[-5.5px]"
-                      } top-12 z-10`}
+                      } ${
+                        index % 2 === 0 ? "top-12 md:top-16" : "top-12"
+                      } z-10`}
                     >
-                      <div className="h-3.5 w-3.5 rounded-full bg-blue-600 dark:bg-blue-400 ring-2 ring-white dark:ring-gray-900"></div>
+                      <div
+                        className={`h-4 w-4 rounded-full bg-blue-600 dark:bg-blue-400 ring-2 ring-white dark:ring-gray-900 ${
+                          index % 2 === 0 ? "md:mt-4" : "md:-mt-4"
+                        } flex items-center justify-center`}
+                      >
+                        <div className="h-1.5 w-1.5 rounded-full bg-white"></div>
+                      </div>
+
+                      {/* Horizontal connector from node to card */}
+                      <div
+                        className={`absolute ${
+                          index % 2 === 0
+                            ? "right-full top-1/2 w-12 -translate-y-1/2"
+                            : "left-full top-1/2 w-12 -translate-y-1/2"
+                        } h-0.5 bg-gradient-to-r ${
+                          index % 2 === 0
+                            ? "from-blue-200/20 to-blue-200"
+                            : "from-blue-200 to-blue-200/20"
+                        } dark:from-blue-800/20 dark:to-blue-800/40 hidden md:block`}
+                      ></div>
                     </div>
 
-                    {/* Experience card - smaller version */}
+                    {/* Experience card - with adjusted positioning */}
                     <motion.div
                       whileHover={{ y: -5 }}
                       transition={{ type: "spring", stiffness: 300 }}
-                      className="mt-4"
+                      className={`mt-4 ${
+                        index % 2 === 0 ? "md:mt-10" : "mt-4"
+                      }`}
                     >
                       <Card className="overflow-hidden border-0 shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-800/80 rounded-lg h-full flex flex-col">
                         <div className="relative">
