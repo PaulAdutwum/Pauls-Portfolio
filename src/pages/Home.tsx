@@ -28,28 +28,28 @@ export default function Home() {
       <Skills />
       <Education /> {/* Load eagerly since it's likely to be visible soon */}
       {/* First batch of lazy-loaded sections with more eager loading */}
-      <LazyLoad rootMargin="500px">
+      <LazyLoad rootMargin="500px" sectionId="experience">
         <Suspense fallback={<LoadingPlaceholder />}>
           <Experience />
         </Suspense>
       </LazyLoad>
-      <LazyLoad rootMargin="600px">
+      <LazyLoad rootMargin="600px" sectionId="projects">
         <Suspense fallback={<LoadingPlaceholder />}>
           <Projects />
         </Suspense>
       </LazyLoad>
       {/* Second batch of lazy-loaded sections */}
-      <LazyLoad rootMargin="700px">
+      <LazyLoad rootMargin="700px" sectionId="awards">
         <Suspense fallback={<LoadingPlaceholder />}>
           <Awards />
         </Suspense>
       </LazyLoad>
-      <LazyLoad rootMargin="800px">
+      <LazyLoad rootMargin="800px" sectionId="blog">
         <Suspense fallback={<LoadingPlaceholder />}>
           <Blog />
         </Suspense>
       </LazyLoad>
-      <LazyLoad rootMargin="900px">
+      <LazyLoad rootMargin="900px" sectionId="contact">
         <Suspense fallback={<LoadingPlaceholder />}>
           <Contact />
         </Suspense>

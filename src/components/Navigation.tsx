@@ -5,6 +5,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { useTheme } from "@/hooks/use-theme";
 import { motion } from "framer-motion";
 import MusicPlayer from "./MusicPlayer";
+import { useHashNavigation } from "@/hooks/useHashNavigation";
 
 const MENU_ITEMS = [
   { label: "Home", href: "#hero" },
@@ -20,8 +21,9 @@ export default function Navigation() {
   const [location] = useLocation();
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const { scrollToElement } = useHashNavigation();
 
-  // Helper function to handle navigation link clicks
+  // Improved navigation click handler
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
@@ -29,10 +31,19 @@ export default function Navigation() {
     // If it's an internal hash link
     if (href.startsWith("#")) {
       e.preventDefault();
-      // Update URL without causing a page reload
+
+      // Extract the section ID from the hash
+      const id = href.substring(1);
+
+      // Update URL without causing page reload
       window.history.pushState(null, "", href);
-      // Dispatch a hashchange event to trigger our scroll behavior
-      window.dispatchEvent(new HashChangeEvent("hashchange"));
+
+      // Try direct scrolling first (for already loaded elements)
+      if (!scrollToElement(id)) {
+        // If direct scrolling fails, dispatch a custom event
+        // This helps with lazy-loaded content
+        window.dispatchEvent(new CustomEvent("navClick", { detail: { id } }));
+      }
     }
   };
 

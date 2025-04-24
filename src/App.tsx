@@ -25,7 +25,34 @@ function Router() {
 function App() {
   const { theme } = useTheme();
   // Initialize hash navigation
-  useHashNavigation();
+  const { scrollToElement } = useHashNavigation();
+
+  // Direct hash handling on page load
+  useEffect(() => {
+    // Check for a hash in the URL
+    if (window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+
+      // Add multiple attempts with increasing timeouts for lazy-loaded content
+      const scrollWithRetry = (attempt = 0) => {
+        // Give up after several attempts
+        if (attempt > 15) return;
+
+        // Try to scroll to the element
+        const success = scrollToElement(targetId);
+
+        if (!success) {
+          // If unsuccessful, try again with exponential backoff
+          setTimeout(() => {
+            scrollWithRetry(attempt + 1);
+          }, Math.min(50 * Math.pow(1.5, attempt), 3000)); // Cap at 3 seconds
+        }
+      };
+
+      // Start trying after a short delay to allow for initial render
+      setTimeout(() => scrollWithRetry(), 300);
+    }
+  }, [scrollToElement]);
 
   useEffect(() => {
     const root = document.documentElement;

@@ -7,56 +7,87 @@ import { useEffect } from "react";
  * 2. Hash changes in the URL
  */
 export function useHashNavigation() {
+  // Function to handle scrolling to an element
+  const scrollToElement = (elementId: string) => {
+    const element = document.getElementById(elementId);
+
+    if (element) {
+      // Calculate the header height to adjust scrolling
+      const header = document.querySelector("nav");
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+
+      // Scroll with offset for the header
+      const yOffset = -headerHeight - 20; // 20px extra padding
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+
+      return true;
+    }
+
+    return false;
+  };
+
+  // Function to handle hash navigation with retries for lazy-loaded content
+  const handleHashNavigation = () => {
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
+
+      // Attempt to scroll immediately
+      if (scrollToElement(id)) return;
+
+      // If immediate scroll fails, retry with increasing delays
+      // This helps with lazy-loaded content
+      let attempts = 0;
+      const maxAttempts = 10;
+
+      const attemptScroll = () => {
+        if (attempts >= maxAttempts) return;
+
+        attempts++;
+
+        if (scrollToElement(id)) return;
+
+        // Exponential backoff for retry timing
+        const delay = Math.min(100 * Math.pow(1.5, attempts), 2000);
+        setTimeout(attemptScroll, delay);
+      };
+
+      // Start retry attempts
+      setTimeout(attemptScroll, 100);
+    }
+  };
+
   useEffect(() => {
-    // Function to handle hash navigation
-    const scrollToSection = (retryCount = 0) => {
-      // Get the hash from the URL (excluding the #)
-      const hash = window.location.hash.substring(1);
+    // Handle initial load
+    if (window.location.hash) {
+      // Small delay for initial load to ensure DOM is ready
+      setTimeout(handleHashNavigation, 100);
+    }
 
-      if (hash) {
-        // Small delay to ensure all components are rendered
-        setTimeout(() => {
-          const element = document.getElementById(hash);
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashNavigation);
 
-          if (element) {
-            // Calculate the header height to adjust scrolling
-            const header = document.querySelector("nav");
-            const headerHeight = header
-              ? header.getBoundingClientRect().height
-              : 0;
-
-            // Get element's position relative to the viewport
-            const elementPosition = element.getBoundingClientRect().top;
-
-            // Calculate position to scroll to, adjusting for the header
-            const offsetPosition =
-              elementPosition + window.pageYOffset - headerHeight - 20; // 20px extra padding
-
-            // Scroll to the adjusted position
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth",
-            });
-          } else if (retryCount < 5) {
-            // If element isn't found, it might be due to lazy loading
-            // Try again with increasing delay up to 5 times
-            const nextRetryDelay = 300 * (retryCount + 1); // Increasing delay
-            setTimeout(() => scrollToSection(retryCount + 1), nextRetryDelay);
-          }
-        }, 100);
+    // Custom event for internal navigation
+    window.addEventListener("navClick", (e: any) => {
+      if (e.detail && e.detail.id) {
+        scrollToElement(e.detail.id);
       }
-    };
+    });
 
-    // Call on mount (initial page load)
-    scrollToSection();
-
-    // Also listen for hash changes in the URL
-    const handleHashChange = () => scrollToSection();
-    window.addEventListener("hashchange", handleHashChange);
-
-    // Cleanup listener on unmount
     return () => {
-      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("hashchange", handleHashNavigation);
+      window.removeEventListener("navClick", (e: any) => {
+        if (e.detail && e.detail.id) {
+          scrollToElement(e.detail.id);
+        }
+      });
     };
   }, []);
+
+  return { scrollToElement };
 }
