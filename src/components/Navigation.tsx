@@ -21,6 +21,21 @@ export default function Navigation() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
+  // Helper function to handle navigation link clicks
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    // If it's an internal hash link
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      // Update URL without causing a page reload
+      window.history.pushState(null, "", href);
+      // Dispatch a hashchange event to trigger our scroll behavior
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    }
+  };
+
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-colors duration-300
@@ -62,7 +77,11 @@ export default function Navigation() {
                       : "text-gray-700 hover:text-blue-600"
                   } relative group overflow-hidden`}
                 >
-                  <a href={href} className="nav-link">
+                  <a
+                    href={href}
+                    className="nav-link"
+                    onClick={(e) => handleNavClick(e, href)}
+                  >
                     <span className="relative z-10">{label}</span>
 
                     {/* Enhanced hover effect with wavy animation */}
@@ -170,7 +189,11 @@ export default function Navigation() {
                       : ""
                   } relative overflow-hidden group`}
                 >
-                  <a href={href} className="nav-link-mobile">
+                  <a
+                    href={href}
+                    className="nav-link-mobile"
+                    onClick={(e) => handleNavClick(e, href)}
+                  >
                     {label}
                     <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   </a>

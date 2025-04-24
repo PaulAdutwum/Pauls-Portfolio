@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import Preload from "@/components/Preload";
+import { useHashNavigation } from "@/hooks/useHashNavigation";
 
 function Router() {
   return (
@@ -23,6 +24,8 @@ function Router() {
 
 function App() {
   const { theme } = useTheme();
+  // Initialize hash navigation
+  useHashNavigation();
 
   useEffect(() => {
     const root = document.documentElement;

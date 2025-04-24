@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, cloneElement, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
@@ -20,7 +20,6 @@ import {
   Pause,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState, useRef, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 
 const PROJECTS = [
@@ -593,7 +592,7 @@ export default function Projects() {
                             <div>
                               <div className="flex items-center gap-3 mb-4">
                                 <div className="bg-gradient-to-r from-blue-600 to-blue-500 p-2 md:p-2.5 rounded-lg">
-                                  {React.cloneElement(project.icon, {
+                                  {cloneElement(project.icon, {
                                     className:
                                       "w-4 h-4 md:w-5 md:h-5 text-white",
                                   })}
