@@ -344,6 +344,9 @@ export default function Projects() {
                               muted
                               loop
                               playsInline
+                              autoPlay
+                              poster="/bobcatshuttle-poster.jpg"
+                              onError={(e) => console.error("Video error:", e)}
                             />
                             <div
                               className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
@@ -461,6 +464,9 @@ export default function Projects() {
                               muted
                               loop
                               playsInline
+                              autoPlay
+                              poster="/bobcatshuttle-poster.jpg"
+                              onError={(e) => console.error("Video error:", e)}
                             />
                             <div
                               className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
@@ -559,6 +565,10 @@ export default function Projects() {
                                   muted
                                   loop
                                   playsInline
+                                  autoPlay
+                                  onError={(e) =>
+                                    console.error("Video error:", e)
+                                  }
                                 />
                                 <div
                                   className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
@@ -690,6 +700,10 @@ export default function Projects() {
                                   muted
                                   loop
                                   playsInline
+                                  autoPlay
+                                  onError={(e) =>
+                                    console.error("Video error:", e)
+                                  }
                                 />
                                 <div
                                   className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
