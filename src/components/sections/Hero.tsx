@@ -158,7 +158,7 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* Name with slide-in animation and hover effect */}
+        {/* Name with enhanced stylish design */}
         <motion.div
           className="overflow-hidden mb-8 relative"
           variants={itemVariants}
@@ -170,27 +170,66 @@ export default function Hero() {
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
           >
-            <motion.span
-              className="block italic font-bold text-white"
-              animate={
-                nameHovered
-                  ? {
-                      textShadow: [
-                        "0px 0px 8px rgba(255,255,255,0.3)",
-                        "0px 0px 16px rgba(255,255,255,0.6)",
-                        "0px 0px 8px rgba(255,255,255,0.3)",
-                      ],
-                    }
-                  : {}
-              }
-              transition={{
-                duration: 1.5,
-                repeat: nameHovered ? Infinity : 0,
-                repeatType: "reverse",
-              }}
+            <motion.div
+              className="relative py-4 px-6 inline-block"
+              whileHover={{ scale: 1.02 }}
             >
-              PAUL ADUTWUM
-            </motion.span>
+              {/* Text outline effect */}
+              <span
+                className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-indigo-500 opacity-60 blur-[2px] font-black italic"
+                style={{ transform: "translate(4px, 4px)" }}
+              >
+                PAUL ADUTWUM
+              </span>
+
+              {/* Main text with gradient */}
+              <motion.span
+                className="relative block italic font-black bg-clip-text text-transparent bg-gradient-to-br from-white via-blue-100 to-white"
+                animate={
+                  nameHovered
+                    ? {
+                        textShadow: [
+                          "0px 0px 8px rgba(255,255,255,0.6)",
+                          "0px 0px 16px rgba(78,169,255,0.8)",
+                          "0px 0px 8px rgba(255,255,255,0.6)",
+                        ],
+                      }
+                    : {}
+                }
+                transition={{
+                  duration: 1.5,
+                  repeat: nameHovered ? Infinity : 0,
+                  repeatType: "reverse",
+                }}
+              >
+                PAUL ADUTWUM
+              </motion.span>
+
+              {/* Decorative elements around the name */}
+              <div className="absolute h-[1px] w-1/2 left-0 top-0 bg-gradient-to-r from-transparent via-blue-400/70 to-transparent"></div>
+              <div className="absolute h-[1px] w-1/2 right-0 bottom-0 bg-gradient-to-r from-transparent via-blue-400/70 to-transparent"></div>
+
+              <motion.div
+                className="absolute h-5 w-5 left-0 top-0 border-l-2 border-t-2 border-blue-400/50"
+                animate={{ opacity: [0.3, 0.8, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <motion.div
+                className="absolute h-5 w-5 right-0 top-0 border-r-2 border-t-2 border-blue-400/50"
+                animate={{ opacity: [0.8, 0.3, 0.8] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <motion.div
+                className="absolute h-5 w-5 left-0 bottom-0 border-l-2 border-b-2 border-blue-400/50"
+                animate={{ opacity: [0.8, 0.3, 0.8] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <motion.div
+                className="absolute h-5 w-5 right-0 bottom-0 border-r-2 border-b-2 border-blue-400/50"
+                animate={{ opacity: [0.3, 0.8, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </motion.div>
 
             {/* Animated underline on hover */}
             <motion.div

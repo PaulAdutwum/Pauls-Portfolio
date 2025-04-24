@@ -66,7 +66,7 @@ const BLOG_POSTS = [
   {
     id: "leveling-up-react-magic",
     title: "Leveling-Up: From Static Pages to React Magic ✨",
-    date: "August 12, 2025",
+    date: "August 12, 2024",
     category: "Technical",
     tags: ["React", "Tailwind", "Learning Path"],
     excerpt:
@@ -163,30 +163,100 @@ const BLOG_POSTS = [
     readTime: "6 min read",
   },
   {
-    id: "machine-learning",
-    title: "Diving into Machine Learning",
-    date: "November 30, 2023",
-    category: "Technical",
-    tags: ["Machine Learning", "Python", "scikit-learn"],
+    id: "campus-shuttle-react",
+    title: "From Paper Logs to Pixels 🚌✨ — My First Real-World React Project",
+    date: "May 1, 2025",
+    category: "Project",
+    tags: [
+      "React",
+      "TailwindCSS",
+      "Zustand",
+      "Supabase",
+      "PostgreSQL",
+      "Google Maps API",
+      "Node.js",
+      "Express",
+    ],
     excerpt:
-      "My journey learning machine learning fundamentals and building my first predictive models.",
+      "How a freshman from Ghana turned Bates College’s paper-heavy shuttle desk into a sleek web app — and learned a ton of React state magic along the way.",
+    readTime: "8 min read",
     content: `
-      <p>I've spent the past few weeks immersed in machine learning fundamentals. After completing several online courses, I'm now building my first practical ML projects.</p>
-      
-      <p>I've been focusing on supervised learning, starting with classic algorithms like linear regression and decision trees before moving to more complex models.</p>
-      
-      <h3>Current projects:</h3>
+      <h2>Fast-Forward ⏩ From HTML Basics to a Campus-Wide Solution</h2>
+  
+      <p>
+        I landed at <strong>Bates College</strong> in <em>Fall 2023</em>—wide-eyed, fresh from Ghana, 
+        and already itching to build something useful. My first campus job was in the 
+        <strong>Campus Safety Shuttle Office</strong>, taking calls from students who needed rides
+        into Lewiston or across campus for medical appointments. The workflow? 
+        Pure&nbsp;📝 paper. Searching through stacks to find a ride from “10 hours ago” was
+        <em>painful</em>, and answering the constant “Where’s the shuttle?” calls felt like
+        running tech support in the 90s.
+      </p>
+  
+      <p>
+        The engineer in me couldn’t let that slide, so I cooked up a plan: ditch the paper,
+        build a responsive web app, and give dispatchers (and riders) real-time info at a glance.
+        My vanilla&nbsp;HTML/CSS prototype proved the concept but screamed “static” 😅.  
+        Time to revamp with <strong>React</strong>, <strong>TailwindCSS</strong>, and a dash of 
+        <strong>Zustand</strong> for state management.
+      </p>
+  
+      <h3>What I Built 🛠️</h3>
       <ul>
-        <li>Student performance prediction using Random Forest</li>
-        <li>Time series analysis for resource optimization</li>
-        <li>Basic NLP for text classification</li>
+        <li>
+          <strong>Ride Dashboard</strong> — CRUD forms powered by <em>Supabase (PostgreSQL)</em>, letting
+          dispatchers add, update, and search rides instantly.
+        </li>
+        <li>
+          <strong>Live Shuttle Tracker</strong> — integrated <em>Google Maps API</em> so students can watch
+          the bus crawl across campus instead of ringing the office every two minutes.
+        </li>
+        <li>
+          <strong>In-App Chat (Work-in-Progress)</strong> — real-time student ↔ dispatcher messaging
+          using Supabase’s Realtime channel (WebSockets under the hood).
+        </li>
       </ul>
-      
-      <p>The most challenging aspect has been feature engineering - learning how to transform raw data into meaningful features that ML algorithms can use effectively.</p>
-      
-      <p>Next month, I plan to explore deep learning with TensorFlow and see how neural networks can be applied to solve more complex problems.</p>
+  
+      <h3>Biggest Hurdles 🤯</h3>
+      <ul>
+        <li>
+          <strong>State&nbsp;explosions</strong> — passing form data across nested components got messy fast.
+          Hooks (<code>useState</code>, <code>useRef</code>) + <em>Zustand</em> finally gave me 
+          one source-of-truth without prop-drilling nightmares.
+        </li>
+        <li>
+          <strong>Data integrity</strong> — syncing local UI state with Supabase and avoiding duplicate 
+          ride IDs taught me the value of <em>optimistic updates</em> (and a healthy respect for
+          <code>try / catch</code>).
+        </li>
+        <li>
+          <strong>Responsive design</strong> — Tailwind’s mobile-first utilities saved me from another
+          flexbox break-down, literally 🙃.
+        </li>
+      </ul>
+  
+      <h3>What I Learned 📚</h3>
+      <ol>
+        <li>Practical&nbsp;⚛️ state patterns (Zustand &gt; endless context chains).</li>
+        <li>Supabase CRUD + RLS policies for secure student data.</li>
+        <li>Incremental refactors: ship MVP first, polish after real feedback.</li>
+        <li>Debugging is 80 % of the job—lo-fi beats and coffee make it bearable ☕🎶.</li>
+      </ol>
+  
+      <h3>Break-Time Rituals 🎧🕹️</h3>
+      <p>
+        When React throws another mysterious re-render, I hit the soccer field, tinker on 
+        the piano, or vibe to chill-hop playlists before diving back in. Balance keeps the 
+        bugs (and me) alive.
+      </p>
+  
+      <p>
+        The project is now live for internal testing, and the office hasn’t touched a paper
+        log in weeks. Next up: polishing the chat feature and maybe open-sourcing the code
+        for other campuses. Stay tuned, and feel free to <em>fork / star / suggest</em> improvements
+        on GitHub 🚀.
+      </p>
     `,
-    readTime: "7 min read",
   },
   {
     id: "looking-ahead",
