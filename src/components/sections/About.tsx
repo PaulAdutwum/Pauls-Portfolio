@@ -199,14 +199,13 @@ export default function About() {
 
                 <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
                   <p>
-                    I am a first generation student studying{" "}
+                    I am a first generation{" "}
                     <span className="text-blue-600 dark:text-blue-400 font-medium">
                       Engineering and Mathematics student
                     </span>{" "}
-                    at Bates College. I blend an engineer’s curiosity with the
-                    versatility of mathematics to build applications that make
-                    life a little better—and a lot more efficient—every single
-                    day.
+                    at Bates College. I combine an engineer’s curiosity with a
+                    designer’s eye to craft applications that make everyday life
+                    smoother and more efficient.
                   </p>
 
                   <p>

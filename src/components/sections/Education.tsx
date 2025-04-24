@@ -88,7 +88,7 @@ export default function Education() {
                       Bates College
                     </CardTitle>
                     <p className="text-gray-600 dark:text-gray-300 font-medium">
-                      BS in Computer Science
+                      BS in Engineering and Mathematics
                     </p>
                   </div>
                 </CardHeader>
@@ -100,7 +100,7 @@ export default function Education() {
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       <span className="h-2 w-2 rounded-full bg-blue-500"></span>
-                      Expected Graduation: <strong>May 2025</strong>
+                      Expected Graduation: <strong>May 2027</strong>
                     </motion.li>
                     <motion.li
                       className="flex items-center gap-2"
@@ -108,19 +108,38 @@ export default function Education() {
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       <span className="h-2 w-2 rounded-full bg-blue-500"></span>
-                      <strong>GPA:</strong> 3.94/4.0
+                      <strong>GPA:</strong> 3.95/4.0
                     </motion.li>
                     <motion.li
                       className="flex items-start gap-2"
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <span className="h-2 w-2 mt-1.5 rounded-full bg-blue-500"></span>
+                      <span className="h-2 w-2 mt-1.5 ml-2 rounded-full bg-blue-500"></span>
                       <div>
-                        <strong>Coursework:</strong> Data Structures &
-                        Algorithms, Software Development, Data Analysis,
-                        Databases and Design, Web Development, Computer
-                        Networking, Machine Learning, Artificial Intelligence
+                        <strong>Coursework:</strong>
+                        <ul className="mt-2 space-y-2 pl-1">
+                          {[
+                            "Data Structures & Algorithms",
+                            "Software Development",
+                            "Data Analysis",
+                            "Databases and Design",
+                            "Web Development",
+                            "Computer Networking",
+                            "Machine Learning",
+                            "Artificial Intelligence",
+                          ].map((course, i) => (
+                            <motion.li
+                              key={i}
+                              className="flex items-center gap-2"
+                              whileHover={{ x: 3 }}
+                              transition={{ type: "spring", stiffness: 300 }}
+                            >
+                              <span className="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+                              {course}
+                            </motion.li>
+                          ))}
+                        </ul>
                       </div>
                     </motion.li>
 
@@ -133,10 +152,10 @@ export default function Education() {
                       <span className="h-2 w-2 mt-1.5 rounded-full bg-blue-500"></span>
                       <div className="space-y-4">
                         <div>
-                          <strong className="text-blue-600 dark:text-blue-400">
+                          <strong className="text-blue-600 ml-1 dark:text-blue-400">
                             Research & Publications:
                           </strong>
-                          <p className="mt-2">
+                          <p className="mt-2 ml-1">
                             I participated in collaborative research
                             investigating the structure and growth of{" "}
                             <strong>Ulam numbers</strong> and{" "}

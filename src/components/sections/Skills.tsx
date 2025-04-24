@@ -418,8 +418,8 @@ export default function Skills() {
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               My skills span across various domains of software development and
-              data science, built through years of hands-on experience and
-              continuous learning.
+              data science, AI/ML built through personal projects, coursework
+              and continuous learning.
             </p>
           </motion.div>
 
