@@ -174,10 +174,8 @@ export default function About() {
                       transition={{ delay: 0.3 }}
                       viewport={{ once: true }}
                     >
-                      <h3 className="text-2xl font-bold">Paul Adutwum</h3>
-                      <p className="text-white/80 text-sm">
-                        Engineering and Mathematics student
-                      </p>
+                      <h3 className="text-2xl font-bold"></h3>
+                      <p className="text-white/80 text-sm"></p>
                     </motion.div>
                   </div>
                 </motion.div>
@@ -214,8 +212,8 @@ export default function About() {
                       full-stack development, data science, AI/ML, and
                       quantitative finance
                     </span>
-                    .I gravitate toward projects that push me to learn something
-                    new, break things, and build them back better.
+                    . I gravitate toward projects that push me to learn
+                    something new, break things, and build them back better.
                   </p>
 
                   <p>
