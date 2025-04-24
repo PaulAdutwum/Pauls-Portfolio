@@ -546,22 +546,20 @@ export default function Blog() {
         >
           <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-100 dark:border-blue-800/40 p-8">
             <h3 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">
-              Coming Soon: Future Topics & Interests
+              Coming Soon: Projects in Progress
             </h3>
 
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <h4 className="text-lg font-semibold flex items-center text-blue-700 dark:text-blue-400">
                   <Code className="w-5 h-5 mr-2" />
-                  Technical Explorations
+                  Current Projects
                 </h4>
                 <ul className="space-y-3">
                   {[
-                    "Building scalable applications with Next.js",
-                    "Exploring advanced state management with Zustand",
-                    "Implementing machine learning models in production",
-                    "Building custom data visualization components",
-                    "Serverless architectures and cloud computing",
+                    "Tariff Trend Calculator",
+                    "Chrome Extension",
+                    "Stay tuned...",
                   ].map((topic, i) => (
                     <motion.li
                       key={i}
@@ -581,15 +579,14 @@ export default function Blog() {
               <div className="space-y-4">
                 <h4 className="text-lg font-semibold flex items-center text-indigo-700 dark:text-indigo-400">
                   <Star className="w-5 h-5 mr-2" />
-                  Personal Interests
+                  Learning Focus
                 </h4>
                 <ul className="space-y-3">
                   {[
-                    "Current reading list: Technical and fiction books",
-                    "Movie & show recommendations for developers",
-                    "Balancing coding projects with other interests",
-                    "Creating an effective learning routine",
-                    "Building a personal brand as a developer",
+                    "Go Lang for backend development",
+                    "Rust for system programming",
+                    "Swift for iOS development",
+                    "Machine Learning applications",
                   ].map((topic, i) => (
                     <motion.li
                       key={i}

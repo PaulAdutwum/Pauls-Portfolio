@@ -7,11 +7,11 @@ import React from "react";
 const skillsTree = {
   "Full-Stack Development": {
     color: "from-blue-400 to-indigo-600",
-    description: "Building comprehensive end-to-end web applications",
+    description: "",
     children: {
       Frontend: {
         color: "from-cyan-400 to-blue-600",
-        description: "Crafting responsive and engaging user interfaces",
+        description: "",
         skills: [
           { name: "React", level: 5 },
           { name: "TypeScript", level: 5 },
@@ -26,7 +26,7 @@ const skillsTree = {
       },
       Backend: {
         color: "from-emerald-400 to-green-600",
-        description: "Building robust and scalable server-side applications",
+        description: "",
         skills: [
           { name: "Node.js", level: 5 },
           { name: "Express", level: 5 },
@@ -39,9 +39,19 @@ const skillsTree = {
           { name: "API Design", level: 4 },
         ],
       },
+      "Learning Now": {
+        color: "from-purple-400 to-pink-600",
+        description: "Technologies I'm currently learning and exploring",
+        skills: [
+          { name: "Go Lang", level: 2 },
+          { name: "Rust", level: 2 },
+          { name: "Swift", level: 2 },
+          { name: "Advanced ML", level: 3 },
+        ],
+      },
       Database: {
         color: "from-amber-400 to-orange-600",
-        description: "Storing and managing data efficiently and securely",
+        description: "",
         skills: [
           { name: "PostgreSQL", level: 5 },
           { name: "MongoDB", level: 4 },
@@ -56,7 +66,7 @@ const skillsTree = {
       },
       Cloud: {
         color: "from-sky-400 to-blue-700",
-        description: "Deploying and scaling applications in the cloud",
+        description: "",
         skills: [
           { name: "AWS", level: 4 },
           { name: "Docker", level: 4 },
@@ -73,13 +83,11 @@ const skillsTree = {
   },
   "Data Science": {
     color: "from-purple-400 to-indigo-600",
-    description:
-      "Extracting insights and knowledge from structured and unstructured data",
+    description: "",
     children: {
       Analysis: {
         color: "from-pink-400 to-rose-600",
-        description:
-          "Exploring and interpreting data to extract meaningful insights",
+        description: "",
         skills: [
           { name: "Pandas", level: 5 },
           { name: "NumPy", level: 5 },
@@ -94,8 +102,7 @@ const skillsTree = {
       },
       Visualization: {
         color: "from-amber-400 to-orange-600",
-        description:
-          "Creating visual representations of data for better understanding",
+        description: "",
         skills: [
           { name: "Matplotlib", level: 5 },
           { name: "Seaborn", level: 4 },
@@ -110,8 +117,7 @@ const skillsTree = {
       },
       "Machine Learning": {
         color: "from-green-400 to-teal-600",
-        description:
-          "Building models that learn from data to make predictions or decisions",
+        description: "",
         skills: [
           { name: "scikit-learn", level: 5 },
           { name: "TensorFlow/Keras", level: 4 },
@@ -128,13 +134,11 @@ const skillsTree = {
   },
   "Problem Solving": {
     color: "from-teal-400 to-green-600",
-    description:
-      "Approaching complex problems with structured analytical methods",
+    description: "",
     children: {
       Algorithms: {
         color: "from-violet-400 to-indigo-600",
-        description:
-          "Designing efficient procedures for solving computational problems",
+        description: "",
         skills: [
           { name: "Data Structures", level: 5 },
           { name: "Complexity Analysis", level: 4 },
@@ -149,7 +153,7 @@ const skillsTree = {
       },
       "Systems Design": {
         color: "from-blue-400 to-cyan-600",
-        description: "Architecting scalable and maintainable software systems",
+        description: "",
         skills: [
           { name: "Software Architecture", level: 4 },
           { name: "API Design", level: 5 },
@@ -164,7 +168,7 @@ const skillsTree = {
       },
       "Development Tools": {
         color: "from-gray-600 to-gray-800",
-        description: "Using the right tools to enhance development workflow",
+        description: "",
         skills: [
           { name: "Git/GitHub", level: 5 },
           { name: "VS Code", level: 5 },
@@ -187,20 +191,8 @@ const SkillTag = ({ name, level }: { name: string; level: number }) => (
     whileHover={{ y: -3, scale: 1.02 }}
     transition={{ type: "spring", stiffness: 400, damping: 10 }}
   >
-    <div className="flex items-center gap-2">
+    <div className="flex items-center">
       <span>{name}</span>
-      <div className="flex">
-        {Array(5)
-          .fill(0)
-          .map((_, i) => (
-            <div
-              key={i}
-              className={`w-1 h-3 rounded-sm mx-px ${
-                i < level ? "bg-blue-500" : "bg-gray-300 dark:bg-gray-600"
-              }`}
-            />
-          ))}
-      </div>
     </div>
   </motion.div>
 );
@@ -284,9 +276,11 @@ const SkillCategory = ({
             className="bg-white dark:bg-gray-900 overflow-hidden"
           >
             <div className="p-4">
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                {data.description}
-              </p>
+              {data.description && data.description.trim() !== "" && (
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  {data.description}
+                </p>
+              )}
               {data.skills && (
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-2">
@@ -327,20 +321,22 @@ const SkillCategory = ({
 const SkillSubcategory = ({ name, data }: { name: string; data: any }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <motion.div
       layout
-      className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800"
+      className="w-full cursor-pointer rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800"
     >
       <motion.div
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={toggleExpand}
         className={`w-full p-3 flex items-center justify-between bg-gradient-to-r dark:bg-gradient-to-r ${data.color}`}
         whileHover={{ scale: 1.01 }}
         transition={{ duration: 0.2 }}
       >
-        <div className="flex items-center">
-          <h4 className="font-medium text-white">{name}</h4>
-        </div>
+        <h4 className="text-base font-semibold text-white">{name}</h4>
         <motion.div
           animate={{ rotate: isExpanded ? 90 : 0 }}
           transition={{ duration: 0.3 }}
@@ -373,9 +369,11 @@ const SkillSubcategory = ({ name, data }: { name: string; data: any }) => {
             className="bg-white dark:bg-gray-900 overflow-hidden"
           >
             <div className="p-3">
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                {data.description}
-              </p>
+              {data.description && data.description.trim() !== "" && (
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  {data.description}
+                </p>
+              )}
               <div className="flex flex-wrap gap-2">
                 {data.skills.map((skill: { name: string; level: number }) => (
                   <SkillTag
@@ -419,29 +417,22 @@ export default function Skills() {
               Technical Skills
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              My expertise spans across various domains of software development
-              and data science, built through years of hands-on experience and
+              My skills span across various domains of software development and
+              data science, built through years of hands-on experience and
               continuous learning.
             </p>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {Object.entries(skillsTree).map(
-              ([category, data]: [string, any], index) => (
-                <motion.div
+              ([category, data]: [string, any]) => (
+                <SkillCategory
                   key={category}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <SkillCategory
-                    name={category}
-                    data={data}
-                    isExpanded={expandedCategories.includes(category)}
-                    onToggle={() => toggleCategory(category)}
-                  />
-                </motion.div>
+                  name={category}
+                  data={data}
+                  isExpanded={expandedCategories.includes(category)}
+                  onToggle={() => toggleCategory(category)}
+                />
               )
             )}
           </div>
