@@ -24,101 +24,85 @@ import { Badge } from "@/components/ui/badge";
 
 const PROJECTS = [
   {
+    title: "Lumeo AI Movie Discovery",
+    description:
+      "Lumeo is an AI-powered virtual companion that offers anonymous, real-time support through GPT-4-driven chat, personalized movie and activity recommendations, and creative tools like canvas drawing and storytelling prompts. Features include real-time conversation with memory-augmented, sentiment-aware prompts, personalized recommendations via TMDB and vector search, creative canvas for guided drawing exercises, multimedia generation through DALL·E 3, and voice interaction with mood tracking for a holistic wellness experience.",
+    image: "/LUMEO.mp4",
+    type: "video",
+    stack: {
+      frontend: ["Next.js", "Konva", "Socket.io", "Tailwind CSS"],
+      backend: ["NestJS", "PostgreSQL", "Pinecone", "OpenAI GPT-4", "DALL·E 3"],
+      tools: ["Whisper STT", "Google TTS", "TMDB API", "Stable Diffusion"],
+    },
+    github: "https://github.com/PaulAdutwum/Lumeo_Mental_Health",
+    demo: "https://lumeo-08ac7545d700.herokuapp.com/",
+    date: "February 2025",
+    color: "from-blue-600 to-blue-700",
+    icon: <Monitor className="w-10 h-10 text-white" />,
+    featured: true,
+  },
+  {
     title: "Bobcat Express Shuttle Dashboard",
     description:
-      "I developed a comprehensive campus shuttle tracking system that provides real-time location updates, passenger counts, and route optimization. By analyzing historical transit data, I created predictive algorithms that anticipate peak usage times and adjust scheduling accordingly.",
-    impact:
-      "Reduced average student wait times by 40% and increased shuttle utilization by 35%, serving 2,500+ daily users across campus.",
+      "I built a full-stack shuttle-management system that lets Bates students request rides online, track the Bobcat Express in real time, and view arrival estimates—while giving dispatchers an admin portal to approve requests, monitor routes, and analyze service metrics. Using Zustand for efficient state management and real-time updates. The system features real-time location tracking, route optimization, and comprehensive analytics for improved campus transportation.",
     image: "/bobcatshuttle2.mp4",
     type: "video",
     stack: {
-      frontend: ["React", "TypeScript", "TailwindCSS", "Recharts"],
-      backend: ["NestJS", "PostgreSQL", "RESTful APIs"],
-      tools: ["Real-time Tracking", "Data Analytics", "Authentication"],
+      frontend: [
+        "Next.js 14",
+        "Tailwind CSS",
+        "React Query",
+        "Google Maps API",
+        "Chart.js",
+        "Zustand",
+        "TypeScript",
+      ],
+      backend: [
+        "NestJS",
+        "Prisma",
+        "PostgreSQL",
+        "Firebase Auth",
+        "AWS Fargate",
+        "Socket.io",
+      ],
+      tools: ["Vercel", "GitHub Actions", "Docker"],
     },
-    github: "https://github.com/PaulAdutwum/Bobcat-Express-Shuttle",
-    demo: "https://bobcatexpress.vercel.app/dashboard/",
+    github: "https://github.com/PaulAdutwum/Bobcat_Express_Dashboard",
+    demo: "https://bobcatshuttle.vercel.app/",
     date: "February 2025",
     color: "from-blue-600 to-blue-700",
     icon: <PanelsTopLeft className="w-10 h-10 text-white" />,
     featured: true,
   },
   {
-    title: "Lumeo AI Movie Discovery",
+    title: "Evoke AI Accessibility Extension",
     description:
-      "I created a personalized movie recommendation engine that analyzes viewing history, user feedback, and emotional context to suggest films based on current mood and preferences. By incorporating sentiment analysis and mental wellbeing factors, I developed an algorithm that goes beyond traditional recommendation systems.",
-    impact:
-      "Achieved 85% user satisfaction rate with personalized recommendations, analyzing over 10,000 films for emotional context categorization.",
-    image: "/lumeo.png",
-    type: "image",
-    stack: {
-      frontend: ["React", "Next.js", "Framer Motion"],
-      backend: ["Firebase", "Cloud Functions"],
-      tools: ["Sentiment Analysis", "Recommendation Algorithms"],
-    },
-    github: "https://github.com/PaulAdutwum/Lumeo",
-    demo: "https://lumeo-f950c.web.app/",
-    date: "March 2025",
-    color: "from-blue-600 to-blue-700",
-    icon: <Monitor className="w-10 h-10 text-white" />,
-    featured: true,
-  },
-  {
-    title: "AI-Powered Accessibility Extension",
-    description:
-      "I designed and built a Chrome extension that leverages AI to translate web content into accessible formats for visually and physically impaired users. By implementing voice recognition, screen reading, and custom navigation shortcuts, I created an intuitive tool that makes the web truly inclusive.",
+      "Evoke AI is a Chrome extension that transforms any webpage into a highly accessible, AI-powered environment—letting users customize in real time (contrast, brightness, text size, color-blind filters), interact by voice using Web Speech APIs, and leverage AI assistance through a NestJS backend for form-filling, page summarization, and context-aware guidance.",
     impact:
       "Boosted web navigation efficiency by 75% for users with disabilities, increasing content comprehension by 60% across 500+ testers.",
     image: "/chrome.png",
     type: "image",
     stack: {
-      frontend: ["React", "TypeScript", "TailwindCSS"],
-      backend: ["Firebase", "Node.js"],
-      tools: ["Chrome Extension API", "AI Speech Recognition"],
+      frontend: [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Chrome Manifest V3",
+      ],
+      backend: ["NestJS", "OpenAI GPT-4", "Whisper", "TTS"],
+      tools: [
+        "Web Speech API",
+        "Chrome Storage API",
+        "GitHub Actions",
+        "Chrome Web Store",
+      ],
     },
     github: "https://github.com/PaulAdutwum/Chrome-Extension",
     demo: "https://github.com/PaulAdutwum/Chrome-Extension",
-    date: "April 2025",
+    date: "March 2025",
     color: "from-blue-600 to-blue-700",
     icon: <Code className="w-10 h-10 text-white" />,
-  },
-  {
-    title: "WattsWise Energy Analytics",
-    description:
-      "I built an AI-powered energy monitoring platform that collects data from smart meters across campus buildings to identify consumption patterns and inefficiencies. Through machine learning algorithms, I implemented predictive modeling that forecasts energy usage and recommends specific conservation measures.",
-    impact:
-      "Identified energy savings of 22% across 15 campus buildings, predicting consumption patterns with 91% accuracy using machine learning.",
-    image: "/wattwise.png",
-    type: "image",
-    stack: {
-      frontend: ["Streamlit", "Plotly", "HTML/CSS"],
-      backend: ["Python", "Flask", "SQLite"],
-      tools: ["Scikit-learn", "Pandas", "PyTorch", "Matplotlib"],
-    },
-    github: "https://github.com/PaulAdutwum/Energy_Tracker_Project",
-    demo: "https://github.com/PaulAdutwum/Energy_Tracker_Project",
-    date: "January 2025",
-    color: "from-blue-600 to-blue-700",
-    icon: <BarChart2 className="w-10 h-10 text-white" />,
-  },
-  {
-    title: "Automated Financial Assistant",
-    description:
-      "I developed a personal finance tool that automatically categorizes transactions, identifies spending patterns, and provides actionable insights for budget optimization. Using natural language processing, the system interprets transaction descriptions to create intuitive spending categories.",
-    impact:
-      "Users reported average monthly savings of $320 through identified budget optimizations, with 92% transaction classification accuracy.",
-    image: "/finance.png",
-    type: "image",
-    stack: {
-      frontend: ["Vue.js", "Vuetify", "Chart.js"],
-      backend: ["Django", "MongoDB", "Celery"],
-      tools: ["NLP", "Automated Classification", "Reporting"],
-    },
-    github: "https://github.com/PaulAdutwum/FinanceAssistant",
-    demo: "https://github.com/PaulAdutwum/FinanceAssistant",
-    date: "December 2024",
-    color: "from-blue-600 to-blue-700",
-    icon: <Database className="w-10 h-10 text-white" />,
   },
 ];
 
@@ -262,8 +246,18 @@ export default function Projects() {
               />
             </h2>
             <p className="mt-6 text-gray-600 dark:text-gray-400 text-center max-w-2xl">
-              Featured work that demonstrates my technical expertise and
-              problem-solving approach
+              My personal projects span{" "}
+              <span className="font-medium text-blue-600 dark:text-blue-400">
+                Fullstack Development
+              </span>
+              ,{" "}
+              <span className="font-medium text-blue-600 dark:text-blue-400">
+                AI Systems
+              </span>
+              , and{" "}
+              <span className="font-medium text-blue-600 dark:text-blue-400">
+                IoT Design
+              </span>
             </p>
           </div>
 
@@ -332,29 +326,41 @@ export default function Projects() {
                       >
                         {/* Mobile layout (stack) for small screens, grid for larger */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-6">
-                          {/* Image for small screens only - top position */}
+                          {/* Image/video for small screens only - top position */}
                           <div className="relative h-56 lg:hidden">
-                            <video
-                              ref={(el) =>
-                                (videoRefs.current[project.title] = el)
-                              }
-                              src={project.image}
-                              className="absolute inset-0 w-full h-full object-cover"
-                              muted
-                              loop
-                              playsInline
-                              autoPlay
-                              poster="/bobcatshuttle-poster.jpg"
-                              onError={(e) => console.error("Video error:", e)}
-                            />
-                            <div
-                              className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
-                              onClick={() => openVideoModal(project.image)}
-                            >
-                              <div className="w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full shadow-lg">
-                                <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[16px] border-l-white ml-1"></div>
-                              </div>
-                            </div>
+                            {project.type === "video" ? (
+                              <>
+                                <video
+                                  ref={(el) =>
+                                    (videoRefs.current[project.title] = el)
+                                  }
+                                  src={project.image}
+                                  className="absolute inset-0 w-full h-full object-contain bg-black"
+                                  muted
+                                  loop
+                                  playsInline
+                                  autoPlay
+                                  poster="/bobcatshuttle-poster.jpg"
+                                  onError={(e) =>
+                                    console.error("Video error:", e)
+                                  }
+                                />
+                                <div
+                                  className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
+                                  onClick={() => openVideoModal(project.image)}
+                                >
+                                  <div className="w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full shadow-lg">
+                                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[16px] border-l-white ml-1"></div>
+                                  </div>
+                                </div>
+                              </>
+                            ) : (
+                              <img
+                                src={project.image}
+                                alt={project.title}
+                                className="absolute inset-0 w-full h-full object-contain bg-black"
+                              />
+                            )}
                           </div>
 
                           {/* Project details column */}
@@ -372,15 +378,6 @@ export default function Projects() {
                               <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-4 line-clamp-3 md:line-clamp-none">
                                 {project.description}
                               </p>
-
-                              <div className="bg-blue-50 dark:bg-blue-900/20 p-3 md:p-4 rounded-lg mb-4 border border-blue-100 dark:border-blue-800/40">
-                                <h4 className="text-blue-700 dark:text-blue-300 font-medium text-sm md:text-base mb-1">
-                                  Impact:
-                                </h4>
-                                <p className="text-blue-800 dark:text-blue-300 text-sm">
-                                  {project.impact}
-                                </p>
-                              </div>
                             </div>
 
                             <div>
@@ -391,29 +388,15 @@ export default function Projects() {
                                 {[
                                   ...project.stack.frontend,
                                   ...project.stack.backend,
-                                ]
-                                  .slice(0, 6)
-                                  .map((tech) => (
-                                    <Badge
-                                      key={tech}
-                                      className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-xs whitespace-nowrap"
-                                    >
-                                      {tech}
-                                    </Badge>
-                                  ))}
-                                {[
-                                  ...project.stack.frontend,
-                                  ...project.stack.backend,
-                                ].length > 6 && (
-                                  <Badge className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-xs">
-                                    +
-                                    {[
-                                      ...project.stack.frontend,
-                                      ...project.stack.backend,
-                                    ].length - 6}{" "}
-                                    more
+                                  ...project.stack.tools,
+                                ].map((tech) => (
+                                  <Badge
+                                    key={tech}
+                                    className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-xs whitespace-nowrap"
+                                  >
+                                    {tech}
                                   </Badge>
-                                )}
+                                ))}
                               </div>
 
                               <div className="flex gap-3">
@@ -452,32 +435,47 @@ export default function Projects() {
                             </div>
                           </div>
 
-                          {/* Image for large screens only - side position */}
+                          {/* Image/video for large screens only - side position */}
                           <div className="relative h-64 lg:h-auto hidden lg:block">
-                            <video
-                              ref={(el) =>
-                                (videoRefs.current[project.title + "-lg"] = el)
-                              }
-                              src={project.image}
-                              className="absolute inset-0 w-full h-full object-cover"
-                              muted
-                              loop
-                              playsInline
-                              autoPlay
-                              poster="/bobcatshuttle-poster.jpg"
-                              onError={(e) => console.error("Video error:", e)}
-                            />
-                            <div
-                              className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
-                              onClick={() => openVideoModal(project.image)}
-                            >
-                              <div className="w-16 h-16 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full shadow-lg">
-                                <div className="w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[20px] border-l-white ml-1"></div>
+                            {project.type === "video" ? (
+                              <>
+                                <video
+                                  ref={(el) =>
+                                    (videoRefs.current[project.title + "-lg"] =
+                                      el)
+                                  }
+                                  src={project.image}
+                                  className="absolute inset-0 w-full h-full object-contain bg-black"
+                                  muted
+                                  loop
+                                  playsInline
+                                  autoPlay
+                                  poster="/bobcatshuttle-poster.jpg"
+                                  onError={(e) =>
+                                    console.error("Video error:", e)
+                                  }
+                                />
+                                <div
+                                  className="absolute inset-0 flex items-center justify-center cursor-pointer hover:bg-black/10 transition-colors"
+                                  onClick={() => openVideoModal(project.image)}
+                                >
+                                  <div className="w-16 h-16 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full shadow-lg">
+                                    <div className="w-0 h-0 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent border-l-[20px] border-l-white ml-1"></div>
+                                  </div>
+                                  <div className="absolute bottom-4 right-4 bg-black/60 px-3 py-1.5 rounded text-sm text-white backdrop-blur-sm">
+                                    Click to view demo
+                                  </div>
+                                </div>
+                              </>
+                            ) : (
+                              <div className="relative h-full">
+                                <img
+                                  src={project.image}
+                                  alt={project.title}
+                                  className="w-full h-full object-contain bg-black"
+                                />
                               </div>
-                              <div className="absolute bottom-4 right-4 bg-black/60 px-3 py-1.5 rounded text-sm text-white backdrop-blur-sm">
-                                Click to view demo
-                              </div>
-                            </div>
+                            )}
                           </div>
                         </div>
                       </motion.div>
@@ -560,7 +558,7 @@ export default function Projects() {
                                     (videoRefs.current[project.title] = el)
                                   }
                                   src={project.image}
-                                  className="absolute inset-0 w-full h-full object-cover"
+                                  className="absolute inset-0 w-full h-full object-contain bg-black"
                                   muted
                                   loop
                                   playsInline
@@ -605,15 +603,6 @@ export default function Projects() {
                               <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-4 line-clamp-3 md:line-clamp-none">
                                 {project.description}
                               </p>
-
-                              <div className="bg-blue-50 dark:bg-blue-900/20 p-3 md:p-4 rounded-lg mb-4 border border-blue-100 dark:border-blue-800/40">
-                                <h4 className="text-blue-700 dark:text-blue-300 font-medium text-sm md:text-base mb-1">
-                                  Impact:
-                                </h4>
-                                <p className="text-blue-800 dark:text-blue-300 text-sm">
-                                  {project.impact}
-                                </p>
-                              </div>
                             </div>
 
                             <div>
@@ -624,29 +613,15 @@ export default function Projects() {
                                 {[
                                   ...project.stack.frontend,
                                   ...project.stack.backend,
-                                ]
-                                  .slice(0, 6)
-                                  .map((tech) => (
-                                    <Badge
-                                      key={tech}
-                                      className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-xs whitespace-nowrap"
-                                    >
-                                      {tech}
-                                    </Badge>
-                                  ))}
-                                {[
-                                  ...project.stack.frontend,
-                                  ...project.stack.backend,
-                                ].length > 6 && (
-                                  <Badge className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-xs">
-                                    +
-                                    {[
-                                      ...project.stack.frontend,
-                                      ...project.stack.backend,
-                                    ].length - 6}{" "}
-                                    more
+                                  ...project.stack.tools,
+                                ].map((tech) => (
+                                  <Badge
+                                    key={tech}
+                                    className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-xs whitespace-nowrap"
+                                  >
+                                    {tech}
                                   </Badge>
-                                )}
+                                ))}
                               </div>
 
                               <div className="flex gap-3">
@@ -695,7 +670,7 @@ export default function Projects() {
                                       el)
                                   }
                                   src={project.image}
-                                  className="absolute inset-0 w-full h-full object-cover"
+                                  className="absolute inset-0 w-full h-full object-contain bg-black"
                                   muted
                                   loop
                                   playsInline

@@ -1,49 +1,4 @@
 import { motion } from "framer-motion";
-import {
-  Palette,
-  Music,
-  Camera,
-  Code,
-  Gamepad,
-  CircleUser,
-  Dumbbell,
-} from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-
-// Interests/Hobbies array
-const interests = [
-  {
-    name: "Soccer",
-    icon: CircleUser,
-    color: "from-green-500/30 to-emerald-700/30",
-  },
-  {
-    name: "Volleyball",
-    icon: Dumbbell,
-    color: "from-amber-500/30 to-orange-700/30",
-  },
-  { name: "Piano", icon: Music, color: "from-indigo-500/30 to-blue-700/30" },
-  {
-    name: "Video Games",
-    icon: Gamepad,
-    color: "from-purple-500/30 to-pink-700/30",
-  },
-  {
-    name: "Art & Design",
-    icon: Palette,
-    color: "from-pink-500/30 to-rose-700/30",
-  },
-  {
-    name: "Photography",
-    icon: Camera,
-    color: "from-amber-500/30 to-orange-700/30",
-  },
-  {
-    name: "Mathematics",
-    icon: Code,
-    color: "from-green-500/30 to-emerald-700/30",
-  },
-];
 
 export default function About() {
   return (
@@ -75,19 +30,6 @@ export default function About() {
           }}
           transition={{
             duration: 18,
-            repeat: Infinity,
-            repeatType: "mirror",
-          }}
-        />
-        <motion.div
-          className="absolute left-1/3 top-2/3 w-72 h-72 rounded-full bg-gradient-to-tr from-blue-400 to-indigo-600 blur-3xl"
-          animate={{
-            x: [0, 25, 0],
-            y: [0, -15, 0],
-            scale: [1, 1.03, 1],
-          }}
-          transition={{
-            duration: 12,
             repeat: Infinity,
             repeatType: "mirror",
           }}
@@ -124,59 +66,24 @@ export default function About() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="relative w-80 h-96 md:w-96 md:h-[28rem]">
-                {/* Decorative elements */}
+              <div className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+                {/* Main image container with subtle hover effect */}
                 <motion.div
-                  className="absolute -top-4 -left-4 w-full h-full border-2 border-blue-500/30 rounded-2xl"
-                  animate={{ rotate: [0, 1, 0, -1, 0] }}
-                  transition={{ duration: 6, repeat: Infinity }}
-                />
-                <motion.div
-                  className="absolute -bottom-4 -right-4 w-full h-full border-2 border-blue-500/30 rounded-2xl"
-                  animate={{ rotate: [0, -1, 0, 1, 0] }}
-                  transition={{ duration: 6, repeat: Infinity, delay: 0.5 }}
-                />
-
-                {/* Main image container with shine effect */}
-                <motion.div
-                  className="relative w-full h-full overflow-hidden rounded-2xl shadow-2xl"
-                  whileHover={{ scale: 1.03 }}
+                  className="relative w-full h-full overflow-hidden rounded-full shadow-xl"
+                  whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300, damping: 10 }}
                 >
-                  {/* Shimmer overlay */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 z-10"
-                    initial={{ left: "-100%" }}
-                    animate={{ left: "100%" }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      repeatDelay: 7,
-                    }}
-                    style={{ width: "100%", height: "100%" }}
-                  />
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-full z-10"></div>
 
                   {/* Main image */}
                   <div className="relative w-full h-full">
                     <img
                       src="/headshot.png"
                       alt="Paul Adutwum"
-                      className="w-full h-full object-cover object-top rounded-2xl"
+                      className="w-full h-full object-cover object-top rounded-full"
+                      style={{ objectPosition: "top 20%" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl"></div>
-                  </div>
-
-                  {/* Caption at bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <motion.div
-                      initial={{ y: 20, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.3 }}
-                      viewport={{ once: true }}
-                    >
-                      <h3 className="text-2xl font-bold"></h3>
-                      <p className="text-white/80 text-sm"></p>
-                    </motion.div>
                   </div>
                 </motion.div>
               </div>
@@ -197,67 +104,39 @@ export default function About() {
 
                 <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
                   <p>
-                    I am a first generation{" "}
+                    I am a first generation College student studying{" "}
                     <span className="text-blue-600 dark:text-blue-400 font-medium">
-                      Engineering and Mathematics student
+                      Physics with a concentration in Computer Science.
                     </span>{" "}
-                    at Bates College. I combine an engineer’s curiosity with a
-                    designer’s eye to craft applications that make everyday life
-                    smoother and more efficient.
+                    With hands-on experience in full-stack development, I have
+                    contributed to a variety of high-impact projects. I'm
+                    passionate about creating beautiful, user-friendly frontends
+                    paired with solid, scalable backends.
                   </p>
 
                   <p>
-                    My interests span{" "}
+                    Currently, I am actively building projects spanning{" "}
                     <span className="text-blue-600 dark:text-blue-400 font-medium">
-                      full-stack development, data science, AI/ML, and
-                      quantitative finance
+                      full-stack development, hardware systems, and AI
+                      applications
                     </span>
-                    . I gravitate toward projects that push me to learn
-                    something new, break things, and build them back better.
+                    . I am always eager to learn and explore new technologies,
+                    constantly pushing the boundaries of what's possible at the
+                    intersection of software, hardware, and artificial
+                    intelligence.
                   </p>
 
                   <p>
-                    Outside the classroom, you’ll usually find me on the soccer
-                    field, chasing a new personal best at the gym, or freezing
-                    moments through my camera lens. I’ve recently taken up the
-                    piano, dive into the occasional gaming session, and never
-                    miss a chance to lose myself in a well-curated playlist.
-                    Balance fuels my creativity, and each of these passions
-                    keeps my problem-solving fresh.
+                    Outside of academics, I love listening to classic music,
+                    playing soccer, taking photos, watching the Premier League,
+                    and playing chess.
                   </p>
-
-                  <div className="pt-4">
-                    <h4 className="text-xl font-semibold mb-2">Interests</h4>
-                    <div className="flex flex-wrap gap-3">
-                      {interests.map((interest) => (
-                        <motion.div
-                          key={interest.name}
-                          className={`px-3 py-1.5 rounded-full bg-gradient-to-r ${interest.color} text-gray-800 dark:text-white text-sm flex items-center gap-1.5 border border-gray-200 dark:border-gray-700`}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          <interest.icon className="h-3.5 w-3.5" />
-                          <span>{interest.name}</span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </div>
             </motion.div>
           </div>
         </motion.div>
       </div>
-
-      {/* Custom style for glassmorphism */}
-      <style>
-        {`
-        .glass-card {
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-        }
-        `}
-      </style>
     </section>
   );
 }

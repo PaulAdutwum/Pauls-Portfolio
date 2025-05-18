@@ -1,20 +1,21 @@
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { FileText } from "lucide-react";
+import { FileText, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { useTheme } from "@/hooks/use-theme";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import MusicPlayer from "./MusicPlayer";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
+import { useState, useEffect } from "react";
 
 const MENU_ITEMS = [
-  { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Education", href: "#education" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+  { name: "Home", href: "#hero" },
+  { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Blog", href: "#blog" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navigation() {
@@ -22,28 +23,53 @@ export default function Navigation() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const { scrollToElement } = useHashNavigation();
+  const [activeSection, setActiveSection] = useState("hero");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Improved navigation click handler
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    // If it's an internal hash link
-    if (href.startsWith("#")) {
-      e.preventDefault();
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = MENU_ITEMS.map((item) => item.href.substring(1));
+      const scrollPosition = window.scrollY + 100;
 
-      // Extract the section ID from the hash
-      const id = href.substring(1);
-
-      // Update URL without causing page reload
-      window.history.pushState(null, "", href);
-
-      // Try direct scrolling first (for already loaded elements)
-      if (!scrollToElement(id)) {
-        // If direct scrolling fails, dispatch a custom event
-        // This helps with lazy-loaded content
-        window.dispatchEvent(new CustomEvent("navClick", { detail: { id } }));
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
+          }
+        }
       }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNavClick = (href: string) => {
+    const section = href.substring(1);
+    setActiveSection(section);
+    setIsMobileMenuOpen(false);
+
+    // Update URL without causing page reload
+    window.history.pushState(null, "", href);
+
+    // Get the target element
+    const element = document.getElementById(section);
+    if (element) {
+      // Calculate the element's position relative to the viewport
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - 80; // 80px offset for the header
+
+      // Smooth scroll to the element
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -51,7 +77,9 @@ export default function Navigation() {
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-colors duration-300
         ${
-          isDark ? "bg-black/80 border-gray-800" : "bg-white/80 border-gray-200"
+          isDark
+            ? "bg-black/80 border-gray-800"
+            : "bg-[#ffffff]/80 border-[#ffffff]/20"
         }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -61,7 +89,7 @@ export default function Navigation() {
         <div className="flex h-16 items-center justify-between">
           <motion.span
             className={`text-xl font-bold ${
-              isDark ? "text-white" : "text-gray-900"
+              isDark ? "text-white" : "text-[#ffffff]"
             }`}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -69,13 +97,14 @@ export default function Navigation() {
             Paul Adutwum
           </motion.span>
 
+          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-1">
-            {MENU_ITEMS.map(({ label, href }, index) => (
+            {MENU_ITEMS.map((item) => (
               <motion.div
-                key={label}
+                key={item.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: MENU_ITEMS.indexOf(item) * 0.1 }}
                 className="relative"
               >
                 <Button
@@ -85,15 +114,26 @@ export default function Navigation() {
                   className={`flex items-center hover:bg-transparent ${
                     isDark
                       ? "text-gray-200 hover:text-white"
-                      : "text-gray-700 hover:text-blue-600"
+                      : "text-[#ffffff] hover:text-[#ffffff]/80"
                   } relative group overflow-hidden`}
                 >
                   <a
-                    href={href}
-                    className="nav-link"
-                    onClick={(e) => handleNavClick(e, href)}
+                    href={item.href}
+                    className={`nav-link ${
+                      activeSection === item.href.substring(1)
+                        ? isDark
+                          ? "text-white"
+                          : "text-[#ffffff]"
+                        : isDark
+                        ? "text-gray-500 hover:text-white"
+                        : "text-[#ffffff]/80 hover:text-[#ffffff]"
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.href);
+                    }}
                   >
-                    <span className="relative z-10">{label}</span>
+                    <span className="relative z-10">{item.name}</span>
 
                     {/* Enhanced hover effect with wavy animation */}
                     <div className="absolute inset-0 overflow-hidden">
@@ -140,7 +180,7 @@ export default function Navigation() {
                 className={`flex items-center hover:bg-transparent ${
                   isDark
                     ? "text-gray-200 hover:text-white"
-                    : "text-gray-700 hover:text-blue-600"
+                    : "text-[#ffffff] hover:text-[#ffffff]/80"
                 } relative group overflow-hidden`}
               >
                 <a
@@ -187,53 +227,113 @@ export default function Navigation() {
           <div className="flex items-center gap-3">
             <MusicPlayer />
             <ThemeToggle />
-            <div className="md:hidden flex space-x-1">
-              {MENU_ITEMS.map(({ label, href }) => (
-                <Button
-                  key={label}
-                  variant="ghost"
-                  size="sm"
-                  asChild
-                  className={`${
-                    isDark
-                      ? "text-gray-200 hover:text-white hover:bg-gray-800"
-                      : ""
-                  } relative overflow-hidden group`}
-                >
-                  <a
-                    href={href}
-                    className="nav-link-mobile"
-                    onClick={(e) => handleNavClick(e, href)}
-                  >
-                    {label}
-                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                  </a>
-                </Button>
-              ))}
-              <Button
-                variant="ghost"
-                size="sm"
-                asChild
-                className={`${
-                  isDark
-                    ? "text-gray-200 hover:text-white hover:bg-gray-800"
-                    : ""
-                } relative overflow-hidden group`}
-              >
-                <a
-                  href="/_Paul_Adutwum_Resume.py.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="nav-link-mobile"
-                >
-                  Resume
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </a>
-              </Button>
-            </div>
+
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className={`md:hidden ${
+                isDark
+                  ? "text-white hover:text-white/80"
+                  : "text-[#ffffff] hover:text-[#ffffff]/80"
+              }`}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </Button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className={`md:hidden overflow-hidden ${
+              isDark ? "bg-black/95" : "bg-[#ffffff]/95"
+            } backdrop-blur-md border-t ${
+              isDark ? "border-gray-800" : "border-[#ffffff]/20"
+            }`}
+          >
+            <div className="container mx-auto px-4 py-4">
+              <div className="flex flex-col space-y-2">
+                {MENU_ITEMS.map((item) => (
+                  <Button
+                    key={item.name}
+                    variant="ghost"
+                    size="sm"
+                    asChild
+                    className={`w-full justify-start ${
+                      isDark
+                        ? "text-gray-200 hover:text-white hover:bg-gray-800"
+                        : "text-[#ffffff] hover:text-[#ffffff]/80 hover:bg-[#ffffff]/10"
+                    }`}
+                  >
+                    <a
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const section = item.href.substring(1);
+                        setActiveSection(section);
+                        setIsMobileMenuOpen(false);
+
+                        // Update URL without causing page reload
+                        window.history.pushState(null, "", item.href);
+
+                        // Get the target element
+                        const element = document.getElementById(section);
+                        if (element) {
+                          // Calculate the element's position relative to the viewport
+                          const elementPosition =
+                            element.getBoundingClientRect().top;
+                          const offsetPosition =
+                            elementPosition + window.pageYOffset - 80; // 80px offset for the header
+
+                          // Smooth scroll to the element
+                          window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth",
+                          });
+                        }
+                      }}
+                      className="flex items-center space-x-2"
+                    >
+                      <span>{item.name}</span>
+                    </a>
+                  </Button>
+                ))}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  asChild
+                  className={`w-full justify-start ${
+                    isDark
+                      ? "text-gray-200 hover:text-white hover:bg-gray-800"
+                      : "text-[#ffffff] hover:text-[#ffffff]/80 hover:bg-[#ffffff]/10"
+                  }`}
+                >
+                  <a
+                    href="/_Paul_Adutwum_Resume.py.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2"
+                  >
+                    <span>Resume</span>
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

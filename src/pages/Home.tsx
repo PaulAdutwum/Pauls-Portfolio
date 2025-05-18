@@ -9,7 +9,6 @@ import Education from "@/components/sections/Education"; // Eagerly load Educati
 const Experience = lazy(() => import("@/components/sections/Experience"));
 const Projects = lazy(() => import("@/components/sections/Projects"));
 const Awards = lazy(() => import("@/components/sections/Awards"));
-const Blog = lazy(() => import("@/components/sections/Blog"));
 const Contact = lazy(() => import("@/components/sections/Contact"));
 
 // Simple loading placeholder
@@ -42,11 +41,6 @@ export default function Home() {
       <LazyLoad rootMargin="700px" sectionId="awards">
         <Suspense fallback={<LoadingPlaceholder />}>
           <Awards />
-        </Suspense>
-      </LazyLoad>
-      <LazyLoad rootMargin="800px" sectionId="blog">
-        <Suspense fallback={<LoadingPlaceholder />}>
-          <Blog />
         </Suspense>
       </LazyLoad>
       <LazyLoad rootMargin="900px" sectionId="contact">

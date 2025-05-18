@@ -294,7 +294,7 @@ export default function Contact() {
                     <div>
                       <h4 className="text-lg font-semibold mb-1">Email</h4>
                       <p className="text-gray-600 dark:text-gray-400 mb-3">
-                        I'll respond as soon as possible
+                        Let's connect and discuss your project
                       </p>
                       <a
                         href="mailto:pauladutwum303@gmail.com"

@@ -35,9 +35,6 @@ export default function Hero() {
   const isDark = theme === "dark";
   const [nameHovered, setNameHovered] = useState(false);
 
-  // Professional titles with consistent color scheme
-  const titles = ["Artist", "Designer", "Mathematician", "Leader", "Developer"];
-
   useEffect(() => {
     setTimeout(() => {
       confetti({
@@ -139,25 +136,6 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
-        {/* Professional Titles with fluid animation */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-x-4 text-white mb-10"
-          variants={itemVariants}
-        >
-          {titles.map((title, index) => (
-            <motion.span
-              key={title}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.4 }}
-              className="text-lg md:text-xl font-light tracking-wide text-white/80"
-            >
-              {index > 0 && <span className="text-white/30 mr-4">•</span>}
-              {title}
-            </motion.span>
-          ))}
-        </motion.div>
-
         {/* Name with enhanced stylish design */}
         <motion.div
           className="overflow-hidden mb-8 relative"
@@ -244,7 +222,7 @@ export default function Hero() {
         {/* Education */}
         <motion.div className="text-center mb-24" variants={itemVariants}>
           <h2 className="text-xl md:text-2xl font-light text-white/90 tracking-wider mb-1">
-            Engineering and Mathematics student
+            Physics student with a concentration in Computer Science
           </h2>
           <p className="text-lg text-white/80 font-light">Bates College</p>
         </motion.div>
