@@ -284,20 +284,16 @@ export default function Experience() {
                         {/* Company logo */}
                         <div className="relative z-10 flex flex-col items-center">
                           {exp.logoPath ? (
-                            <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md border-2 border-white/50">
+                            <div className="h-14 w-14 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md border-2 border-white/50">
                               <img
                                 src={exp.logoPath}
                                 alt={exp.company}
-                                className={`w-12 h-12 object-contain p-1 ${
-                                  exp.company === "African Lanuages Lab"
-                                    ? "scale-125"
-                                    : ""
-                                }`}
+                                className="w-10 h-10 object-contain p-1"
                               />
                             </div>
                           ) : (
                             <div className="h-14 w-14 rounded-full bg-white/20 flex items-center justify-center overflow-hidden shadow-md border-2 border-white/30">
-                              {exp.icon}
+                              <Bot className="w-10 h-10 text-white" />
                             </div>
                           )}
                         </div>
