@@ -109,7 +109,7 @@ export default function About() {
                       Physics with a focus in Computer Science.
                     </span>{" "}
                     With hands-on experience in full-stack development, I have
-                    contributed to a variety of high-impact projects.I am
+                    contributed to a variety of high-impact projects. I am
                     passionate about the intersection of software engineering,
                     artificial intelligence, and hardware systems.
                   </p>
