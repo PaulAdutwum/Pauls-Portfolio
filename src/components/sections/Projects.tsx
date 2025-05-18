@@ -375,20 +375,20 @@ export default function Projects() {
                                 </h3>
                               </div>
 
-                              <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-4 line-clamp-3 md:line-clamp-none">
+                              <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-4">
                                 {project.description}
                               </p>
                             </div>
 
                             <div>
                               <h4 className="text-xs md:text-sm font-semibold mb-2">
-                                Technologies:
+                                Key Technologies:
                               </h4>
                               <div className="flex flex-wrap gap-1.5 mb-4">
                                 {[
-                                  ...project.stack.frontend,
-                                  ...project.stack.backend,
-                                  ...project.stack.tools,
+                                  ...project.stack.frontend.slice(0, 3),
+                                  ...project.stack.backend.slice(0, 2),
+                                  ...project.stack.tools.slice(0, 2),
                                 ].map((tech) => (
                                   <Badge
                                     key={tech}
@@ -600,20 +600,20 @@ export default function Projects() {
                                 </h3>
                               </div>
 
-                              <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-4 line-clamp-3 md:line-clamp-none">
+                              <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-4">
                                 {project.description}
                               </p>
                             </div>
 
                             <div>
                               <h4 className="text-xs md:text-sm font-semibold mb-2">
-                                Technologies:
+                                Key Technologies:
                               </h4>
                               <div className="flex flex-wrap gap-1.5 mb-4">
                                 {[
-                                  ...project.stack.frontend,
-                                  ...project.stack.backend,
-                                  ...project.stack.tools,
+                                  ...project.stack.frontend.slice(0, 3),
+                                  ...project.stack.backend.slice(0, 2),
+                                  ...project.stack.tools.slice(0, 2),
                                 ].map((tech) => (
                                   <Badge
                                     key={tech}

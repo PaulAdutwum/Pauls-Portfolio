@@ -137,14 +137,14 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Form */}
+          <div className="flex flex-col gap-12 items-center">
+            {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="order-2 lg:order-1"
+              className="w-full max-w-xl"
             >
               <form
                 ref={form}
@@ -261,91 +261,51 @@ export default function Contact() {
               </form>
             </motion.div>
 
-            {/* Right side - Contact Info Cards */}
+            {/* Social Media Card */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="order-1 lg:order-2 space-y-6"
+              className="w-full max-w-xl"
             >
-              <div className="text-center lg:text-left mb-8">
-                <h3 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400">
-                  Contact Information
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Ready to bring your ideas to life? Let's create something
-                  amazing together.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 gap-6">
-                <motion.div
-                  whileHover={{
-                    y: -5,
-                    boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
-                  }}
-                  className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/50 shadow-lg border border-blue-100/30 dark:border-blue-800/30 backdrop-blur-sm"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-lg">
-                      <Mail className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold mb-1">Email</h4>
-                      <p className="text-gray-600 dark:text-gray-400 mb-3">
-                        Let's connect and discuss your project
-                      </p>
+              <motion.div
+                whileHover={{
+                  y: -5,
+                  boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
+                }}
+                className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/50 shadow-lg border border-blue-100/30 dark:border-blue-800/30 backdrop-blur-sm"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-lg">
+                    <MessageSquare className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold mb-1">Social Media</h4>
+                    <p className="text-gray-600 dark:text-gray-400 mb-3">
+                      Connect with me on social platforms
+                    </p>
+                    <div className="flex gap-3">
                       <a
-                        href="mailto:pauladutwum303@gmail.com"
-                        className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                        href="https://github.com/PaulAdutwum/Lumeo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
-                        pauladutwum303@gmail.com
+                        <Github className="h-6 w-6" />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/paul-adutwum-aaaabb27b/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      >
+                        <Linkedin className="h-6 w-6" />
                       </a>
                     </div>
                   </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{
-                    y: -5,
-                    boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
-                  }}
-                  className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/50 shadow-lg border border-blue-100/30 dark:border-blue-800/30 backdrop-blur-sm"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-3 rounded-lg">
-                      <MessageSquare className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold mb-1">
-                        Social Media
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-400 mb-3">
-                        Connect with me on social platforms
-                      </p>
-                      <div className="flex gap-3">
-                        <a
-                          href="https://github.com/PaulAdutwum/Lumeo"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        >
-                          <Github className="h-6 w-6" />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/paul-adutwum-aaaabb27b/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        >
-                          <Linkedin className="h-6 w-6" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </motion.div>
