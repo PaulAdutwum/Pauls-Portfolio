@@ -124,11 +124,9 @@ export default function Skills() {
               Technical Skills
             </h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              I am passionate about the intersection of software engineering,
-              artificial intelligence, and hardware systems. My focus lies in
-              building intelligent applications that bridge the gap between
-              digital and physical worlds, combining modern software practices
-              with cutting-edge AI/ML technologies.
+              Through coursework and personal projects, I've built applications
+              at the intersection of software engineering, artificial
+              intelligence, and data modeling.
             </p>
           </motion.div>
 

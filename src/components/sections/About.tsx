@@ -106,24 +106,12 @@ export default function About() {
                   <p>
                     I am a first generation College student studying{" "}
                     <span className="text-blue-600 dark:text-blue-400 font-medium">
-                      Physics with a concentration in Computer Science.
+                      Physics with a focus in Computer Science.
                     </span>{" "}
                     With hands-on experience in full-stack development, I have
-                    contributed to a variety of high-impact projects. I'm
-                    passionate about creating beautiful, user-friendly frontends
-                    paired with solid, scalable backends.
-                  </p>
-
-                  <p>
-                    Currently, I am actively building projects spanning{" "}
-                    <span className="text-blue-600 dark:text-blue-400 font-medium">
-                      full-stack development, hardware systems, and AI
-                      applications
-                    </span>
-                    . I am always eager to learn and explore new technologies,
-                    constantly pushing the boundaries of what's possible at the
-                    intersection of software, hardware, and artificial
-                    intelligence.
+                    contributed to a variety of high-impact projects.I am
+                    passionate about the intersection of software engineering,
+                    artificial intelligence, and hardware systems.
                   </p>
 
                   <p>
