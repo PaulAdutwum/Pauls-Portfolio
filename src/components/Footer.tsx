@@ -52,7 +52,7 @@ export default function Footer() {
                 className="border-blue-100 dark:border-blue-900/30 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-blue-600 dark:text-blue-400"
               >
                 <a
-                  href="https://github.com/PaulAdutwum/Lumeo"
+                  href="https://github.com/PaulAdutwum"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
