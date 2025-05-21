@@ -14,6 +14,7 @@ import {
   Bot,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 
 // Experience data
 const experiences = [
@@ -107,13 +108,18 @@ const experiences = [
 ];
 
 export default function Experience() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
     <section
       id="experience"
-      className="py-20 relative bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-black text-gray-900 dark:text-white transition-colors duration-300"
+      className={`py-20 relative ${
+        isDark ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
+      } transition-colors duration-300 px-6 sm:px-8 md:px-12 lg:px-16 will-change-scroll`}
     >
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden opacity-10">
+      {/* Background decorative elements - moved down to avoid overlap with title */}
+      <div className="absolute inset-0 overflow-hidden opacity-10 pt-40">
         <div className="absolute w-full h-0.5 bg-blue-600 dark:bg-blue-400 top-1/2 transform -translate-y-1/2"></div>
       </div>
 
@@ -125,17 +131,17 @@ export default function Experience() {
           viewport={{ once: true }}
         >
           <div className="flex flex-col items-center mb-16">
-            <h2 className="text-4xl font-bold text-center relative">
+            <h2 className="text-4xl md:text-5xl font-bold text-center relative font-sans mt-4">
               Experience
               <motion.div
-                className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 rounded-full"
+                className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 rounded-full"
                 initial={{ width: 0 }}
-                whileInView={{ width: "80px" }}
+                whileInView={{ width: "100px" }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
               />
             </h2>
-            <p className="mt-6 text-gray-600 dark:text-gray-400 text-center max-w-2xl">
+            <p className="mt-8 text-gray-600 dark:text-gray-400 text-center max-w-2xl font-sans text-lg md:text-xl">
               With hands-on experience in{" "}
               <span className="font-medium italic">full-stack development</span>
               , I have contributed to a variety of high-impact projects. I'm
@@ -146,21 +152,21 @@ export default function Experience() {
           </div>
 
           {/* Resume button */}
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-16">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"
-                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-full py-2 px-6 shadow-lg"
+                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-full py-3 px-8 shadow-lg font-sans text-base md:text-lg"
                 asChild
               >
                 <a
                   href="/Paul_Adutwum_SWE_Resume_AI2025.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-3"
                 >
                   <span>View my Resume</span>
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-5 h-5" />
                 </a>
               </Button>
             </motion.div>
@@ -169,7 +175,7 @@ export default function Experience() {
           {/* Experience Cards */}
           <div className="space-y-16 md:space-y-24">
             {/* Timeline line - different styles for mobile and desktop */}
-            <div className="absolute hidden md:block left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-blue-600 to-blue-400 transform -translate-x-1/2 z-0 rounded-full opacity-70"></div>
+            <div className="absolute hidden md:block left-1/2 top-60 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-blue-600 to-blue-400 transform -translate-x-1/2 z-0 rounded-full opacity-70"></div>
 
             {/* Mobile vertical connector - thinner and more subtle */}
             <div className="absolute md:hidden left-1/2 top-10 bottom-10 w-0.5 bg-gradient-to-b from-transparent via-blue-400/50 to-transparent transform -translate-x-1/2 z-0"></div>
