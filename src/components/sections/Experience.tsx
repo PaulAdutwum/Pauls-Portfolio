@@ -114,24 +114,24 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className={`py-20 relative ${
+      className={`py-16 md:py-20 relative ${
         isDark ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
-      } transition-colors duration-300 px-6 sm:px-8 md:px-12 lg:px-16 will-change-scroll`}
+      } transition-colors duration-300 px-1 sm:px-4 md:px-10 lg:px-16 will-change-scroll`}
     >
       {/* Background decorative elements - moved down to avoid overlap with title */}
       <div className="absolute inset-0 overflow-hidden opacity-10 pt-40">
         <div className="absolute w-full h-0.5 bg-blue-600 dark:bg-blue-400 top-1/2 transform -translate-y-1/2"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 max-w-6xl">
+      <div className="container mx-auto px-1 sm:px-2 md:px-4 relative z-10 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col items-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-center relative font-sans mt-4">
+          <div className="flex flex-col items-center mb-8 md:mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-center relative font-sans mt-4">
               Experience
               <motion.div
                 className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 rounded-full"
@@ -141,7 +141,7 @@ export default function Experience() {
                 viewport={{ once: true }}
               />
             </h2>
-            <p className="mt-8 text-gray-600 dark:text-gray-400 text-center max-w-2xl font-sans text-lg md:text-xl">
+            <p className="mt-4 md:mt-8 text-gray-600 dark:text-gray-400 text-center max-w-2xl font-sans text-sm sm:text-lg md:text-xl">
               With hands-on experience in{" "}
               <span className="font-medium italic">full-stack development</span>
               , I have contributed to a variety of high-impact projects. I'm
@@ -152,7 +152,7 @@ export default function Experience() {
           </div>
 
           {/* Resume button */}
-          <div className="flex justify-center mb-16">
+          <div className="flex justify-center mb-8 md:mb-16">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"
@@ -173,7 +173,7 @@ export default function Experience() {
           </div>
 
           {/* Experience Cards */}
-          <div className="space-y-16 md:space-y-24">
+          <div className="space-y-8 sm:space-y-12 md:space-y-24">
             {/* Timeline line - different styles for mobile and desktop */}
             <div className="absolute hidden md:block left-1/2 top-60 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-blue-600 to-blue-400 transform -translate-x-1/2 z-0 rounded-full opacity-70"></div>
 
@@ -246,7 +246,7 @@ export default function Experience() {
 
                 {/* Card - centered on mobile, alternating sides on desktop */}
                 <div
-                  className={`mx-4 sm:mx-8 md:mx-0 ${
+                  className={`mx-1 sm:mx-4 md:mx-8 ${
                     index % 2 === 0
                       ? "md:pr-[calc(50%+40px)] lg:pr-[calc(50%+60px)]"
                       : "md:pl-[calc(50%+40px)] lg:pl-[calc(50%+60px)]"

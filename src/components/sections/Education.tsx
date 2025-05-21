@@ -19,7 +19,7 @@ export default function Education() {
   return (
     <section
       id="education"
-      className="py-20 bg-gradient-to-b from-gray-100 to-white dark:from-black dark:to-gray-900 text-gray-900 dark:text-white transition-colors duration-300 relative overflow-hidden px-6 sm:px-8 md:px-12 lg:px-16"
+      className="py-16 md:py-20 bg-gradient-to-b from-gray-100 to-white dark:from-black dark:to-gray-900 text-gray-900 dark:text-white transition-colors duration-300 relative overflow-hidden px-4 sm:px-6 md:px-10 lg:px-16"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -51,19 +51,21 @@ export default function Education() {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-2 sm:px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col items-center mb-12">
-            <h2 className="text-4xl font-bold text-center">Education</h2>
+          <div className="flex flex-col items-center mb-8 md:mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-center">
+              Education
+            </h2>
             <div className="mt-3 h-1 w-24 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* Education Info - Enhanced Card */}
             <motion.div
               whileHover={{
@@ -75,24 +77,24 @@ export default function Education() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl blur-xl transform translate-y-4 scale-95" />
               <Card className="glass-card bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-0 shadow-xl rounded-2xl transition-all duration-300 h-full overflow-hidden relative z-10">
-                <CardHeader className="flex flex-row items-center gap-4 p-6">
+                <CardHeader className="flex flex-row items-center gap-3 md:gap-4 p-4 md:p-6">
                   <motion.div
-                    className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white"
+                    className="p-2 md:p-3 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white"
                     whileHover={{ rotate: [0, -5, 5, -5, 0], scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <GraduationCap className="h-8 w-8" />
+                    <GraduationCap className="h-6 w-6 md:h-8 md:w-8" />
                   </motion.div>
                   <div>
-                    <CardTitle className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                    <CardTitle className="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400">
                       Bates College
                     </CardTitle>
-                    <p className="text-gray-600 dark:text-gray-300 font-medium">
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 font-medium">
                       BS in Physics with a concentration in Computer Science
                     </p>
                   </div>
                 </CardHeader>
-                <CardContent className="p-6 pt-0">
+                <CardContent className="p-4 md:p-6 pt-0 md:pt-0">
                   <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                     <motion.li
                       className="flex items-center gap-2"
@@ -208,24 +210,24 @@ export default function Education() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl blur-xl transform translate-y-4 scale-95" />
               <Card className="glass-card bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-0 shadow-xl rounded-2xl transition-all duration-300 h-full overflow-hidden relative z-10">
-                <CardHeader className="flex flex-row items-center gap-4 p-6">
+                <CardHeader className="flex flex-row items-center gap-3 md:gap-4 p-4 md:p-6">
                   <motion.div
-                    className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white"
+                    className="p-2 md:p-3 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white"
                     whileHover={{ rotate: [0, -5, 5, -5, 0], scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <Award className="h-8 w-8" />
+                    <Award className="h-6 w-6 md:h-8 md:w-8" />
                   </motion.div>
                   <div>
-                    <CardTitle className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                    <CardTitle className="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400">
                       Involvement & Leadership
                     </CardTitle>
-                    <p className="text-gray-600 dark:text-gray-300 font-medium">
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 font-medium">
                       Campus Activities & Positions
                     </p>
                   </div>
                 </CardHeader>
-                <CardContent className="p-6 pt-0">
+                <CardContent className="p-4 md:p-6 pt-0 md:pt-0">
                   <div className="space-y-6">
                     <div>
                       <h4 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-2">
