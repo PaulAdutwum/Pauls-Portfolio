@@ -173,7 +173,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 relative bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-black text-gray-900 dark:text-white transition-colors duration-300 px-6 sm:px-8 md:px-12 lg:px-16"
+      className="py-16 md:py-20 relative bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-black text-gray-900 dark:text-white transition-colors duration-300 px-1 sm:px-4 md:px-10 lg:px-16"
     >
       {/* Background decorative elements with fluid animations */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
@@ -218,15 +218,15 @@ export default function Projects() {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 max-w-6xl">
+      <div className="container mx-auto px-1 sm:px-2 md:px-4 relative z-10 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col items-center mb-16">
-            <h2 className="text-4xl font-bold text-center relative">
+          <div className="flex flex-col items-center mb-8 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-center relative">
               <span className="text-blue-600 dark:text-blue-400">Personal</span>{" "}
               Projects
               <motion.div
@@ -237,7 +237,7 @@ export default function Projects() {
                 viewport={{ once: true }}
               />
             </h2>
-            <p className="mt-6 text-gray-600 dark:text-gray-400 text-center max-w-2xl">
+            <p className="mt-4 md:mt-6 text-gray-600 dark:text-gray-400 text-center max-w-2xl text-sm sm:text-base">
               My personal projects span{" "}
               <span className="font-medium text-blue-600 dark:text-blue-400">
                 Fullstack Development
@@ -256,7 +256,7 @@ export default function Projects() {
           {/* LinkedIn-style Project Timeline */}
           <div className="relative">
             {/* Experience Cards */}
-            <div className="space-y-32 md:space-y-40">
+            <div className="space-y-16 sm:space-y-24 md:space-y-32 md:space-y-40">
               {/* Timeline line - different styles for mobile and desktop */}
               <div className="absolute hidden md:block left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 dark:from-blue-500 dark:via-blue-600 dark:to-blue-700 rounded-full z-0 opacity-70"></div>
 
@@ -331,7 +331,7 @@ export default function Projects() {
                   )}
 
                   {/* Project Card */}
-                  <div className="mt-8 mx-4 sm:mx-8 md:mx-16 lg:mx-20">
+                  <div className="mt-8 mx-1 sm:mx-4 md:mx-16 lg:mx-20">
                     <motion.div
                       whileHover={{
                         y: -5,
@@ -346,7 +346,7 @@ export default function Projects() {
                       {/* Mobile layout (stack) for small screens, grid for larger */}
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-6">
                         {/* Image/video for small screens only - top position */}
-                        <div className="relative h-56 lg:hidden">
+                        <div className="relative h-48 sm:h-56 lg:hidden">
                           {project.type === "video" ? (
                             <>
                               <video
@@ -392,21 +392,22 @@ export default function Projects() {
                         </div>
 
                         {/* Project details column */}
-                        <div className="p-5 lg:p-6 flex flex-col justify-between">
+                        <div className="p-3 sm:p-5 lg:p-6 flex flex-col justify-between">
                           <div>
-                            <div className="flex items-center gap-3 mb-4">
-                              <div className="bg-gradient-to-r from-blue-600 to-blue-500 p-2 md:p-2.5 rounded-lg shadow-sm">
+                            <div className="flex items-center gap-2 sm:gap-3 mb-3 md:mb-4">
+                              <div className="bg-gradient-to-r from-blue-600 to-blue-500 p-1.5 md:p-2.5 rounded-lg shadow-sm">
                                 {cloneElement(project.icon, {
-                                  className: "w-4 h-4 md:w-5 md:h-5 text-white",
+                                  className:
+                                    "w-3.5 h-3.5 md:w-5 md:h-5 text-white",
                                 })}
                               </div>
-                              <h3 className="text-xl md:text-2xl font-bold">
+                              <h3 className="text-lg md:text-2xl font-bold">
                                 {project.title}
                               </h3>
                             </div>
 
                             {/* Description - converted to bullet points */}
-                            <div className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-4 sm:mb-5">
+                            <div className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-3 sm:mb-5">
                               {project.description
                                 .split(". ")
                                 .filter(

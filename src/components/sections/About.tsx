@@ -8,9 +8,9 @@ export default function About() {
   return (
     <section
       id="about"
-      className={`py-20 relative ${
+      className={`py-16 md:py-20 relative ${
         isDark ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-      } transition-colors duration-300 px-6 sm:px-8 md:px-12 lg:px-16`}
+      } transition-colors duration-300 px-4 sm:px-6 md:px-10 lg:px-16`}
     >
       {/* About section decorative elements */}
       <div className="absolute left-[5%] bottom-[10%] w-52 h-52 overflow-hidden pointer-events-none z-0 opacity-5">
@@ -58,16 +58,16 @@ export default function About() {
           </div>
 
           {/* Modern About Section with Image and Text Side-by-Side */}
-          <div className="flex flex-col lg:flex-row gap-12 mb-20">
+          <div className="flex flex-col lg:flex-row gap-8 md:gap-12 mb-16 md:mb-20">
             {/* Image Column with Animation */}
             <motion.div
-              className="lg:w-1/2 flex justify-center lg:justify-end"
+              className="lg:w-1/2 flex justify-center mb-6 lg:mb-0"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+              <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
                 {/* Main image container with subtle hover effect */}
                 <motion.div
                   className="relative w-full h-full overflow-hidden rounded-full shadow-xl"
@@ -106,12 +106,12 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="space-y-8 max-w-lg">
-                <h3 className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-4 font-sans">
+              <div className="space-y-6 md:space-y-8 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 md:mb-4 font-sans">
                   Hello! My name is Paul Adutwum
                 </h3>
 
-                <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed font-sans text-lg md:text-xl">
+                <div className="space-y-4 md:space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed font-sans text-base sm:text-lg md:text-xl">
                   <p>
                     I am a first generation College student studying{" "}
                     <span className="text-blue-600 dark:text-blue-400 font-medium">

@@ -99,11 +99,11 @@ export default function Hero() {
   return (
     <motion.section
       id="hero"
-      className={`min-h-screen flex flex-col items-center justify-center text-center relative overflow-hidden ${
+      className={`pt-28 md:pt-16 min-h-screen flex flex-col items-center justify-center text-center relative overflow-hidden ${
         isDark
           ? "bg-gradient-to-b from-gray-950 to-gray-900"
           : "bg-gradient-to-b from-gray-50 to-white"
-      } px-6 sm:px-8 md:px-12 lg:px-16`}
+      } px-4 sm:px-6 md:px-10 lg:px-16`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -117,14 +117,14 @@ export default function Hero() {
       >
         {/* Professional Image */}
         <motion.div
-          className="mb-12"
+          className="mb-6 md:mb-12 mt-4"
           variants={itemVariants}
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.7 }}
         >
           <motion.div
-            className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full mx-auto shadow-xl"
+            className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-80 md:h-80 overflow-hidden rounded-full mx-auto shadow-xl"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300, damping: 10 }}
           >
@@ -143,18 +143,18 @@ export default function Hero() {
 
         {/* Name with typing animation */}
         <motion.div
-          className="overflow-hidden mb-10 relative"
+          className="overflow-hidden mb-4 md:mb-10 relative"
           variants={itemVariants}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.7 }}
         >
-          <div className="py-4 px-6 inline-block">
+          <div className="py-2 md:py-4 px-3 md:px-6 inline-block">
             {showTyping ? (
-              <div className="h-[80px] md:h-[100px] flex items-center justify-center">
+              <div className="h-[60px] sm:h-[70px] md:h-[100px] flex items-center justify-center">
                 <TypingText
                   text="PAUL ADUTWUM"
-                  className={`text-5xl md:text-7xl lg:text-8xl font-bold ${
+                  className={`text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-bold ${
                     isDark ? "text-white" : "text-blue-700"
                   }`}
                   delay={400}
@@ -162,7 +162,7 @@ export default function Hero() {
               </div>
             ) : (
               <motion.h1
-                className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wide font-sans"
+                className="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-bold tracking-wide font-sans"
                 onMouseEnter={() => setNameHovered(true)}
                 onMouseLeave={() => setNameHovered(false)}
                 whileHover={{ scale: 1.02 }}
@@ -212,7 +212,7 @@ export default function Hero() {
 
         {/* Education with typewriter effect */}
         <motion.div
-          className="text-center mb-12 h-18 md:h-22"
+          className="text-center mb-6 md:mb-12 h-14 md:h-22"
           variants={itemVariants}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -220,7 +220,7 @@ export default function Hero() {
         >
           {animationComplete ? (
             <div
-              className={`text-2xl md:text-3xl font-light tracking-wider font-sans ${
+              className={`text-lg sm:text-xl md:text-3xl font-light tracking-wider font-sans ${
                 isDark ? "text-white/90" : "text-gray-800"
               }`}
             >
@@ -239,7 +239,7 @@ export default function Hero() {
 
         {/* Social Links */}
         <motion.div
-          className="flex space-x-6 mb-16"
+          className="flex space-x-6 mb-8 md:mb-16"
           variants={itemVariants}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -269,7 +269,7 @@ export default function Hero() {
 
         {/* Scroll Indicator with enhanced styling - positioned at extreme bottom right */}
         <motion.div
-          className="absolute bottom-0 right-4 md:right-6 lg:right-8 mb-4 md:mb-6"
+          className="absolute bottom-0 right-2 sm:right-4 md:right-6 lg:right-8 mb-8 sm:mb-6 md:mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -281,12 +281,12 @@ export default function Hero() {
             href="#about"
             className={`flex flex-col items-center ${
               isDark ? "text-white" : "text-gray-800"
-            } transition-all duration-300 group font-sans text-base md:text-lg`}
+            } transition-all duration-300 group font-sans text-xs sm:text-sm md:text-base`}
             whileHover={{ y: -5 }}
             whileTap={{ y: 2 }}
           >
             <motion.div
-              className={`px-4 py-2 rounded-full backdrop-blur-sm ${
+              className={`px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full backdrop-blur-sm ${
                 isDark
                   ? "bg-blue-500/15 border border-blue-500/20"
                   : "bg-blue-400/15 border border-blue-400/30"
@@ -307,7 +307,7 @@ export default function Hero() {
             </motion.div>
             <div className="relative flex flex-col items-center mt-2">
               <motion.div
-                className={`w-12 h-12 rounded-full border-2 ${
+                className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full border-2 ${
                   isDark ? "border-white/50" : "border-gray-800/50"
                 } flex items-center justify-center bg-gradient-to-b ${
                   isDark
@@ -315,14 +315,14 @@ export default function Hero() {
                     : "from-blue-400/20 to-blue-600/10"
                 } backdrop-blur-sm`}
                 animate={{
-                  y: [0, 12, 0],
+                  y: [0, 10, 0],
                   boxShadow: [
                     isDark
                       ? "0 0 0 rgba(59, 130, 246, 0)"
                       : "0 0 0 rgba(96, 165, 250, 0)",
                     isDark
-                      ? "0 0 12px rgba(59, 130, 246, 0.4)"
-                      : "0 0 12px rgba(96, 165, 250, 0.3)",
+                      ? "0 0 10px rgba(59, 130, 246, 0.4)"
+                      : "0 0 10px rgba(96, 165, 250, 0.3)",
                     isDark
                       ? "0 0 0 rgba(59, 130, 246, 0)"
                       : "0 0 0 rgba(96, 165, 250, 0)",
@@ -353,15 +353,15 @@ export default function Hero() {
                     repeatType: "loop",
                   }}
                 >
-                  <ArrowDown className="w-5 h-5" />
+                  <ArrowDown className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                 </motion.div>
               </motion.div>
               <motion.div
-                className={`absolute top-full w-[2px] h-14 ${
+                className={`absolute top-full w-[1px] sm:w-[2px] h-8 sm:h-10 md:h-14 ${
                   isDark ? "bg-white/20" : "bg-gray-800/20"
                 }`}
                 animate={{
-                  height: [10, 20, 10],
+                  height: [5, 10, 5],
                   opacity: [0.2, 0.5, 0.2],
                 }}
                 transition={{
