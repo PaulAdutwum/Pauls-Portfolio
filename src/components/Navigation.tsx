@@ -184,7 +184,7 @@ export default function Navigation() {
                 } relative group overflow-hidden`}
               >
                 <a
-                  href="/Paul_Adutwum_SWE_Resume_%20AI2025.pdf"
+                  href="/Paul_Adutwum_SWE_Resume_AI2025.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nav-link"
@@ -321,7 +321,7 @@ export default function Navigation() {
                   }`}
                 >
                   <a
-                    href="/Paul_Adutwum_SWE_Resume_%20AI2025.pdf"
+                    href="/Paul_Adutwum_SWE_Resume_AI2025.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2"
