@@ -173,7 +173,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 relative bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-black text-gray-900 dark:text-white transition-colors duration-300"
+      className="py-20 relative bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-black text-gray-900 dark:text-white transition-colors duration-300 px-6 sm:px-8 md:px-12 lg:px-16"
     >
       {/* Background decorative elements with fluid animations */}
       <div className="absolute inset-0 overflow-hidden opacity-10">
@@ -227,8 +227,8 @@ export default function Projects() {
         >
           <div className="flex flex-col items-center mb-16">
             <h2 className="text-4xl font-bold text-center relative">
-              <span className="text-blue-600 dark:text-blue-400">Projects</span>{" "}
-              Showcase
+              <span className="text-blue-600 dark:text-blue-400">Personal</span>{" "}
+              Projects
               <motion.div
                 className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 rounded-full"
                 initial={{ width: 0 }}

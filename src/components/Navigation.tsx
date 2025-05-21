@@ -4,7 +4,6 @@ import { FileText, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { useTheme } from "@/hooks/use-theme";
 import { motion, AnimatePresence } from "framer-motion";
-import MusicPlayer from "./MusicPlayer";
 import { useHashNavigation } from "@/hooks/useHashNavigation";
 import { useState, useEffect } from "react";
 
@@ -77,20 +76,18 @@ export default function Navigation() {
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-colors duration-300
         ${
-          isDark
-            ? "bg-black/80 border-gray-800"
-            : "bg-[#ffffff]/80 border-[#ffffff]/20"
-        }`}
+          isDark ? "bg-black/80 border-gray-800" : "bg-white border-gray-200"
+        } px-6 sm:px-8 md:px-12 lg:px-16`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-4">
+      <div className="max-w-[1600px] mx-auto">
         <div className="flex h-16 items-center justify-between">
           <motion.span
-            className={`text-xl font-bold ${
-              isDark ? "text-white" : "text-[#ffffff]"
-            }`}
+            className={`text-xl md:text-2xl font-bold ${
+              isDark ? "text-white" : "text-gray-900"
+            } font-sans`}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
@@ -98,7 +95,7 @@ export default function Navigation() {
           </motion.span>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-1">
+          <div className="hidden md:flex space-x-2">
             {MENU_ITEMS.map((item) => (
               <motion.div
                 key={item.name}
@@ -114,8 +111,8 @@ export default function Navigation() {
                   className={`flex items-center hover:bg-transparent ${
                     isDark
                       ? "text-gray-200 hover:text-white"
-                      : "text-[#ffffff] hover:text-[#ffffff]/80"
-                  } relative group overflow-hidden`}
+                      : "text-gray-900 hover:text-gray-700"
+                  } relative group overflow-hidden font-sans text-base md:text-lg rounded-lg px-3 py-2`}
                 >
                   <a
                     href={item.href}
@@ -123,10 +120,10 @@ export default function Navigation() {
                       activeSection === item.href.substring(1)
                         ? isDark
                           ? "text-white"
-                          : "text-[#ffffff]"
+                          : "text-gray-900"
                         : isDark
                         ? "text-gray-500 hover:text-white"
-                        : "text-[#ffffff]/80 hover:text-[#ffffff]"
+                        : "text-gray-700 hover:text-gray-900"
                     }`}
                     onClick={(e) => {
                       e.preventDefault();
@@ -167,6 +164,7 @@ export default function Navigation() {
                 </Button>
               </motion.div>
             ))}
+
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -180,11 +178,11 @@ export default function Navigation() {
                 className={`flex items-center hover:bg-transparent ${
                   isDark
                     ? "text-gray-200 hover:text-white"
-                    : "text-[#ffffff] hover:text-[#ffffff]/80"
-                } relative group overflow-hidden`}
+                    : "text-gray-900 hover:text-gray-700"
+                } relative group overflow-hidden font-sans text-base md:text-lg rounded-lg px-3 py-2`}
               >
                 <a
-                  href="/Paul_Adutwum_SWE_Resume_%20AI2025.pdf"
+                  href="/Paul_Adutwum_SWE_Resume_AI2025.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nav-link"
@@ -225,7 +223,6 @@ export default function Navigation() {
           </div>
 
           <div className="flex items-center gap-3">
-            <MusicPlayer />
             <ThemeToggle />
 
             {/* Mobile Menu Button */}
@@ -258,9 +255,9 @@ export default function Navigation() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className={`md:hidden overflow-hidden ${
-              isDark ? "bg-black/95" : "bg-[#ffffff]/95"
+              isDark ? "bg-black/95" : "bg-white"
             } backdrop-blur-md border-t ${
-              isDark ? "border-gray-800" : "border-[#ffffff]/20"
+              isDark ? "border-gray-800" : "border-gray-200"
             }`}
           >
             <div className="container mx-auto px-4 py-4">
@@ -274,7 +271,7 @@ export default function Navigation() {
                     className={`w-full justify-start ${
                       isDark
                         ? "text-gray-200 hover:text-white hover:bg-gray-800"
-                        : "text-[#ffffff] hover:text-[#ffffff]/80 hover:bg-[#ffffff]/10"
+                        : "text-gray-900 hover:text-gray-700 hover:bg-gray-100/50"
                     }`}
                   >
                     <a
@@ -285,24 +282,9 @@ export default function Navigation() {
                         setActiveSection(section);
                         setIsMobileMenuOpen(false);
 
-                        // Update URL without causing page reload
+                        // Use the scrollToElement function from useHashNavigation hook
                         window.history.pushState(null, "", item.href);
-
-                        // Get the target element
-                        const element = document.getElementById(section);
-                        if (element) {
-                          // Calculate the element's position relative to the viewport
-                          const elementPosition =
-                            element.getBoundingClientRect().top;
-                          const offsetPosition =
-                            elementPosition + window.pageYOffset - 80; // 80px offset for the header
-
-                          // Smooth scroll to the element
-                          window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth",
-                          });
-                        }
+                        scrollToElement(section);
                       }}
                       className="flex items-center space-x-2"
                     >
@@ -317,11 +299,11 @@ export default function Navigation() {
                   className={`w-full justify-start ${
                     isDark
                       ? "text-gray-200 hover:text-white hover:bg-gray-800"
-                      : "text-[#ffffff] hover:text-[#ffffff]/80 hover:bg-[#ffffff]/10"
+                      : "text-gray-900 hover:text-gray-700 hover:bg-gray-100/50"
                   }`}
                 >
                   <a
-                    href="/Paul_Adutwum_SWE_Resume_%20AI2025.pdf"
+                    href="/Paul_Adutwum_SWE_Resume_AI2025.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2"

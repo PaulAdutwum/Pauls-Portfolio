@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "@/hooks/use-theme";
-import confetti from "canvas-confetti";
 
 // Animation variants for staggered children
 const containerVariants = {
@@ -30,105 +29,85 @@ const itemVariants = {
   },
 };
 
+// Typing animation component
+const TypingText = ({
+  text,
+  className,
+  delay = 0,
+}: {
+  text: string;
+  className: string;
+  delay?: number;
+}) => {
+  const [displayText, setDisplayText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText((prev) => prev + text[currentIndex]);
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+      }, 50 + delay); // Typing speed + initial delay
+
+      return () => clearTimeout(timeout);
+    } else {
+      // Blink cursor after typing is complete
+      const interval = setInterval(() => {
+        setShowCursor((prev) => !prev);
+      }, 500);
+
+      return () => clearInterval(interval);
+    }
+  }, [currentIndex, text, delay]);
+
+  return (
+    <div className={`${className} font-sans tracking-wide`}>
+      <span>{displayText}</span>
+      {showCursor && (
+        <span className="animate-blink border-r-4 border-blue-500 dark:border-blue-400 ml-1">
+          &nbsp;
+        </span>
+      )}
+    </div>
+  );
+};
+
 export default function Hero() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const [nameHovered, setNameHovered] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(false);
+  const [showTyping, setShowTyping] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      confetti({
-        particleCount: 100,
-        spread: 80,
-        origin: { y: 0.6 },
-      });
-    }, 1000);
+    // Set animation as complete after a delay
+    const timer = setTimeout(() => {
+      setAnimationComplete(true);
+    }, 4000); // Longer animation time
+
+    const showNameTimer = setTimeout(() => {
+      setShowTyping(false);
+    }, 3500); // Keep typing animation visible longer
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(showNameTimer);
+    };
   }, []);
 
   return (
     <motion.section
       id="hero"
-      className="min-h-screen flex flex-col items-center justify-center text-center relative overflow-hidden"
+      className={`min-h-screen flex flex-col items-center justify-center text-center relative overflow-hidden ${
+        isDark
+          ? "bg-gradient-to-b from-gray-950 to-gray-900"
+          : "bg-gradient-to-b from-gray-50 to-white"
+      } px-6 sm:px-8 md:px-12 lg:px-16`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Video Background with enhanced fade-in */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-blue-900/40 z-10"></div>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute w-full h-full object-cover"
-        >
-          <source src="/mainbackgound.mp4" type="video/mp4" />
-        </video>
-      </motion.div>
-
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        {/* Bottom Left Decorative Element */}
-        <motion.div
-          className="absolute left-6 bottom-16 md:left-12 md:bottom-24 w-32 h-32 md:w-48 md:h-48 opacity-20"
-          initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
-          animate={{ opacity: 0.15, scale: 1, rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        >
-          <div className="w-full h-full rounded-full border-2 border-white/60"></div>
-          <div className="absolute inset-4 rounded-full border-2 border-white/40"></div>
-          <div className="absolute inset-8 rounded-full border-2 border-white/20"></div>
-        </motion.div>
-
-        {/* Bottom Right Decorative Element */}
-        <motion.div
-          className="absolute right-6 bottom-24 md:right-16 md:bottom-32 w-40 h-40 md:w-56 md:h-56 opacity-20"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.15, scale: 1 }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut",
-          }}
-        >
-          <div className="w-full h-full rounded-full bg-gradient-to-tr from-white/5 to-white/30 blur-md"></div>
-          <motion.div
-            className="absolute inset-4 rounded-full border-2 border-white/30"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          ></motion.div>
-        </motion.div>
-
-        {/* Top Right Decorative Element */}
-        <motion.div
-          className="absolute right-16 top-24 md:right-24 md:top-16 w-28 h-28 md:w-40 md:h-40 opacity-15"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 0.15, scale: 1 }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut",
-          }}
-        >
-          <div className="w-full h-full rounded-full border border-white/40"></div>
-          <div className="absolute inset-3 rounded-full border border-white/30"></div>
-          <motion.div
-            className="absolute inset-6 rounded-full border border-white/20"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-          ></motion.div>
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-full"></div>
-        </motion.div>
-      </div>
-
       {/* Main Content - Staggered Animation */}
       <motion.div
         className="relative z-20 container mx-auto px-4 flex flex-col items-center"
@@ -136,191 +115,264 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
-        {/* Name with enhanced stylish design */}
+        {/* Professional Image */}
         <motion.div
-          className="overflow-hidden mb-8 relative"
+          className="mb-12"
           variants={itemVariants}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.7 }}
         >
-          <motion.h1
-            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight"
-            onMouseEnter={() => setNameHovered(true)}
-            onMouseLeave={() => setNameHovered(false)}
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+          <motion.div
+            className="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full mx-auto shadow-xl"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300, damping: 10 }}
           >
-            <motion.div
-              className="relative py-4 px-6 inline-block"
-              whileHover={{ scale: 1.02 }}
-            >
-              {/* Text outline effect */}
-              <span
-                className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-indigo-500 opacity-60 blur-[2px] font-black italic"
-                style={{ transform: "translate(4px, 4px)" }}
-              >
-                PAUL ADUTWUM
-              </span>
-
-              {/* Main text with gradient */}
-              <motion.span
-                className="relative block italic font-black bg-clip-text text-transparent bg-gradient-to-br from-white via-blue-100 to-white"
-                animate={
-                  nameHovered
-                    ? {
-                        textShadow: [
-                          "0px 0px 8px rgba(255,255,255,0.6)",
-                          "0px 0px 16px rgba(78,169,255,0.8)",
-                          "0px 0px 8px rgba(255,255,255,0.6)",
-                        ],
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 1.5,
-                  repeat: nameHovered ? Infinity : 0,
-                  repeatType: "reverse",
-                }}
-              >
-                PAUL ADUTWUM
-              </motion.span>
-
-              {/* Decorative elements around the name */}
-              <div className="absolute h-[1px] w-1/2 left-0 top-0 bg-gradient-to-r from-transparent via-blue-400/70 to-transparent"></div>
-              <div className="absolute h-[1px] w-1/2 right-0 bottom-0 bg-gradient-to-r from-transparent via-blue-400/70 to-transparent"></div>
-
-              <motion.div
-                className="absolute h-5 w-5 left-0 top-0 border-l-2 border-t-2 border-blue-400/50"
-                animate={{ opacity: [0.3, 0.8, 0.3] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              <motion.div
-                className="absolute h-5 w-5 right-0 top-0 border-r-2 border-t-2 border-blue-400/50"
-                animate={{ opacity: [0.8, 0.3, 0.8] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              <motion.div
-                className="absolute h-5 w-5 left-0 bottom-0 border-l-2 border-b-2 border-blue-400/50"
-                animate={{ opacity: [0.8, 0.3, 0.8] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              <motion.div
-                className="absolute h-5 w-5 right-0 bottom-0 border-r-2 border-b-2 border-blue-400/50"
-                animate={{ opacity: [0.3, 0.8, 0.3] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </motion.div>
-
-            {/* Animated underline on hover */}
-            <motion.div
-              className="h-1 bg-gradient-to-r from-blue-300/80 via-white/80 to-blue-300/80 mt-2 mx-auto"
-              initial={{ width: "0%" }}
-              animate={{ width: nameHovered ? "100%" : "60%" }}
-              transition={{ duration: 0.5 }}
+            <div className="absolute inset-0 rounded-full border-[5px] border-blue-500/50 dark:border-blue-400/50 z-10"></div>
+            <div className="absolute inset-0 rounded-full z-5 animate-pulse">
+              <div className="absolute inset-0 rounded-full border-[3px] border-blue-400/30 dark:border-blue-500/30 blur-[1px]"></div>
+            </div>
+            <img
+              src="/profile.jpg"
+              alt="Paul Adutwum"
+              className="w-full h-full object-cover object-top rounded-full"
+              style={{ objectPosition: "center 30%" }}
             />
-          </motion.h1>
+          </motion.div>
         </motion.div>
 
-        {/* Education */}
-        <motion.div className="text-center mb-24" variants={itemVariants}>
-          <h2 className="text-xl md:text-2xl font-light text-white/90 tracking-wider mb-1">
-            Physics student with a concentration in Computer Science
-          </h2>
-          <p className="text-lg text-white/80 font-light">Bates College</p>
-        </motion.div>
-
-        {/* Scroll Indicator with enhanced styling - positioned lower */}
+        {/* Name with typing animation */}
         <motion.div
-          className="absolute bottom-4"
+          className="overflow-hidden mb-10 relative"
+          variants={itemVariants}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
+          <div className="py-4 px-6 inline-block">
+            {showTyping ? (
+              <div className="h-[80px] md:h-[100px] flex items-center justify-center">
+                <TypingText
+                  text="PAUL ADUTWUM"
+                  className={`text-5xl md:text-7xl lg:text-8xl font-bold ${
+                    isDark ? "text-white" : "text-blue-700"
+                  }`}
+                  delay={400}
+                />
+              </div>
+            ) : (
+              <motion.h1
+                className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wide font-sans"
+                onMouseEnter={() => setNameHovered(true)}
+                onMouseLeave={() => setNameHovered(false)}
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              >
+                <motion.span
+                  className={`relative block ${
+                    isDark
+                      ? "bg-clip-text text-transparent bg-gradient-to-br from-white via-blue-100 to-white"
+                      : "bg-clip-text text-transparent bg-gradient-to-br from-blue-600 via-blue-800 to-blue-600"
+                  }`}
+                  animate={
+                    nameHovered
+                      ? {
+                          textShadow: [
+                            "0px 0px 8px rgba(255,255,255,0.6)",
+                            "0px 0px 16px rgba(78,169,255,0.8)",
+                            "0px 0px 8px rgba(255,255,255,0.6)",
+                          ],
+                        }
+                      : {}
+                  }
+                  transition={{
+                    duration: 1.5,
+                    repeat: nameHovered ? Infinity : 0,
+                    repeatType: "reverse",
+                  }}
+                >
+                  PAUL ADUTWUM
+                </motion.span>
+
+                {/* Animated underline on hover */}
+                <motion.div
+                  className={`h-1.5 ${
+                    isDark
+                      ? "bg-gradient-to-r from-blue-300/80 via-white/80 to-blue-300/80"
+                      : "bg-gradient-to-r from-blue-600/80 via-blue-400/80 to-blue-600/80"
+                  } mt-2 mx-auto`}
+                  initial={{ width: "0%" }}
+                  animate={{ width: nameHovered ? "100%" : "60%" }}
+                  transition={{ duration: 0.5 }}
+                />
+              </motion.h1>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Education with typewriter effect */}
+        <motion.div
+          className="text-center mb-12 h-18 md:h-22"
+          variants={itemVariants}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.5 }}
+        >
+          {animationComplete ? (
+            <div
+              className={`text-2xl md:text-3xl font-light tracking-wider font-sans ${
+                isDark ? "text-white/90" : "text-gray-800"
+              }`}
+            >
+              <span>Computer Science and Physics student at Bates College</span>
+            </div>
+          ) : (
+            <TypingText
+              text="Computer Science and Physics student at Bates College"
+              className={`text-2xl md:text-3xl font-light tracking-wider ${
+                isDark ? "text-white/90" : "text-gray-800"
+              }`}
+              delay={1800}
+            />
+          )}
+        </motion.div>
+
+        {/* Social Links */}
+        <motion.div
+          className="flex space-x-6 mb-16"
+          variants={itemVariants}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 2 }}
+        >
+          <motion.a
+            href="https://github.com/PaulAdutwum"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -5, scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-4 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
+          >
+            <Github className="w-6 h-6" />
+          </motion.a>
+          <motion.a
+            href="https://www.linkedin.com/in/paul-adutwum"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -5, scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-4 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
+          >
+            <Linkedin className="w-6 h-6" />
+          </motion.a>
+        </motion.div>
+
+        {/* Scroll Indicator with enhanced styling - positioned at extreme bottom right */}
+        <motion.div
+          className="absolute bottom-0 right-4 md:right-6 lg:right-8 mb-4 md:mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            delay: 1.8,
+            delay: 2.5,
             duration: 0.8,
           }}
         >
           <motion.a
             href="#about"
-            className="flex flex-col items-center text-white hover:text-white transition-all duration-300 group"
+            className={`flex flex-col items-center ${
+              isDark ? "text-white" : "text-gray-800"
+            } transition-all duration-300 group font-sans text-base md:text-lg`}
             whileHover={{ y: -5 }}
             whileTap={{ y: 2 }}
           >
-            <span className="text-sm font-light mb-2 opacity-80 group-hover:opacity-100">
-              Scroll Down
-            </span>
-            <div className="relative flex flex-col items-center">
+            <motion.div
+              className={`px-4 py-2 rounded-full backdrop-blur-sm ${
+                isDark
+                  ? "bg-blue-500/15 border border-blue-500/20"
+                  : "bg-blue-400/15 border border-blue-400/30"
+              }`}
+              whileHover={{
+                boxShadow: isDark
+                  ? "0 0 12px rgba(59, 130, 246, 0.4)"
+                  : "0 0 12px rgba(96, 165, 250, 0.3)",
+              }}
+            >
+              <span
+                className={`font-medium ${
+                  isDark ? "opacity-90" : "opacity-90"
+                } group-hover:opacity-100`}
+              >
+                Scroll Down
+              </span>
+            </motion.div>
+            <div className="relative flex flex-col items-center mt-2">
               <motion.div
+                className={`w-12 h-12 rounded-full border-2 ${
+                  isDark ? "border-white/50" : "border-gray-800/50"
+                } flex items-center justify-center bg-gradient-to-b ${
+                  isDark
+                    ? "from-blue-600/20 to-blue-900/10"
+                    : "from-blue-400/20 to-blue-600/10"
+                } backdrop-blur-sm`}
                 animate={{
-                  y: [0, 8, 0],
+                  y: [0, 12, 0],
+                  boxShadow: [
+                    isDark
+                      ? "0 0 0 rgba(59, 130, 246, 0)"
+                      : "0 0 0 rgba(96, 165, 250, 0)",
+                    isDark
+                      ? "0 0 12px rgba(59, 130, 246, 0.4)"
+                      : "0 0 12px rgba(96, 165, 250, 0.3)",
+                    isDark
+                      ? "0 0 0 rgba(59, 130, 246, 0)"
+                      : "0 0 0 rgba(96, 165, 250, 0)",
+                  ],
                 }}
                 transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  ease: "easeInOut",
+                  y: {
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    ease: "easeInOut",
+                  },
+                  boxShadow: {
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  },
+                }}
+                whileHover={{
+                  scale: 1.1,
                 }}
               >
-                <ArrowDown className="w-5 h-5 mb-1" />
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
+                >
+                  <ArrowDown className="w-5 h-5" />
+                </motion.div>
               </motion.div>
               <motion.div
+                className={`absolute top-full w-[2px] h-14 ${
+                  isDark ? "bg-white/20" : "bg-gray-800/20"
+                }`}
                 animate={{
-                  y: [0, 8, 0],
-                  opacity: [0.7, 0.9, 0.7],
+                  height: [10, 20, 10],
+                  opacity: [0.2, 0.5, 0.2],
                 }}
                 transition={{
-                  duration: 1.5,
+                  duration: 2,
                   repeat: Infinity,
                   repeatType: "loop",
-                  ease: "easeInOut",
-                  delay: 0.2,
                 }}
-              >
-                <ArrowDown className="w-5 h-5 opacity-70" />
-              </motion.div>
-              <motion.div
-                className="absolute inset-0 rounded-full bg-white/20 -z-10"
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileHover={{ scale: 1.5, opacity: 0.2 }}
-                transition={{ duration: 0.3 }}
               />
             </div>
           </motion.a>
         </motion.div>
-      </motion.div>
-
-      {/* Social Links with enhanced styling */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.6, duration: 0.5 }}
-        className="absolute top-8 right-8 z-30 flex gap-4"
-      >
-        <motion.a
-          href="https://www.linkedin.com/in/paul-adutwum-aaaabb27b/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 bg-white/10 backdrop-blur-md rounded-full transition-all duration-300"
-          whileHover={{
-            backgroundColor: "rgba(255, 255, 255, 0.25)",
-            boxShadow: "0 0 20px rgba(255, 255, 255, 0.3)",
-            y: -3,
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Linkedin className="w-5 h-5 text-white" />
-        </motion.a>
-        <motion.a
-          href="https://github.com/PaulAdutwum?tab=overview&from=2025-01-01&to=2025-01-06"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 bg-white/10 backdrop-blur-md rounded-full transition-all duration-300"
-          whileHover={{
-            backgroundColor: "rgba(255, 255, 255, 0.25)",
-            boxShadow: "0 0 20px rgba(255, 255, 255, 0.3)",
-            y: -3,
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Github className="w-5 h-5 text-white" />
-        </motion.a>
       </motion.div>
     </motion.section>
   );

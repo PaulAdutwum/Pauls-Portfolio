@@ -58,6 +58,11 @@ function App() {
     const root = document.documentElement;
     root.classList.remove("light", "dark");
     root.classList.add(theme);
+
+    // Force a repaint to ensure background colors are applied properly
+    document.body.style.display = "none";
+    document.body.offsetHeight; // Trigger a reflow
+    document.body.style.display = "";
   }, [theme]);
 
   // Add performance measurement

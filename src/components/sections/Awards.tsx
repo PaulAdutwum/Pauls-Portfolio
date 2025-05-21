@@ -30,7 +30,7 @@ const AWARDS = [
     institution: "Bates College",
     year: "2024",
     description:
-      "Awarded for spearheading student-led community service in Lewiston’s urban neighborhoods and for building volunteer programs that connect Bates students with local initiatives.",
+      "Awarded for spearheading student-led community service in Lewiston's urban neighborhoods and for building volunteer programs that connect Bates students with local initiatives.",
     imageUrl: "/howard.png",
   },
   {
@@ -159,7 +159,7 @@ export default function Awards() {
   return (
     <section
       id="awards"
-      className="py-20 bg-gradient-to-b from-gray-100 to-white dark:from-black dark:to-gray-900 text-gray-900 dark:text-white transition-colors duration-300 relative overflow-hidden"
+      className="py-20 bg-gradient-to-b from-gray-100 to-white dark:from-black dark:to-gray-900 text-gray-900 dark:text-white transition-colors duration-300 relative overflow-hidden px-6 sm:px-8 md:px-12 lg:px-16"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
