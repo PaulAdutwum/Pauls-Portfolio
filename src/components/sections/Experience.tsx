@@ -20,91 +20,54 @@ const experiences = [
   {
     id: "exp1",
     year: "2024",
-    period: "May - Aug",
-    company: "African Lanuages Lab",
+    period: "May 2024 - Aug 2024",
+    company: "Npontu Technologies",
     location: "Remote",
     title: "Software Engineering Intern - Database API Team",
     description:
-      "Built a Flask REST service (SQLite to PostgreSQL) powering a React/Next.js dashboard, sustaining 1.2 M weekly calls at 150 ms P95 latency. Automated Python ETL (Pandas, SQLAlchemy) to ingest 1,500+ records/hour, eliminating manual uploads and saving 50 days of labor. Optimized Webpack + Babel bundle and added Jest cross‑browser tests with GitHub Actions CI, cutting payload 35% and enabling rapid releases.",
+      "Developed a Python REST API (Flask) for CRUD operations on a SQLite database, boosting data ingestion efficiency by 80%. Automated data ingestion with Python scripts (Pandas, SQLAlchemy), processing 1,500+ records/hour and saving 50 days of manual work. Implemented data validation pipelines with Python, Pandas, and SQLAlchemy ORM, resolving 450+ inconsistencies to ensure 100% data integrity.",
     skills: [
       "Flask",
-      "PostgreSQL",
+      "REST API",
       "SQLite",
-      "React",
-      "Next.js",
       "Python",
       "Pandas",
       "SQLAlchemy",
-      "Webpack",
-      "Babel",
-      "Jest",
+      "Data Validation",
+      "CRUD Operations",
+      "Data Ingestion",
       "GitHub Actions",
     ],
-    logoPath: "/afric.png",
+    logoPath: "/npontu.png",
     bgColor: "from-blue-600 to-blue-700",
   },
   {
     id: "exp2",
-    year: "2024",
-    period: "Sep - Dec",
-    company: "ASA DataFest Hackathon",
+    year: "2025",
+    period: "Feb 2025 - Mar 2025",
+    company: "American Statistical Association",
     location: "Waterville, ME",
-    title: "Data Analysis",
+    title: "Data Analyst",
     description:
-      "Predicted leasing trends with 89% accuracy by implementing ARIMA and Random Forest models on proprietary commercial real estate data. Accelerated insight discovery by 60% by cleaning and transforming large datasets using Pandas, NumPy, and Matplotlib.",
+      "Developed a Random Forest classifier using Python (scikit-learn) on a 100K+ record commercial leasing dataset, achieving 89% accuracy and cutting false positives through threshold optimization and cross-validation. Cleaned and normalized data with Pandas/NumPy, removing 12,000+ missing records to ensure accurate model predictions.",
     skills: [
       "Python",
-      "R",
+      "scikit-learn",
+      "Random Forest",
       "Pandas",
       "Numpy",
-      "Matplotlib",
-      "ARIMA",
-      "Random Forest",
-      "Jupyter Notebook",
+      "Data Cleaning",
+      "Classification",
+      "Cross-validation",
     ],
     logoPath: "/ASA.png",
     bgColor: "from-blue-600 to-blue-700",
   },
-  {
-    id: "exp3",
-    year: "2024",
-    period: "May - Aug",
-    company: "Headstarter AI",
-    location: "Boston",
-    title: "Software Engineering Resident",
-    description:
-      "Designed and built AI-powered tools for technical education, mentoring junior developers and contributing to open-source projects that enhanced learning experiences. Leveraged machine learning technologies to create interactive learning modules for software development concepts.",
-    skills: ["Machine Learning", "Python", "JavaScript"],
-    logoPath: "/headstarter.png",
-    bgColor: "from-blue-600 to-blue-700",
-  },
+
   {
     id: "exp4",
-    year: "2025",
-    period: "January - April",
-    company: "Bates College",
-    location: "Lewiston, ME",
-    title: "Fullstack Developer",
-    description:
-      "Created Bobcat Shuttle, a campus shuttle tracking application that improved student transportation experience. Integrated real-time location data and user-friendly interface. Implemented features for route tracking, ETA calculations, and service alerts to enhance the campus transportation experience.",
-    skills: [
-      "Next.js",
-      "Firebase",
-      "Google Maps API",
-      "Git",
-      "PosgresSQL",
-      "Zustand",
-      "Node.js",
-      "Socket.io",
-      "Tailwind CSS",
-    ],
-    logoPath: "/bates.png",
-    bgColor: "from-blue-600 to-blue-700",
-  },
-  {
-    id: "exp5",
     year: "2023",
-    period: "Jan - May",
+    period: "September 2023 - April 2024",
     company: "Bates College",
     location: "Lewiston, ME",
     title: "Research Assistant",
@@ -122,9 +85,9 @@ const experiences = [
     bgColor: "from-blue-600 to-blue-700",
   },
   {
-    id: "exp6",
-    year: "2023",
-    period: "Jan - May",
+    id: "exp5",
+    year: "2024/2025",
+    period: "September 2024 - May 2025",
     company: "Bates College",
     location: "Lewiston, ME",
     title: "Teaching Assistant",
@@ -203,144 +166,191 @@ export default function Experience() {
             </motion.div>
           </div>
 
-          {/* Experience Cards Grid */}
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-800/40 transform -translate-x-1/2 z-0"></div>
+          {/* Experience Cards */}
+          <div className="space-y-16 md:space-y-24">
+            {/* Timeline line - different styles for mobile and desktop */}
+            <div className="absolute hidden md:block left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-blue-600 to-blue-400 transform -translate-x-1/2 z-0 rounded-full opacity-70"></div>
 
-            {/* Experience Cards */}
-            <div className="space-y-16 md:space-y-24">
-              {experiences.map((exp, index) => (
-                <motion.div
-                  key={exp.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="relative"
+            {/* Mobile vertical connector - thinner and more subtle */}
+            <div className="absolute md:hidden left-1/2 top-10 bottom-10 w-0.5 bg-gradient-to-b from-transparent via-blue-400/50 to-transparent transform -translate-x-1/2 z-0"></div>
+
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: index * 0.15 }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="relative"
+              >
+                {/* Timeline dot with pulse effect - hidden on mobile, visible on tablet/desktop */}
+                <div className="absolute hidden md:block left-1/2 transform -translate-x-1/2 top-14 z-10">
+                  <motion.div
+                    className="h-5 w-5 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 ring-4 ring-white dark:ring-gray-900 flex items-center justify-center"
+                    whileInView={{
+                      boxShadow: [
+                        "0 0 0 0 rgba(59, 130, 246, 0.7)",
+                        "0 0 0 10px rgba(59, 130, 246, 0)",
+                      ],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatType: "loop",
+                    }}
+                  >
+                    <div className="h-2 w-2 rounded-full bg-white"></div>
+                  </motion.div>
+                </div>
+
+                {/* Mobile timeline connector dots - only visible on mobile */}
+                {index !== 0 && (
+                  <div className="absolute md:hidden left-1/2 transform -translate-x-1/2 -top-8 z-10">
+                    <motion.div
+                      className="h-4 w-4 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 dark:from-blue-500 dark:to-blue-600 opacity-70"
+                      whileInView={{
+                        opacity: [0.4, 0.8, 0.4],
+                        scale: [0.8, 1, 0.8],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                      }}
+                    />
+                  </div>
+                )}
+
+                {/* Bottom timeline dot for mobile - creates connection to next card */}
+                {index !== experiences.length - 1 && (
+                  <div className="absolute md:hidden left-1/2 transform -translate-x-1/2 -bottom-8 z-10">
+                    <motion.div
+                      className="h-2 w-2 rounded-full bg-blue-400/60 dark:bg-blue-500/60"
+                      whileInView={{
+                        opacity: [0.3, 0.7, 0.3],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                      }}
+                    />
+                  </div>
+                )}
+
+                {/* Card - centered on mobile, alternating sides on desktop */}
+                <div
+                  className={`mx-4 sm:mx-8 md:mx-0 ${
+                    index % 2 === 0
+                      ? "md:pr-[calc(50%+40px)] lg:pr-[calc(50%+60px)]"
+                      : "md:pl-[calc(50%+40px)] lg:pl-[calc(50%+60px)]"
+                  }`}
                 >
-                  {/* Date indicator - alternating sides */}
-                  <div
-                    className={`absolute ${
-                      index % 2 === 0
-                        ? "left-1/2 -translate-x-[120px]"
-                        : "right-1/2 translate-x-[120px]"
-                    } -top-6 z-20 hidden md:block`}
+                  <motion.div
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="md:mt-0"
                   >
-                    <div className="bg-white dark:bg-gray-900 px-4 py-2 rounded-full shadow-lg border border-gray-100 dark:border-gray-800 flex items-center gap-2">
-                      <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-2 rounded-full">
-                        <Calendar className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-gray-800 dark:text-gray-200">
-                          {exp.period}
-                        </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">
-                          {exp.year}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800/80 rounded-xl z-20 relative">
+                      {/* Mobile card indicator - small accent at top of card */}
+                      <div className="absolute md:hidden top-0 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-blue-400 to-blue-500 dark:from-blue-500 dark:to-blue-600 rounded-b-full z-10"></div>
 
-                  {/* Mobile date indicator */}
-                  <div className="absolute left-0 -top-6 z-20 md:hidden">
-                    <div className="bg-white dark:bg-gray-900 px-4 py-2 rounded-full shadow-lg border border-gray-100 dark:border-gray-800 flex items-center gap-2">
-                      <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-2 rounded-full">
-                        <Calendar className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-gray-800 dark:text-gray-200">
-                          {exp.period}
-                        </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400">
-                          {exp.year}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Timeline dot */}
-                  <div className="absolute left-1/2 -translate-x-1/2 top-8 z-10">
-                    <div className="h-4 w-4 rounded-full bg-blue-600 dark:bg-blue-400 ring-4 ring-white dark:ring-gray-900 flex items-center justify-center">
-                      <div className="h-1.5 w-1.5 rounded-full bg-white"></div>
-                    </div>
-                  </div>
-
-                  {/* Card - alternating sides */}
-                  <div
-                    className={`ml-8 md:ml-0 ${
-                      index % 2 === 0
-                        ? "md:pr-[calc(50%+80px)]"
-                        : "md:pl-[calc(50%+80px)]"
-                    }`}
-                  >
-                    <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800/80 rounded-xl">
                       {/* Header with gradient and logo */}
                       <div
-                        className={`h-28 bg-gradient-to-r ${exp.bgColor} dark:opacity-90 flex items-center justify-center overflow-hidden p-6 relative`}
+                        className={`h-24 sm:h-28 bg-gradient-to-r ${exp.bgColor} dark:opacity-90 flex items-center justify-center overflow-hidden p-4 sm:p-6 relative`}
                       >
                         <div className="absolute inset-0 bg-black/10 dark:bg-black/20"></div>
 
                         {/* Company logo */}
                         <div className="relative z-10 flex flex-col items-center">
                           {exp.logoPath ? (
-                            <div className="h-14 w-14 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md border-2 border-white/50">
+                            <div className="h-14 sm:h-16 w-14 sm:w-16 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md border-2 border-white/50">
                               <img
                                 src={exp.logoPath}
                                 alt={exp.company}
-                                className="w-10 h-10 object-contain p-1"
+                                className={`w-10 sm:w-12 h-10 sm:h-12 object-contain p-1 ${
+                                  exp.company === "Npontu Technologies"
+                                    ? "scale-110"
+                                    : ""
+                                }`}
                               />
                             </div>
                           ) : (
-                            <div className="h-14 w-14 rounded-full bg-white/20 flex items-center justify-center overflow-hidden shadow-md border-2 border-white/30">
-                              <Bot className="w-10 h-10 text-white" />
+                            <div className="h-14 sm:h-16 w-14 sm:w-16 rounded-full bg-white/20 flex items-center justify-center overflow-hidden shadow-md border-2 border-white/30">
+                              <Bot className="w-8 sm:w-10 h-8 sm:h-10 text-white" />
                             </div>
                           )}
                         </div>
                       </div>
 
-                      <CardContent className="p-6">
-                        {/* Company and location */}
-                        <div className="mb-4">
-                          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                            {exp.company}
-                          </h3>
-                          <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
-                            <MapPin className="w-4 h-4" />
-                            <span>{exp.location}</span>
+                      <CardContent className="p-4 sm:p-6">
+                        {/* Company, location and date */}
+                        <div className="mb-4 flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-0">
+                          <div>
+                            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+                              {exp.company}
+                            </h3>
+                            <div className="flex items-center gap-1 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                              <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
+                              <span>{exp.location}</span>
+                            </div>
+                          </div>
+                          <div className="sm:text-right">
+                            <div className="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400">
+                              {exp.period}
+                            </div>
                           </div>
                         </div>
 
                         {/* Title */}
-                        <div className="flex items-start gap-2 mb-4">
-                          <Briefcase className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
-                          <h4 className="text-base font-semibold text-gray-800 dark:text-gray-200">
+                        <div className="flex items-start gap-2 mb-3 sm:mb-4">
+                          <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                          <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
                             {exp.title}
                           </h4>
                         </div>
 
-                        {/* Description */}
-                        <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
-                          {exp.description}
-                        </p>
+                        {/* Description - converted to bullet points format */}
+                        <div className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-4 sm:mb-5">
+                          {exp.description
+                            .split(". ")
+                            .filter((sentence) => sentence.trim().length > 0)
+                            .map((sentence, idx) => (
+                              <div
+                                key={idx}
+                                className="flex items-start gap-2 mb-2"
+                              >
+                                <div className="mt-1 flex-shrink-0">
+                                  <div className="h-1.5 w-1.5 rounded-full bg-blue-500 dark:bg-blue-400"></div>
+                                </div>
+                                <p className="leading-relaxed">
+                                  {sentence.trim()}
+                                  {sentence.trim().endsWith(".") ? "" : "."}
+                                </p>
+                              </div>
+                            ))}
+                        </div>
 
                         {/* Skills */}
-                        <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                           {exp.skills.map((skill) => (
-                            <Badge
+                            <motion.div
+                              whileHover={{ y: -2, scale: 1.05 }}
+                              transition={{ type: "spring", stiffness: 400 }}
                               key={skill}
-                              className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors text-xs px-2 py-0.5"
                             >
-                              {skill}
-                            </Badge>
+                              <Badge className="bg-blue-100/70 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5">
+                                {skill}
+                              </Badge>
+                            </motion.div>
                           ))}
                         </div>
                       </CardContent>
                     </Card>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
