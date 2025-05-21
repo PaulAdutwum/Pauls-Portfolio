@@ -269,7 +269,7 @@ export default function Hero() {
 
         {/* Scroll Indicator with enhanced styling - positioned at extreme bottom right */}
         <motion.div
-          className="absolute bottom-0 right-2 sm:right-4 md:right-6 lg:right-8 mb-8 sm:mb-6 md:mb-4"
+          className="absolute bottom-0 right-2 sm:right-4 md:right-6 lg:right-8 mb-2 sm:mb-2 md:mb-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -285,27 +285,7 @@ export default function Hero() {
             whileHover={{ y: -5 }}
             whileTap={{ y: 2 }}
           >
-            <motion.div
-              className={`px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full backdrop-blur-sm ${
-                isDark
-                  ? "bg-blue-500/15 border border-blue-500/20"
-                  : "bg-blue-400/15 border border-blue-400/30"
-              }`}
-              whileHover={{
-                boxShadow: isDark
-                  ? "0 0 12px rgba(59, 130, 246, 0.4)"
-                  : "0 0 12px rgba(96, 165, 250, 0.3)",
-              }}
-            >
-              <span
-                className={`font-medium ${
-                  isDark ? "opacity-90" : "opacity-90"
-                } group-hover:opacity-100`}
-              >
-                Scroll Down
-              </span>
-            </motion.div>
-            <div className="relative flex flex-col items-center mt-2">
+            <div className="relative flex flex-col items-center">
               <motion.div
                 className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full border-2 ${
                   isDark ? "border-white/50" : "border-gray-800/50"
