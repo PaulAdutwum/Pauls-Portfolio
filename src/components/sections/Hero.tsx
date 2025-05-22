@@ -224,7 +224,9 @@ export default function Hero() {
                 isDark ? "text-white/90" : "text-gray-800"
               }`}
             >
-              <span>Computer Science and Physics student at Bates College</span>
+              <span>
+                Computer Science and Mathematics student at Bates College
+              </span>
             </div>
           ) : (
             <TypingText
