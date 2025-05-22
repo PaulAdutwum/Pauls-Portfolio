@@ -90,7 +90,7 @@ export default function Education() {
                       Bates College
                     </CardTitle>
                     <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 font-medium">
-                      BS in Physics with a concentration in Computer Science
+                      BS in Mathematics and Computer Science
                     </p>
                   </div>
                 </CardHeader>
@@ -123,13 +123,14 @@ export default function Education() {
                         <ul className="mt-2 space-y-2 pl-1">
                           {[
                             "Data Structures & Algorithms",
-                            "Software Development",
-                            "Data Analysis",
+                            "Discrete Structures",
+                            "Data Analysis and Visualization with Python",
                             "Databases and Design",
                             "Web Development",
-                            "Computer Networking",
-                            "Discrete Structures",
-                            "Artificial Intelligence",
+                            "Operating Systems",
+                            "Multivariable Calculus",
+                            "Linear Algebra",
+                            "Intro to Machine Learning",
                           ].map((course, i) => (
                             <motion.li
                               key={i}

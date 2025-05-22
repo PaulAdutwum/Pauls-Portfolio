@@ -115,7 +115,7 @@ export default function About() {
                   <p>
                     I am a first generation College student studying{" "}
                     <span className="text-blue-600 dark:text-blue-400 font-medium">
-                      Physics with a focus in Computer Science.
+                      Mathematics and Computer Science.
                     </span>{" "}
                     With hands-on experience in full-stack development, I have
                     contributed to a variety of high-impact projects. I am
