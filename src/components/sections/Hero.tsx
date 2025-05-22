@@ -239,34 +239,12 @@ export default function Hero() {
           )}
         </motion.div>
 
-        {/* Social Links */}
-        <motion.div
-          className="flex space-x-6 mb-8 md:mb-16"
-          variants={itemVariants}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 2 }}
-        >
-          <motion.a
-            href="https://github.com/PaulAdutwum"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ y: -5, scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="p-4 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
-          >
-            <Github className="w-6 h-6" />
-          </motion.a>
-          <motion.a
-            href="https://www.linkedin.com/in/paul-adutwum"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ y: -5, scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="p-4 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
-          >
-            <Linkedin className="w-6 h-6" />
-          </motion.a>
+        {/* Education */}
+        <motion.div className="text-center mb-24" variants={itemVariants}>
+          <h2 className="text-xl md:text-2xl font-light text-white/90 tracking-wider mb-1">
+            Physics student with a concentration in Computer Science
+          </h2>
+          <p className="text-lg text-white/80 font-light">Bates College</p>
         </motion.div>
 
         {/* Scroll Indicator with enhanced styling - positioned at extreme bottom right */}
