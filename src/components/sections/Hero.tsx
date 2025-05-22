@@ -220,8 +220,10 @@ export default function Hero() {
         >
           {animationComplete ? (
             <div
-              className={`text-xs xs:text-sm sm:text-lg md:text-2xl font-light tracking-wider font-sans ${
-                isDark ? "text-white/90" : "text-gray-800"
+              className={`text-sm xs:text-base sm:text-xl md:text-2xl font-light tracking-wider font-sans ${
+                isDark
+                  ? "bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-blue-300"
+                  : "bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-800 to-blue-600"
               }`}
             >
               <span>
@@ -231,8 +233,10 @@ export default function Hero() {
           ) : (
             <TypingText
               text="Computer Science and Physics student at Bates College"
-              className={`text-xs xs:text-sm sm:text-lg md:text-2xl font-light tracking-wider ${
-                isDark ? "text-white/90" : "text-gray-800"
+              className={`text-sm xs:text-base sm:text-xl md:text-2xl font-light tracking-wider ${
+                isDark
+                  ? "bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-blue-300"
+                  : "bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-800 to-blue-600"
               }`}
               delay={1800}
             />
