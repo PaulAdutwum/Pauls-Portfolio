@@ -33,10 +33,7 @@ export default function Education() {
             <CardContent>
               <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
                 <li>
-                  Expected Graduation: <strong>May 2027</strong>
-                </li>
-                <li>
-                  <strong>GPA:</strong> 3.97
+                  <strong>GPA:</strong> 3.95
                 </li>
                 <li>
                   <strong>Relevant Coursework:</strong> Data Structures &

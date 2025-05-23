@@ -12,12 +12,35 @@ import {
   PencilRuler,
   BarChart,
   Bot,
+  FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
 
 // Experience data
 const experiences = [
+  {
+    id: "exp2",
+    year: "2025",
+    period: "Feb 2025 - Mar 2025",
+    company: "American Statistical Association",
+    location: "Waterville, ME",
+    title: "Data Analyst",
+    description:
+      "Developed a Random Forest classifier using Python (scikit-learn) on a 100K+ record commercial leasing dataset, achieving 89% accuracy and cutting false positives through threshold optimization and cross-validation. Cleaned and normalized data with Pandas/NumPy, removing 12,000+ missing records to ensure accurate model predictions.",
+    skills: [
+      "Python",
+      "scikit-learn",
+      "Random Forest",
+      "Pandas",
+      "Numpy",
+      "Data Cleaning",
+      "Classification",
+      "Cross-validation",
+    ],
+    logoPath: "/ASA.png",
+    bgColor: "from-blue-600 to-blue-700",
+  },
   {
     id: "exp1",
     year: "2024",
@@ -42,28 +65,6 @@ const experiences = [
     logoPath: "/npontu.png",
     bgColor: "from-blue-600 to-blue-700",
   },
-  {
-    id: "exp2",
-    year: "2025",
-    period: "Feb 2025 - Mar 2025",
-    company: "American Statistical Association",
-    location: "Waterville, ME",
-    title: "Data Analyst",
-    description:
-      "Developed a Random Forest classifier using Python (scikit-learn) on a 100K+ record commercial leasing dataset, achieving 89% accuracy and cutting false positives through threshold optimization and cross-validation. Cleaned and normalized data with Pandas/NumPy, removing 12,000+ missing records to ensure accurate model predictions.",
-    skills: [
-      "Python",
-      "scikit-learn",
-      "Random Forest",
-      "Pandas",
-      "Numpy",
-      "Data Cleaning",
-      "Classification",
-      "Cross-validation",
-    ],
-    logoPath: "/ASA.png",
-    bgColor: "from-blue-600 to-blue-700",
-  },
 
   {
     id: "exp4",
@@ -73,17 +74,19 @@ const experiences = [
     location: "Lewiston, ME",
     title: "Research Assistant",
     description:
-      "Designed and implemented a Java algorithm for Ulam sequences that combines dynamic programming with intelligent caching / memoization, slashing redundant calculations and streamlining large-term generation. Cut computation time by ~50%—reducing asymptotic complexity from O(N²) to O(N)—and successfully produced 2 million U 1,n terms, enabling deeper pattern analysis at scale.",
+      "Investigated the combinatorial structure and asymptotic behavior of Ulam words by analyzing their growth patterns, binary encodings, and modular distributions up to length 30. Developed a high-performance Java algorithm to generate and classify over 60× more Ulam words than previously published work, revealing new conjectures on their equidistribution and density. Co-authored a peer-reviewed paper accepted to arXiv, presenting novel insights into recursive word formations, discrete Sierpiński structures, and numerical convergence patterns.",
     skills: [
       "Java",
+      "Algorithm Design",
+      "Mathematical Analysis",
       "Data Visualization",
-      "Matplotlib",
-      "Pandas",
-      "NumPy",
-      "Git",
+      "Research Publication",
+      "Combinatorial Theory",
     ],
     logoPath: "/bates.png",
     bgColor: "from-blue-600 to-blue-700",
+    publicationUrl: "https://arxiv.org/abs/2410.01217",
+    publicationTitle: "Distribution of Ulam Words Up to Length 30",
   },
   {
     id: "exp5",
@@ -351,6 +354,24 @@ export default function Experience() {
                             </motion.div>
                           ))}
                         </div>
+
+                        {/* Publication link - only for Research Assistant */}
+                        {exp.publicationUrl && (
+                          <div className="mt-4 pt-2 border-t border-gray-200 dark:border-gray-700">
+                            <a
+                              href={exp.publicationUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-xs sm:text-sm font-medium transition-colors"
+                            >
+                              <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                              <span>
+                                View Publication: {exp.publicationTitle}
+                              </span>
+                              <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                            </a>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   </motion.div>

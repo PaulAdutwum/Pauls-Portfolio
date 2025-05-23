@@ -102,14 +102,6 @@ export default function Education() {
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       <span className="h-2 w-2 rounded-full bg-blue-500"></span>
-                      Expected Graduation: <strong>May 2027</strong>
-                    </motion.li>
-                    <motion.li
-                      className="flex items-center gap-2"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <span className="h-2 w-2 rounded-full bg-blue-500"></span>
                       <strong>GPA:</strong> 3.95/4.0
                     </motion.li>
                     <motion.li
@@ -143,56 +135,6 @@ export default function Education() {
                             </motion.li>
                           ))}
                         </ul>
-                      </div>
-                    </motion.li>
-
-                    {/* Research & Publications */}
-                    <motion.li
-                      className="flex items-start gap-2 pt-4"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <span className="h-2 w-2 mt-1.5 rounded-full bg-blue-500"></span>
-                      <div className="space-y-4">
-                        <div>
-                          <strong className="text-blue-600 ml-1 dark:text-blue-400">
-                            Research & Publications:
-                          </strong>
-                          <p className="mt-2 ml-1">
-                            I participated in collaborative research
-                            investigating the structure and growth of{" "}
-                            <strong>Ulam numbers</strong> and{" "}
-                            <strong>Ulam polynomials</strong>, with an emphasis
-                            on their behavior at large indices. To push these
-                            studies further, I engineered a high-performance,
-                            Java-based algorithm capable of computing terms into
-                            the billions for sequences of the form{" "}
-                            <em>
-                              U<sub>1,n</sub>
-                            </em>
-                          </p>
-                        </div>
-
-                        <div className="space-y-2">
-                          <p className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                            View our research paper:
-                          </p>
-                          <div className="space-y-2 pl-2 border-l-2 border-blue-200 dark:border-blue-800">
-                            <motion.a
-                              href="https://arxiv.org/abs/2404.00001"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2 text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                              whileHover={{ x: 3 }}
-                            >
-                              <FileText className="h-4 w-4 flex-shrink-0" />
-                              <span>
-                                Distribution of Ulam Words Up to Length 30
-                                (2024)
-                              </span>
-                            </motion.a>
-                          </div>
-                        </div>
                       </div>
                     </motion.li>
                   </ul>
