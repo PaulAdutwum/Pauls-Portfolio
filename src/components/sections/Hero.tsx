@@ -227,7 +227,7 @@ export default function Hero() {
               }`}
             >
               <span>
-                Computer Science and Mathematics student at Bates College
+                 Student at Bates College
               </span>
             </div>
           ) : (
