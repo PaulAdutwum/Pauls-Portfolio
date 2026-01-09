@@ -26,7 +26,7 @@ export default function Education() {
               <div>
                 <CardTitle>Bates College</CardTitle>
                 <p className="text-muted-foreground">
-                  BS in Computer Science & Mathematics
+                  BS in Physics & Mathematics, Minor in Computational Studies
                 </p>
               </div>
             </CardHeader>
