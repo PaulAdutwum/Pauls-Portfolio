@@ -37,7 +37,7 @@ export default function Education() {
                 </li>
                 <li>
                   <strong>Relevant Coursework:</strong> Data Structures &
-                  Algorithms, Web Development, Machine Learning
+                  DSA, Web Development, Machine Learning, Embedded Systems
                 </li>
               </ul>
             </CardContent>
@@ -48,7 +48,7 @@ export default function Education() {
             <CardHeader className="flex flex-row items-center gap-4">
               <Briefcase className="h-8 w-8 text-blue-500 dark:text-blue-400" />
               <div>
-                <CardTitle>Professional Experience</CardTitle>
+                <CardTitle> Experience</CardTitle>
                 <p className="text-muted-foreground">
                   Web Development | Full-Stack | Data Science
                 </p>
