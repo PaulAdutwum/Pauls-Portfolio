@@ -66,7 +66,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="space-y-6 md:space-y-8 max-w-3xl mx-auto text-center">
+              <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto text-center lg:text-left">
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 md:mb-4 font-sans">
                   Hello! My name is Paul Adutwum
                 </h3>
@@ -99,31 +99,10 @@ export default function About() {
 
                   <p>Always open to connecting.</p>
                 </div>
+
               </div>
             </motion.div>
           </div>
-
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            {[
-              "Automation & ML",
-              "Backend + Data",
-              "First‑Gen Scholar",
-              "Open to Internships",
-            ].map((label) => (
-              <div
-                key={label}
-                className="rounded-2xl border border-blue-500/10 dark:border-blue-400/10 bg-white/50 dark:bg-white/5 backdrop-blur-md px-4 py-3 text-sm sm:text-base font-medium text-gray-800 dark:text-gray-100 shadow-sm hover:shadow-md transition-shadow"
-              >
-                {label}
-              </div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>
