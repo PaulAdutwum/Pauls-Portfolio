@@ -57,81 +57,73 @@ export default function About() {
             </h2>
           </div>
 
-          {/* Modern About Section with Image and Text Side-by-Side */}
-          <div className="flex flex-col lg:flex-row gap-8 md:gap-12 mb-16 md:mb-20">
-            {/* Image Column with Animation */}
+          {/* Modern About Section with Text */}
+          <div className="flex flex-col gap-8 md:gap-12 mb-10 md:mb-14">
             <motion.div
-              className="lg:w-1/2 flex justify-center mb-6 lg:mb-0"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-                {/* Main image container with subtle hover effect */}
-                <motion.div
-                  className="relative w-full h-full overflow-hidden rounded-full shadow-xl"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                >
-                  {/* Subtle gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-full z-10"></div>
-
-                  {/* Inner glowing border */}
-                  <div className="absolute inset-0 rounded-full border-[5px] border-blue-500/50 dark:border-blue-400/50 z-10"></div>
-
-                  {/* Animated inner glow effect */}
-                  <div className="absolute inset-0 rounded-full z-5 animate-pulse">
-                    <div className="absolute inset-0 rounded-full border-[3px] border-blue-400/30 dark:border-blue-500/30 blur-[1px]"></div>
-                  </div>
-
-                  {/* Main image */}
-                  <div className="relative w-full h-full">
-                    <img
-                      src="/heasshot3.PNG"
-                      alt="Paul Adutwum"
-                      className="w-full h-full object-cover object-top rounded-full"
-                      style={{ objectPosition: "center 30%" }}
-                    />
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {/* Text Column */}
-            <motion.div
-              className="lg:w-1/2 flex flex-col justify-center"
+              className="flex flex-col justify-center items-center"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="space-y-6 md:space-y-8 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+              <div className="space-y-6 md:space-y-8 max-w-3xl mx-auto text-center">
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 md:mb-4 font-sans">
                   Hello! My name is Paul Adutwum
                 </h3>
 
                 <div className="space-y-4 md:space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed font-sans text-base sm:text-lg md:text-xl">
                   <p>
-                    I am a first generation College student studying{" "}
-                    <span className="text-blue-600 dark:text-blue-400 font-medium">
-                      Mathematics and Computer Science.
-                    </span>{" "}
-                    With hands-on experience in full-stack development, I have
-                    contributed to a variety of high-impact projects. I am
-                    passionate about the intersection of software engineering,
-                    artificial intelligence, and hardware systems.
+                    Hi, I'm Paul Adutwum, a Mathematics and Physics major with a
+                    minor in Computer Science at Bates College. I am a first
+                    generation college student.
                   </p>
 
                   <p>
-                    Outside of academics, I love listening to classic music,
-                    playing soccer, taking photos, watching the Premier League,
-                    and playing chess.
+                    Through internships and independent projects, I've
+                    developed experience in automation, machine learning,
+                    backend development, and data engineering, building systems
+                    that improve team productivity and overall reliability.
                   </p>
+
+                  <p>
+                    I'm interested in building intelligent, data-driven systems
+                    at the intersection of machine learning and software
+                    development.
+                  </p>
+
+                  <p>
+                    I'm currently seeking internship opportunities where I can
+                    continue growing and contribute meaningfully to innovative
+                    teams.
+                  </p>
+
+                  <p>Always open to connecting.</p>
                 </div>
               </div>
             </motion.div>
           </div>
+
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {[
+              "Automation & ML",
+              "Backend + Data",
+              "First‑Gen Scholar",
+              "Open to Internships",
+            ].map((label) => (
+              <div
+                key={label}
+                className="rounded-2xl border border-blue-500/10 dark:border-blue-400/10 bg-white/50 dark:bg-white/5 backdrop-blur-md px-4 py-3 text-sm sm:text-base font-medium text-gray-800 dark:text-gray-100 shadow-sm hover:shadow-md transition-shadow"
+              >
+                {label}
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>

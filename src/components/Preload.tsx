@@ -4,7 +4,7 @@ export default function Preload() {
   // Critical resources that should be preloaded immediately
   const criticalResources = [
     // Preload hero image
-    { rel: "preload", href: "/headshot.png", as: "image" },
+    { rel: "preload", href: "/LexisNewHeadshot.jpeg", as: "image" },
 
     // Font preloading (if you're using custom fonts)
     // { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

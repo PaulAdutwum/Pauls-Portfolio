@@ -101,13 +101,39 @@ export default function Hero() {
       id="hero"
       className={`pt-28 md:pt-16 min-h-screen flex flex-col items-center justify-center text-center relative overflow-hidden ${
         isDark
-          ? "bg-gradient-to-b from-gray-950 to-gray-900"
+          ? "bg-gradient-to-b from-black via-gray-950 to-gray-900"
           : "bg-gradient-to-b from-gray-50 to-white"
       } px-4 sm:px-6 md:px-10 lg:px-16`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
+      <div
+        className={`absolute inset-0 pointer-events-none ${
+          isDark
+            ? "bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_55%)]"
+            : "bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.12),_transparent_60%)]"
+        }`}
+      />
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className={`absolute inset-0 ${
+            isDark
+              ? "bg-[linear-gradient(180deg,rgba(2,6,23,0.96)_0%,rgba(15,23,42,0.9)_45%,rgba(3,7,18,0.98)_100%)]"
+              : "bg-[linear-gradient(180deg,rgba(240,249,255,0.9)_0%,rgba(255,255,255,0.95)_60%,rgba(248,250,252,0.95)_100%)]"
+          }`}
+        />
+        <div
+          className={`absolute left-0 right-0 top-24 h-56 rounded-[100%] blur-3xl ${
+            isDark ? "bg-blue-500/10" : "bg-blue-300/25"
+          }`}
+        />
+        <div
+          className={`absolute left-1/2 -translate-x-1/2 bottom-[-6rem] h-64 w-[120%] rounded-[100%] blur-3xl ${
+            isDark ? "bg-slate-800/50" : "bg-slate-200/70"
+          }`}
+        />
+      </div>
       {/* Main Content - Staggered Animation */}
       <motion.div
         className="relative z-20 container mx-auto px-4 flex flex-col items-center"
@@ -133,7 +159,7 @@ export default function Hero() {
               <div className="absolute inset-0 rounded-full border-[3px] border-blue-400/30 dark:border-blue-500/30 blur-[1px]"></div>
             </div>
             <img
-              src="/profile.jpg"
+              src="/LexisNewHeadshot.jpeg"
               alt="Paul Adutwum"
               className="w-full h-full object-cover object-top rounded-full"
               style={{ objectPosition: "center 30%" }}
