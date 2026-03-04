@@ -73,16 +73,18 @@ export default function About() {
 
                 <div className="space-y-4 md:space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed font-sans text-base sm:text-lg md:text-xl">
                   <p>
-                    Hi, I'm Paul Adutwum, a Mathematics and Physics major with a
-                    minor in Computer Science at Bates College. I am a first
-                    generation college student.
+                    I am a Mathematics and Physics major with a minor in
+                    Computer Science at Bates College. I am a first generation
+                    college student passionate about using technology to make a
+                    difference.
                   </p>
 
                   <p>
                     Through internships and independent projects, I've
                     developed experience in automation, machine learning,
-                    backend development, and data engineering, building systems
-                    that improve team productivity and overall reliability.
+                    backend development, embedded systems and data engineering,
+                    building systems that improve team productivity and overall
+                    reliability.
                   </p>
 
                   <p>

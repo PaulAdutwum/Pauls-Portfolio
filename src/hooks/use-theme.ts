@@ -11,7 +11,7 @@ interface ThemeStore {
 export const useTheme = create<ThemeStore>()(
   persist(
     (set) => ({
-      theme: "dark", // Set default theme to dark
+      theme: "light", // Set default theme to light
       setTheme: (theme: Theme) => {
         const root = document.documentElement;
         console.log("Setting theme to:", theme);
@@ -75,8 +75,9 @@ export const useTheme = create<ThemeStore>()(
       name: "theme-storage",
       onRehydrateStorage: () => (state) => {
         if (state) {
-          // Apply theme when state is rehydrated from storage
-          state.setTheme(state.theme);
+          // Always default to light on fresh load
+          const nextTheme = state.theme === "dark" ? "light" : state.theme;
+          state.setTheme(nextTheme);
         }
       },
     }
